@@ -21,7 +21,7 @@ Run server
 
 ### Frontend
 
-In website/react-website, run:
+In react-website, run:
 
 `npm install` to setup once
 
