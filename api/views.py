@@ -3,11 +3,6 @@ from rest_framework.response import Response
 from api.prompts import *
 from api.ai_client import AiClient
 
-@api_view(['GET'])
-def test(request):
-    # Use session for messages?
-    return Response([])
-
 
 @api_view(['GET'])
 def get_game_start(request):

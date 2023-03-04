@@ -3,6 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('test', views.test),
+    # localhost:8000/api/game-start-items
     path('game-start-items', views.get_game_start),
 ]

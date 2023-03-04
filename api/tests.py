@@ -11,11 +11,12 @@ class PromptTestCase(TestCase):
 
     def test_validate_action_prompt(self):
         scenario = 'the party encounters a river that blocks their path'
-        items = '["wagon", "Warm Blanket", "Hiking Boots"]'
+        items = '["Wagon", "Warm Blanket", "Hiking Boots"]'
         characters = '["Bob", "Sally", "Frank"]'
         valid_actions = [
             "ford the river",
-            "swim across"
+            "swim across",
+            "deconstruct the wagon to build a bridge"
         ]
         invalid_actions = [
             "fly across",
