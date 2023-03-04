@@ -30,13 +30,14 @@ class AiClient:
 		)
 		return completion.choices[0].message.to_dict()['content']
 
-	def gen_yaml(self, prompt: Prompt, history: list[str] = []) -> dict:
+	def gen_yaml(self, prompt: Prompt, history: list[str] = [], tries = 1) -> dict | None:
 		"""
 		Generate an AI response to the msg
 		optionally including history,
 		optionally validating the type of the yaml response
 		"""
-		while True:
+		while tries > 0:
+			tries -= 1
 			res = self.gen(prompt['prompt'], history)
 			# Parse it into a Python dictionary
 			try:
@@ -63,6 +64,7 @@ class AiClient:
 					print("Invalid response", data_dict)
 					continue
 			return data_dict
+		return None
 
 	
 # Bing generated validation function
