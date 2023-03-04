@@ -14,15 +14,19 @@ class AiClient:
 	def __call__(self):
 		return self
 
-	def gen(self, msg: str) -> str:
-		# Create list of messages, starts with user, then assistant...
-
+	def gen(self, msg: str, params: dict) -> str:
 		completion = openai.ChatCompletion.create(
 			model=self.model,
+			temperature=params.get('temperature', 0.7),
+			top_p=params.get('top_p', 1),
+			# max_tokens=255,
+			presence_penalty=params.get('presence_penalty', 0),
+			frequency_penalty=params.get('frequency_penalty', 0),
 			messages=[
 				{"role": "user", "content": msg}
 			]
 		)
+		print(completion)
 		return completion.choices[0].message.to_dict()['content']
 
 	def gen_dict(self, prompt: Prompt, tries = 1) -> dict | None:
@@ -33,7 +37,7 @@ class AiClient:
 		"""
 		while tries > 0:
 			tries -= 1
-			res = self.gen(prompt['prompt'])
+			res = self.gen(prompt['prompt'], params={'temperature': prompt['temperature']})
 			# Parse it into a Python dictionary
 			try:
 				if prompt['response_type'] == 'yaml':

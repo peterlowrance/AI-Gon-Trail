@@ -14,7 +14,8 @@ class PromptTestCase(TestCase):
         items = '["wagon", "Warm Blanket", "Hiking Boots"]'
         characters = '["Bob", "Sally", "Frank"]'
         valid_actions = [
-            "ford the river"
+            "ford the river",
+            "swim across"
         ]
         invalid_actions = [
             "fly across",
