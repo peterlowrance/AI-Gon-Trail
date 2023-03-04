@@ -14,13 +14,8 @@ class AiClient:
 	def __call__(self):
 		return self
 
-	def gen(self, msg: str, history: list[str] = []) -> str:
+	def gen(self, msg: str) -> str:
 		# Create list of messages, starts with user, then assistant...
-		messages = []
-		for i, h_msg in enumerate(history):
-			role = 'user' if i % 2 == 0 else 'assistant'
-			messages.append({'role': role, 'content': h_msg})
-		messages.append({'role': 'user', 'content': msg})
 
 		completion = openai.ChatCompletion.create(
 			model=self.model,
@@ -30,16 +25,15 @@ class AiClient:
 		)
 		return completion.choices[0].message.to_dict()['content']
 
-	def gen_dict(self, prompt: Prompt, history: list[str] = [], tries = 1) -> dict | None:
+	def gen_dict(self, prompt: Prompt, tries = 1) -> dict | None:
 		"""
 		Generate an AI response to the prompt
 		based on the prompt, either json or yaml will be parsed
-		history: optional history of messages
 		tries: the number of tries to get correct formatting from the prompt
 		"""
 		while tries > 0:
 			tries -= 1
-			res = self.gen(prompt['prompt'], history)
+			res = self.gen(prompt['prompt'])
 			# Parse it into a Python dictionary
 			try:
 				if prompt['response_type'] == 'yaml':
