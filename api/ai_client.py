@@ -30,11 +30,12 @@ class AiClient:
 		)
 		return completion.choices[0].message.to_dict()['content']
 
-	def gen_yaml(self, prompt: Prompt, history: list[str] = [], tries = 1) -> dict | None:
+	def gen_dict(self, prompt: Prompt, history: list[str] = [], tries = 1) -> dict | None:
 		"""
-		Generate an AI response to the msg
-		optionally including history,
-		optionally validating the type of the yaml response
+		Generate an AI response to the prompt
+		based on the prompt, either json or yaml will be parsed
+		history: optional history of messages
+		tries: the number of tries to get correct formatting from the prompt
 		"""
 		while tries > 0:
 			tries -= 1

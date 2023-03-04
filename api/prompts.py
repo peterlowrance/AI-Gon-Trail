@@ -1,4 +1,5 @@
 from typing import Literal, TypedDict, Optional
+import json
 
 # Prompts are made up of a string and a optional data type for validation
 class Prompt(TypedDict):
@@ -20,3 +21,17 @@ Respond with only this yaml object in a code block""",
     "response_type": "yaml",
     "validation_schema": {"items": {"*": int}, "wagon": str}
 }
+
+def get_validate_action_prompt(scenario: str, items: list[str], characters: list[str], action: str) -> Prompt:
+    return {
+        "prompt": f"""Your job is to determine whether or not a payers action is valid and possible. If the player action involves an object not in the Scenario, Available items or Characters it is not valid.
+
+Scenario: "{scenario}"
+Available items: {json.dumps(items)}
+Characters: {json.dumps(characters)}
+Players action: "{action}"
+
+Is this player action possible? Respond in the format {{"valid": boolean, "explanation": string}}""",
+        "response_type": "json",
+        "validation_schema": {"valid": bool, "explanation": str}
+    }

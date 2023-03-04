@@ -12,7 +12,7 @@ def test(request):
 @api_view(['GET'])
 def get_game_start(request):
     client = AiClient()
-    res = client.gen_yaml(start_prompt_for_items_purchase)
+    res = client.gen_dict(start_prompt_for_items_purchase)
     return Response(res)
 
 
