@@ -29,8 +29,8 @@ Test
 
 In react-website, run:
 
-`npm install` to setup once
+`yarn install` to setup once
 
-Run `npm run dev` to build for dev (live builds when code changes)
+Run `yarn run dev` to build for dev (live builds when code changes)
 
-Or run `npm run build` to build once for production
+Or run `yarn run build` to build once for production
