@@ -13,11 +13,17 @@ Install deps
 
 `pip install -r requirements.txt`
 
+Add api key
+
+export OPENAI_API_KEY=...
+
 Run server
 
 `python manage.py runserver`
 
+Test
 
+`python manage.py test`
 
 ### Frontend
 

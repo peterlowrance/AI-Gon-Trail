@@ -41,12 +41,7 @@ class AiClient:
 			# Parse it into a Python dictionary
 			try:
 				if prompt['response_type'] == 'yaml':
-					# Find the start and end index of the yaml code block
-					start = res.find("```") + 3
-					end = res.rfind("```")
-					# Extract the yaml substring
-					data_str = res[start:end]
-					data_dict = yaml.safe_load(data_str)
+					data_dict = yaml.safe_load(res)
 				elif prompt['response_type'] == 'json':
 					# Find the start and end index of the json object
 					start = res.find("{")
@@ -75,13 +70,16 @@ def validate(obj, schema) -> bool:
 	elif isinstance(schema, dict):
 		if not isinstance(obj, dict):
 			return False
+		# Make sure they both have the same keys except for '*'
+		if '*' not in schema and set(schema.keys()) != set(obj.keys()):
+			return False
 		for key in schema:
 			# If key is *, validate all values with the schema's value
 			if key == '*':
 				if any(not validate(val, schema[key]) for val in obj.values()):
 					return False
 			# check if obj has the same key and validate its value
-			elif key not in obj or not validate(obj[key], schema[key]):
+			elif not validate(obj[key], schema[key]):
 				return False
 		return True
 	# recursive case: if schema is a list, check if obj is also a list and validate each element

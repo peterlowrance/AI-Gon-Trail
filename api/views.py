@@ -6,8 +6,10 @@ from api.ai_client import AiClient
 
 @api_view(['GET'])
 def get_game_start(request):
+    theme = request.GET.get('theme', 'Oregon Trail')
     client = AiClient()
-    res = client.gen_dict(start_prompt_for_items_purchase)
+    prompt = get_start_prompt(theme)
+    res = client.gen_dict(prompt)
     return Response(res)
 
 
