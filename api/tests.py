@@ -1,5 +1,6 @@
 from django.test import TestCase
 from api.ai_client import AiClient
+from api.free_ai_client import FreeAiClient
 from api.prompts import *
 
 class PromptTestCase(TestCase):
@@ -7,7 +8,7 @@ class PromptTestCase(TestCase):
 
     def setUp(self):
         # Set up data for the tests
-        self.client = AiClient()
+        self.client = FreeAiClient()
 
     def test_validate_action_prompt(self):
         scenario = 'the party encounters a river that blocks their path'
