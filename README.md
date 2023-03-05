@@ -7,7 +7,7 @@ Make virtual environment
 
 `python3 -m venv venv`
 
-`source venv/bin/activate` (do this every time you have a new terminal)
+`source venv/Scripts/activate` (do this every time you have a new terminal)
 
 Install deps
 
