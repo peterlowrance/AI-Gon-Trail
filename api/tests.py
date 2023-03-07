@@ -36,59 +36,35 @@ class PromptTestCase(TestCase):
 # python manage.py test api.tests.PromptTestCase.test_scenario
     def test_scenario(self):
         state = GameState(characters=['Bob', 'Sally', 'Frank'], items=['Wagon', 'Warm Blanket', 'Hiking Boots'])
-        prompt = get_scenario_prompt(state)
-        res = self.client.gen_dict(prompt)
-        try:
-            scenario = res['scenario']
-            summary = res['summary']
-            suggestions = res['suggestions']
-        except:
-            print('Error parsing!!!', res)
-        print('Scenario:', scenario)
-        print('Summary:', summary)
-        print('Suggestions:', suggestions)
+        while state.current_step <= state.total_steps and len(state.characters) > 0:
+            print(f'\nScenario {state.current_step}')
+            prompt = get_scenario_prompt(state)
+            res = self.client.gen_dict(prompt)
+            try:
+                scenario = res['scenario']
+                summary = res['summary']
+                suggestions = res['suggestions']
+            except:
+                print('Error parsing!!!', res)
+                break
+            print('Scenario:   ', scenario)
+            print('Summary:    ', summary)
+            print('Suggestions:', suggestions)
 
-        player_action = 'Ford the river and cross'
-        print('Player action', player_action)
+            player_action = suggestions[0]
+            print('Player action', player_action)
 
-        prompt = get_scenario_outcome_prompt(summary, player_action, state)
-        res = self.client.gen_dict(prompt)
-        try:
-            outcome = res['outcome']
-            items = res['items']
-            characters = res['characters']
-        except:
-            print('Parsing error!!!', res)
-        state.progress(characters, items, summary)
-        print('Now')
-        print('Outcome:', outcome)
-        print(state)
-
-        # Scenario 2!
-        prompt = get_scenario_prompt(state)
-        res = self.client.gen_dict(prompt)
-        try:
-            scenario = res['scenario']
-            summary = res['summary']
-            suggestions = res['suggestions']
-        except:
-            print('Error parsing!!!', res)
-        print('Scenario:', scenario)
-        print('Summary:', summary)
-        print('Suggestions:', suggestions)
-
-        player_action = suggestions[0]
-        print('Player action', player_action)
-
-        prompt = get_scenario_outcome_prompt(summary, player_action, state)
-        res = self.client.gen_dict(prompt)
-        try:
-            outcome = res['outcome']
-            items = res['items']
-            characters = res['characters']
-        except:
-            print('Parsing error!!!', res)
-        state.progress(characters, items, summary)
-        print('Now')
-        print('Outcome:', outcome)
-        print(state)
+            prompt = get_scenario_outcome_prompt(summary, player_action, state)
+            res = self.client.gen_dict(prompt)
+            try:
+                outcome = res['outcome']
+                items = res['items']
+                characters = res['characters']
+            except:
+                print('Parsing error!!!', res)
+                break
+            state.progress(characters, items, summary)
+            print('Outcome:', outcome)
+            print('State: [')
+            print(state)
+            print(']\n')
