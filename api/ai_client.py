@@ -26,7 +26,7 @@ class AiClient:
 				{"role": "user", "content": msg}
 			]
 		)
-		print(completion)
+		# print(completion)
 		return completion.choices[0].message.to_dict()['content']
 
 	def gen_dict(self, prompt: Prompt, tries = 1) -> dict | None:

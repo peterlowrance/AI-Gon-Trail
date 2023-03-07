@@ -1,4 +1,5 @@
 from typing import Literal, TypedDict, Optional
+from api.game_state import GameState
 import json
 
 class Prompt(TypedDict):
@@ -40,4 +41,37 @@ Is this player action valid? Respond in the format {{"valid": true or false, "ex
         "temperature": 0,
         "response_type": "json",
         "validation_schema": {"valid": bool, "explanation": str}
+    }
+
+def get_scenario_prompt(state: GameState) -> Prompt: 
+    previous_scenario_str = ''
+    if len(state.previous_summaries) > 0:
+        previous_scenario_str = f"\nPreviously, the party overcame these challenges: {', '.join(state.previous_summaries)}\nMake sure to not create a duplicate scenario.\n"
+    return {
+        "prompt": f"""This is a game similar to Oregon Trail. You control the NPC's and world in an attempt to make the game realistic.{previous_scenario_str}
+The current status of the game is:
+Characters: {', '.join(state.characters)}
+Items: {', '.join(state.items)}
+
+The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. They are about to face some sort of obstacle on their journey. It will be a challenge that they will have to overcome in order to progress. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to overcome the scenario.""",
+        "temperature": .7,
+        "response_type": "json",
+        "validation_schema": {"scenario": str, "summary": str, "suggestions": [str]}
+    }
+
+def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameState) -> Prompt:
+    return {
+        "prompt": f"""This is a game similar to Oregon Trail. You control the NPC's and world in an attempt to make the game engaging and realistic.
+Scenario: "{scenario}"
+Available items {json.dumps(state.items)}
+Characters: {json.dumps(state.characters)}
+The player action is "{player_action}"
+
+Respond with a brief description of the outcome and provide updated items and players. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. Extremely negative outcomes should be rare. Example format:
+{{"outcome":"description", items:["(damaged) {state.items[0]}"], "characters":["(injured) {state.characters[0]}"]}}
+
+Respond with only the json object""",
+        "temperature": .7,
+        "response_type": "json",
+        "validation_schema": {"outcome": str, "items": [str], "characters": [str]}
     }
