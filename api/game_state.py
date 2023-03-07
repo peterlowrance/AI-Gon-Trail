@@ -9,6 +9,8 @@ class GameState:
 
     previous_summaries: list[str]
 
+    # TODO: add wagon and wagon_health
+
     def __init__(self, characters: list[str], items: list[str]):
         self.total_steps = 10
         self.current_step = 1

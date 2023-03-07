@@ -2,6 +2,7 @@ from django.test import TestCase
 from api.ai_client import AiClient
 from api.prompts import *
 from api.game_state import GameState
+import time
 
 class PromptTestCase(TestCase):
     client: AiClient
@@ -35,7 +36,7 @@ class PromptTestCase(TestCase):
 # Run with:
 # python manage.py test api.tests.PromptTestCase.test_scenario
     def test_scenario(self):
-        state = GameState(characters=['Bob', 'Sally', 'Frank'], items=['Wagon', 'Warm Blanket', 'Hiking Boots'])
+        state = GameState(characters=['Peter', 'Dustin', 'Bryce', 'Abinav', 'Sara'], items=['Wagon', 'Warm Blanket', 'Hiking Boots', 'Jacket', 'Shovel', 'Pickaxe', 'Rations'])
         while state.current_step <= state.total_steps and len(state.characters) > 0:
             print(f'\nScenario {state.current_step}')
             prompt = get_scenario_prompt(state)
@@ -68,3 +69,4 @@ class PromptTestCase(TestCase):
             print('State: [')
             print(state)
             print(']\n')
+            time.sleep(1)
