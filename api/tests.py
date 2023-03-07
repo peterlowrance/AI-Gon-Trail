@@ -2,6 +2,7 @@ from django.test import TestCase
 from api.ai_client import AiClient
 from api.free_ai_client import FreeAiClient
 from api.prompts import *
+from api.game_state import GameState
 
 class PromptTestCase(TestCase):
     client: AiClient
@@ -31,3 +32,40 @@ class PromptTestCase(TestCase):
             prompt = get_validate_action_prompt(scenario, items, characters, a)
             res = self.client.gen_dict(prompt)
             self.assertFalse(res['valid'], f'Invalid response {res}')
+
+# Run with:
+# python manage.py test api.tests.PromptTestCase.test_scenario
+    def test_scenario(self):
+        state = GameState(characters=['Bob', 'Sally', 'Frank'], items=['Wagon', 'Warm Blanket', 'Hiking Boots'])
+        while state.current_step <= state.total_steps and len(state.characters) > 0:
+            print(f'\nScenario {state.current_step}')
+            prompt = get_scenario_prompt(state)
+            res = self.client.gen_dict(prompt)
+            try:
+                scenario = res['scenario']
+                summary = res['summary']
+                suggestions = res['suggestions']
+            except:
+                print('Error parsing!!!', res)
+                break
+            print('Scenario:   ', scenario)
+            print('Summary:    ', summary)
+            print('Suggestions:', suggestions)
+
+            player_action = suggestions[0]
+            print('Player action', player_action)
+
+            prompt = get_scenario_outcome_prompt(summary, player_action, state)
+            res = self.client.gen_dict(prompt)
+            try:
+                outcome = res['outcome']
+                items = res['items']
+                characters = res['characters']
+            except:
+                print('Parsing error!!!', res)
+                break
+            state.progress(characters, items, summary)
+            print('Outcome:', outcome)
+            print('State: [')
+            print(state)
+            print(']\n')
