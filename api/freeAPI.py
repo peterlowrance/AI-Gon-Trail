@@ -1,8 +1,6 @@
-import webbrowser
 import pyautogui
 import pygetwindow as gw
-import win32api
-import pyperclip
+
 
 
 

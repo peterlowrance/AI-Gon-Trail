@@ -18,11 +18,16 @@ class PromptTestCase(TestCase):
         valid_actions = [
             "ford the river",
             "swim across",
-            "deconstruct the wagon to build a bridge"
+            "look around for anyone that can help", 
+            "get more information", 
         ]
         invalid_actions = [
             "fly across",
-            "cross a bridge"
+            "cross a bridge",
+            "ride a train",
+            "deconstruct the wagon to build a bridge",
+            "buy a ferry ticket",
+            "caulk wagon and float it across", 
         ]
         for a in valid_actions:
             prompt = get_validate_action_prompt(scenario, items, characters, a)
