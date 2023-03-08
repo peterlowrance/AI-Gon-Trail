@@ -66,13 +66,14 @@ def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameS
 Scenario: "{scenario}"
 Available items {json.dumps(state.items)}
 Characters: {json.dumps(state.characters)}
+Vehicle: {json.dumps(state.vehicle)}
 The player action is "{player_action}"
 
 Respond with a brief description of the outcome and provide updated items and players. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. Extremely negative outcomes should be rare. Example format:
-{{"outcome":"description", items:["(damaged) {example_item}"], "characters":["(injured) {state.characters[0]}"]}}
+{{"outcome":"description", "items":["(damaged) {example_item}"], "characters":["(injured) {state.characters[0]}"]}}
 
 Respond with only the json object""",
         "temperature": .7,
         "response_type": "json",
-        "validation_schema": {"outcome": str, "items": [str], "characters": [str]}
+        "validation_schema": {"outcome": str, "items": [str], "characters": [str], "vehicle": str}
     }

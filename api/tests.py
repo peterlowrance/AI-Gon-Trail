@@ -41,7 +41,7 @@ class PromptTestCase(TestCase):
 # Run with:
 # python manage.py test api.tests.PromptTestCase.test_scenario
     def test_scenario(self):
-        state = GameState(characters=['Bob', 'Sally', 'Frank'], items=['Wagon', 'Warm Blanket', 'Hiking Boots'])
+        state = GameState(characters=['Bob', 'Sally', 'Frank'], items=['Warm Blanket', 'Hiking Boots'], vehicle="Wagon: health is 100 out of 100")
         while state.current_step <= state.total_steps and len(state.characters) > 0:
             print(f'\nScenario {state.current_step}')
             prompt = get_scenario_prompt(state)
@@ -66,10 +66,12 @@ class PromptTestCase(TestCase):
                 outcome = res['outcome']
                 items = res['items']
                 characters = res['characters']
+                #TODO parametrize this for space
+                vehicle = res['vehicle']
             except:
                 print('Parsing error!!!', res)
                 break
-            state.progress(characters, items, summary)
+            state.progress(characters, items, vehicle, summary)
             print('Outcome:', outcome)
             print('State: [')
             print(state)
