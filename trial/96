@@ -1,0 +1,109 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues their journey, they come across a steep and rocky mountain range that blocks their path, with no clear trail to follow and the weather getting colder each day.
+Summary:     The party must navigate a treacherous mountain range with no clear trail and harsh weather conditions.
+Suggestions: ['Attempt to find a local guide to help navigate the mountains and provide insight on the safest path.', 'Scout ahead on foot to try and find a viable path for the party to take.', 'Invest in additional warm clothing and supplies to prepare for the harsh conditions ahead.']
+Player action Attempt to find a local guide to help navigate the mountains and provide insight on the safest path.
+Outcome: The party is successful in finding a local guide who agrees to help them navigate the mountains. The guide provides valuable information on the safest path and helps the party avoid dangerous areas. The journey is slow and difficult, but with the guide's help, the party is able to make it through the mountains without any major incidents.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a river that has flooded due to heavy rains, making it impossible to cross without risking their lives.
+Summary:     The party must find a way to safely cross a flooded river.
+Suggestions: ['Attempt to find a shallow point in the river to cross with the help of the compass and a walking stick.', 'Build a makeshift raft using the available materials and navigate across the river.', 'Wait for the water to recede by setting up camp and rationing their supplies.']
+Player action Attempt to find a shallow point in the river to cross with the help of the compass and a walking stick.
+Outcome: The party successfully finds a shallow point in the river and crosses without incident.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Compass, Walking Stick, Blanket, Bullets, Candles, Cheese, Clothing, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a dense forest that seems to go on for miles. As they enter, they realize that the forest is infested with aggressive bears who will attack anything that comes their way.
+Summary:     The party must navigate through a bear-infested forest to continue their journey.
+Suggestions: ['Set up traps and lure the bears away from the path with food', 'Use their firearms to scare off the bears and create a path', 'Attempt to find an alternate route around the forest']
+Player action Set up traps and lure the bears away from the path with food
+Outcome: The traps were successful in luring the bears away from the path, and the party was able to navigate through the forest without incident.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Walking Stick, Blanket, Bullets, Candles, Cheese, Clothing, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    The party has stumbled upon a large river that they must cross, but the water is infested with dangerous piranhas that will attack anyone who enters.
+Summary:     Crossing a river filled with piranhas.
+Suggestions: ['Attempt to create a makeshift bridge with the items available.', 'Try to distract the piranhas with some of the food items and cross quickly.', 'Use some of the gunpowder to create a loud explosion and scare the piranhas away.']
+Player action Attempt to create a makeshift bridge with the items available.
+Outcome: The group successfully creates a makeshift bridge using the hammer and pots and pans. They cross the river unscathed.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Walking Stick, Blanket, Bullets, Candles, Cheese, Clothing, Dried Fruit, Gunpowder, (used) Hammer, Knife, Matches, Medicine Chest, (used) Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 5/10
+]
+
+
+Scenario 5
+Scenario:    The party is now passing through a vast desert with limited supplies of water, food, and shelter. They must find a way to avoid dehydration and heat exhaustion while also avoiding dangerous desert animals such as snakes and scorpions.
+Summary:     The party must survive the harsh conditions of a desert.
+Suggestions: ['Try to find a reliable source of water such as an oasis or underground spring.', 'Create shelters using the tent and available materials to shield from the sun and extreme heat.', 'Be cautious of the desert animals and avoid confrontation with them by keeping a safe distance and wearing protective clothing.']
+Player action Try to find a reliable source of water such as an oasis or underground spring.
+Outcome: The party was able to find a small oasis and replenish their water supply. However, Eli suffered from heat exhaustion and will need to rest for a day.
+State: [
+Characters: Mila, (injured) Eli, Lila, Max, Ruby
+Items: Walking Stick, Blanket, Bullets, Candles, Cheese, Clothing, Dried Fruit, Gunpowder, (used) Hammer, Knife, Matches, Medicine Chest, (used) Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 6/10
+]
+
+
+Scenario 6
+Scenario:    As the party continues on their journey, they come across a deep and wide canyon that blocks their path. The canyon is filled with sharp rocks and fast currents of water, making it impossible to cross without assistance.
+Summary:     Party is faced with a deep and wide canyon blocking their path.
+Suggestions: ['Look for a natural bridge or shallow point in the canyon to cross.', 'Attempt to build a makeshift bridge with available items.', 'Find a local guide or group to help them cross safely.']
+Player action Look for a natural bridge or shallow point in the canyon to cross.
+Outcome: The party spends several hours searching for a way to cross the canyon. They eventually find a shallow point and successfully make it to the other side. However, during the search, they lose track of Lila who wanders off and is never seen again.
+State: [
+Characters: Mila, (injured) Eli, Max, Ruby
+Items: Walking Stick, Blanket, Bullets, Candles, Cheese, Clothing, Dried Fruit, Gunpowder, (used) Hammer, Knife, Matches, Medicine Chest, (used) Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 7/10
+]
+
+
+Scenario 7
+Scenario:    The party comes across a steep and rocky mountain pass that is too dangerous to traverse with their current equipment and injured member.
+Summary:     The party must find a way to safely navigate the treacherous mountain pass.
+Suggestions: ['The party could try to find an alternate route around the mountain pass.', 'The party could attempt to gather resources and equipment to make the pass safer to cross.', 'The party could split up and send a smaller group to scout ahead for a safer path.']
+Player action The party could try to find an alternate route around the mountain pass.
+Outcome: The party spends an entire day searching for an alternate route but finds none. They must risk the mountain pass.
+State: [
+Characters: Mila, (injured) Eli, Max, Ruby
+Items: Walking Stick, Blanket, Bullets, Candles, Cheese, Clothing, Dried Fruit, Gunpowder, (used) Hammer, Knife, Matches, Medicine Chest, (used) Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 8/10
+]
+
+
+Scenario 8
+Scenario:    The party comes across a river that appears calm on the surface but has a strong undertow that could easily sweep them away if they attempt to cross it.
+Summary:     The party must find a way to safely cross a river with a strong undertow.
+Suggestions: ['Attempt to find a safer place to cross the river, possibly upstream or downstream.', 'Build a raft or boat to safely cross the river.', 'Use the walking stick to test the depth and strength of the river before attempting to cross.']
+Player action Attempt to find a safer place to cross the river, possibly upstream or downstream.
+Parsing error!!! None

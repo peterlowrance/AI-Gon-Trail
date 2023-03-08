@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has flooded and appears to be too deep and fast-moving to cross. The nearest bridge is miles away and they must find a way to safely get to the other side.
+Summary:     The party must find a way to cross a dangerous flooded river.
+Suggestions: ['Attempt to build a makeshift raft with available materials such as rope, spare wheels, and logs.', 'Search for a shallower area of the river to cross, possibly by sending a member of the party to scout ahead.', 'Wait for the water to recede, while conserving supplies and tending to any injuries or illnesses within the party.']
+Player action Attempt to build a makeshift raft with available materials such as rope, spare wheels, and logs.
+Outcome: The party successfully built a makeshift raft and crossed the river safely.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Rope, Spare Wheel
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party has come across a steep and treacherous mountain pass that is covered in ice and snow, making it very difficult to traverse.
+Summary:     The party must navigate a dangerous icy mountain pass to continue on their journey.
+Suggestions: ['Use the rope to create makeshift handholds and footholds to climb up the mountain.', 'Attempt to find an alternate route around the mountain.', 'Use the spare wheel to create a makeshift sled to slide down the mountain on the ice and snow.']
+Player action Use the rope to create makeshift handholds and footholds to climb up the mountain.
+Parsing error!!! None

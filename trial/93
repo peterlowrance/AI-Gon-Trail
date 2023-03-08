@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has flooded its banks, making it impossible to cross. The water is deep and moving fast, with no visible way to ford it.
+Summary:     The party must find a way to cross a flooded river blocking their path.
+Suggestions: ['Scavenge for materials to build a makeshift raft or bridge.', 'Attempt to find a path upstream to a narrower point in the river where it may be fordable.', 'Wait for the water level to recede before attempting to cross.']
+Player action Scavenge for materials to build a makeshift raft or bridge.
+Outcome: The party was able to scavenge enough materials to build a sturdy raft and safely cross the flooded river.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep and treacherous mountain pass that will take a full day to cross, with dangerous cliffs and unstable terrain.
+Summary:     Crossing a treacherous mountain pass with dangerous cliffs and unstable terrain.
+Suggestions: ['Take a longer route to avoid the pass entirely.', 'Carefully traverse the pass, using ropes and spikes to secure themselves.', 'Attempt to find a local guide who knows the terrain to navigate the pass safely.']
+Player action Take a longer route to avoid the pass entirely.
+Parsing error!!! None

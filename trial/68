@@ -1,0 +1,12 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party travels through a narrow canyon, a sudden rockslide blocks their path, leaving them trapped with limited supplies and no way to turn back.
+Summary:     Party is trapped by rockslide in narrow canyon with limited supplies and no way to turn back.
+Suggestions: ['Attempt to clear the rocks with the saw and flintlock pistol to create a path forward.', 'Search the area for any alternative routes or signs of previous travelers who may have found a way through.', 'Use the quilt and wagon cover to create a makeshift shelter and conserve supplies until help arrives.']
+Player action Attempt to clear the rocks with the saw and flintlock pistol to create a path forward.
+Exception: UnboundLocalError
+Exception message: local variable 'data_str' referenced before assignment

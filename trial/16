@@ -1,0 +1,11 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has flooded due to heavy rainfall, making it impossible to cross without risking their lives.
+Summary:     Flooded river blocks path.
+Suggestions: ['Wait for the water level to recede before attempting to cross.', 'Attempt to build a makeshift raft or bridge to cross the river.', 'Search for a shallower area of the river to cross or a nearby ford.']
+Player action Wait for the water level to recede before attempting to cross.
+Parsing error!!! None

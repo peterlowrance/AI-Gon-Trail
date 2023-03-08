@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    The party has reached a wide river that they must cross, but the water is deep and the current is strong. They can see a ferry crossing a bit downstream, but it's expensive and there's a long wait. On the other side of the river, they can see a group of bandits eyeing them from afar.
+Summary:     The party must cross a deep and fast-moving river, while also keeping a watchful eye on potential bandit attacks.
+Suggestions: ['Attempt to build a makeshift raft using the available items and try to cross the river that way.', "Pay for the ferry ride and hope that the party's funds will be enough to cover it.", 'Take a detour and try to find a safer crossing point up or downstream.']
+Player action Attempt to build a makeshift raft using the available items and try to cross the river that way.
+Outcome: The party successfully built a makeshift raft and crossed the river without incident.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain pass that is covered in snow and ice, making it difficult to traverse. There is also a risk of avalanches.
+Summary:     The party must cross a treacherous mountain pass covered in snow and ice.
+Suggestions: ['The party could attempt to climb the mountain pass with ropes and ice axes.', 'The party could wait for the snow to melt and the pass to clear.', 'The party could try to find an alternate route around the mountain pass.']
+Player action The party could attempt to climb the mountain pass with ropes and ice axes.
+Parsing error!!! None

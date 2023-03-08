@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has recently flooded due to heavy rain. The water is fast-moving and the current is strong, making it difficult to cross.
+Summary:     The party must find a way to safely cross the flooded river in order to continue their journey west.
+Suggestions: ['Attempt to build a makeshift raft using supplies such as wood, rope, and blankets', 'Look for a shallow area of the river where the water is not as strong and attempt to cross on foot', 'Find a local guide who can help navigate the river and safely lead the party across.']
+Player action Attempt to build a makeshift raft using supplies such as wood, rope, and blankets
+Outcome: The party successfully builds a makeshift raft using the available supplies and successfully crosses the flooded river.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (used) Wood, (used) Rope, (used) Blanket
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain pass that they must navigate in order to continue west. The path is narrow and rocky, making it difficult to traverse safely.
+Summary:     The party must navigate a treacherous mountain pass in order to continue their journey west.
+Suggestions: ['Attempt to find an alternate, safer route around the mountain pass.', 'Take their time and proceed slowly and cautiously, carefully navigating the rocky terrain.', 'Use the remaining wood and rope to fashion climbing gear and attempt to climb up the mountain pass.']
+Player action Attempt to find an alternate, safer route around the mountain pass.
+Parsing error!!! None

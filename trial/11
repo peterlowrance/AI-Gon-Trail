@@ -1,0 +1,144 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues their journey, they come across a large river with a strong current. The only way to cross is by building a raft, but there are not enough materials to build one for everyone in the party.
+Summary:     The party must construct a raft to cross a river, but there are limited resources available.
+Suggestions: ['Have some members of the party swim across with a rope and use it to pull the raft across.', 'Send a small group of the party ahead to search for additional materials to build a second raft.', "Trade some of the party's money or items with nearby travelers for additional raft-building materials."]
+Player action Have some members of the party swim across with a rope and use it to pull the raft across.
+Outcome: The party successfully constructs a raft with the available resources and uses a rope to pull it across the river with some members swimming across. No items were used or lost. All characters remain healthy.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, (used) Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party has reached a steep mountain pass that must be crossed, but the trail is narrow and treacherous with loose rocks and slippery mud. A heavy rainstorm has made it even more dangerous, and the party must cross before the trail becomes impassable.
+Summary:     Cross a steep and treacherous mountain pass during a heavy rainstorm.
+Suggestions: ['Use the pickaxe and shovel to clear a path and make the trail safer.', 'Take a longer route around the mountain pass, even if it means going off the main trail.', 'Use the warm blankets and spare wheel to create a makeshift sled to slide down the mountain pass, risking injury but saving time.']
+Player action Use the pickaxe and shovel to clear a path and make the trail safer.
+Outcome: The group successfully uses the pickaxe and shovel to clear a path and make the trail safer. They navigate the mountain pass with only a few minor slips and falls. The rain slows down, and the group manages to make camp for the night. They feel accomplished and grateful for each other's help.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (used) Pickaxe, (used) Shovel, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Quinine, (used) Rope, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a narrow and winding canyon that has been carved out by a river, and the only way to continue on their journey is to cross the river, but the water is deep and fast-moving making it difficult to wade through.
+Summary:     Crossing a fast-moving river in a narrow canyon.
+Suggestions: ['Attempt to build a makeshift bridge using the spare rope and any available sturdy materials in the area.', 'Use the fishing rod to catch fish and use them as a distraction to lure any dangerous animals away from the party while they cross the river.', 'Try to use the oxen to pull the party across the river while the strongest members of the party hold onto them for support.']
+Player action Attempt to build a makeshift bridge using the spare rope and any available sturdy materials in the area.
+Outcome: The group successfully built a makeshift bridge using the spare rope and some fallen logs. They were able to safely cross the river without incident.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (used) Rope
+Wagon: health 100/100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    The party comes across a dense forest that seems to stretch on for miles, making it difficult to navigate and potentially dangerous with unknown creatures lurking within.
+Summary:     Navigating through a dense forest poses a challenge for the party.
+Suggestions: ['Attempt to climb a tall tree to get a better view of the surroundings and plan a route.', 'Use the remaining rope to mark a path through the forest, making it easier to navigate.', 'Hunt for food and resources within the forest, while being cautious of potential dangers.']
+Player action Attempt to climb a tall tree to get a better view of the surroundings and plan a route.
+Outcome: Leo successfully climbs the tree and spots a clearer path through the forest. The party is able to navigate through the forest without any issues.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (used) Rope
+Wagon: health 100/100
+On step 5/10
+]
+
+
+Scenario 5
+Scenario:    The party comes across a dangerous territory inhabited by a pack of wolves. The wolves are territorial and will attack anything that they deem as a threat, including the party.
+Summary:     The party must navigate through a territory inhabited by territorial wolves.
+Suggestions: ['Create a diversion by setting a fire and then continuing on their journey while the wolves are distracted.', 'Attempt to scare off the wolves by making loud noises or using the rope to create a makeshift whip.', 'Sneak around the wolves, taking a longer but safer route through the terrain.']
+Player action Create a diversion by setting a fire and then continuing on their journey while the wolves are distracted.
+Outcome: The party successfully creates a diversion by setting a fire and continues on their journey while the wolves are distracted. They are able to avoid any further encounters with the wolves.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: 
+Wagon: health 100/100
+On step 6/10
+]
+
+
+Scenario 6
+Scenario:    The party comes across a vast desert with limited water and supplies. The heat is intense, and there are no signs of civilization in sight. The party must find a way to conserve their resources and navigate through the desert to reach the other side.
+Summary:     The party must cross a vast desert with limited resources and no signs of civilization.
+Suggestions: ['Have one member scout ahead to try and find any sources of water or shelter.', 'Travel during the cooler times of the day to conserve energy and water.', 'Create a makeshift shelter using available resources to protect against the heat.']
+Player action Have one member scout ahead to try and find any sources of water or shelter.
+Outcome: The scout, Leo, ventures out and after several hours of searching, he finds an oasis in the distance. He returns to the party and leads them to the water source. They are able to rest and replenish their supplies before continuing on their journey.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: 
+Wagon: health 100/100
+On step 7/10
+]
+
+
+Scenario 7
+Scenario:    The party comes across a raging river that has flooded its banks, making it too dangerous to cross on foot or by raft.
+Summary:     The party must find a way to cross the flooded river.
+Suggestions: ['Search for a safe spot to ford the river.', 'Build a makeshift bridge from fallen trees and other materials in the area.', 'Attempt to find a local guide or ferryman who can safely navigate the party across the river.']
+Player action Search for a safe spot to ford the river.
+Outcome: The party successfully found a safe spot to ford the river.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: 
+Wagon: health 100/100
+On step 8/10
+]
+
+
+Scenario 8
+Scenario:    The party comes across a wide and deep canyon that stretches for miles, leaving them with no other option but to traverse it in order to continue on their journey. The canyon is filled with dangerous beasts and treacherous terrain, making it a daunting challenge for the party.
+Summary:     Traversing a dangerous and treacherous canyon filled with beasts.
+Suggestions: ['Attempt to climb down into the canyon and make their way across the bottom, avoiding any dangerous animals they may come across.', 'Try to find a way around the canyon, even if it means taking a longer route.', 'Build makeshift bridges or platforms to cross the canyon, using available resources to construct them.']
+Player action Attempt to climb down into the canyon and make their way across the bottom, avoiding any dangerous animals they may come across.
+Outcome: As the group begins to descend into the canyon, they quickly realize that the terrain is much more difficult than they had anticipated. Zoe slips and falls, breaking her leg. The group decides to set up camp and tend to Zoe's injury before attempting to continue through the canyon. After a few days, Zoe's leg is healed enough to continue. The group manages to make their way across the canyon, encountering only a few small animals along the way.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (healed) Zoe
+Items: 
+Wagon: health 100/100
+On step 9/10
+]
+
+
+Scenario 9
+Scenario:    As the party treks through the mountains, they come across a narrow and unstable bridge over a deep ravine, with strong winds threatening to knock them off balance and into the abyss below. The bridge is also damaged, with missing planks and ropes that are frayed and weak.
+Summary:     Crossing a damaged and unstable bridge over a deep ravine with high winds.
+Suggestions: ['Attempt to repair the bridge with available resources before crossing.', 'Use ropes and harnesses to secure party members to the bridge while crossing.', 'Divide the party into smaller groups and cross one at a time with support from the others.']
+Player action Attempt to repair the bridge with available resources before crossing.
+Outcome: The group works together to repair the bridge as best they can, reinforcing the damaged areas with nearby logs and rocks. After an hour of work, they judge it safe enough to cross with the wagon. The high winds make the crossing nerve-wracking, but they make it to the other side without incident.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (healed) Zoe
+Items: 
+Wagon: health 100/100
+On step 10/10
+]
+
+
+Scenario 10
+Scenario:    The party comes across a large and deep chasm that blocks their path, with no visible way to cross it.
+Summary:     Crossing a deep chasm with no visible way to cross it.
+Suggestions: ['Search for a hidden path or bridge that crosses the chasm.', 'Attempt to build a makeshift bridge using available resources.', 'Look for alternative routes that may lead around the chasm.']
+Player action Search for a hidden path or bridge that crosses the chasm.
+Outcome: After an hour of searching, Eva spots a narrow bridge made of vines and fallen logs. It looks risky, but it's the only option. The group slowly and carefully makes their way across and successfully crosses the chasm.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (healed) Zoe
+Items: 
+Wagon: health 100/100
+On step 11/10
+]
+

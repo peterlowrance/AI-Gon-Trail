@@ -1,0 +1,53 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    As the party travels, they come across a steep and treacherous mountain pass that they must cross in order to continue on their journey. The path is narrow and rocky, and a misstep could result in a fatal fall.
+Summary:     The party must cross a dangerous mountain pass to continue their journey.
+Suggestions: ['Use the pickaxe to create footholds in the rocky terrain and make the climb safer.', 'Take extra caution and tie a rope around each member of the party as they cross the pass.', 'Split the party into smaller groups and have them take different routes to the top, meeting up on the other side.']
+Player action Use the pickaxe to create footholds in the rocky terrain and make the climb safer.
+Outcome: The party successfully creates footholds in the rocky terrain and safely crosses the mountain pass.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: (used) Pickaxe
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a river that is too wide and swift to cross safely. They can either attempt to build a raft, look for a bridge, or try to ford the river on foot.
+Summary:     Crossing a dangerous river.
+Suggestions: ['Use the pickaxe to chop down nearby trees to build a raft.', 'Scout the area for a bridge or a safer place to ford the river.', 'Attempt to ford the river on foot, but be prepared for the strong current and potential danger.']
+Player action Use the pickaxe to chop down nearby trees to build a raft.
+Outcome: The group successfully uses the pickaxe to chop down nearby trees and construct a sturdy raft. They are able to safely cross the dangerous river with the wagon and all members intact.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: 
+Wagon: full health
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party travels through a dense forest, they come across a pack of hungry wolves that have their sights set on the group. The wolves are blocking the path forward, and the party must find a way to either scare them off or neutralize the threat.
+Summary:     The party encounters a pack of hungry wolves blocking their path through the forest.
+Suggestions: ['Attempt to scare the wolves off with loud noises or fire.', 'Use traps or weapons to neutralize the wolves.', 'Create a diversion to distract the wolves and sneak past them.']
+Player action Attempt to scare the wolves off with loud noises or fire.
+Outcome: The party successfully scares off the wolves with loud noises and a small fire. They continue on their way unharmed.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: 
+Wagon: full health
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party continues their journey, they come across a vast desert with no end in sight, and they must cross it to reach their destination. The heat is unbearable, water is scarce, and sandstorms are frequent, making it a treacherous journey.
+Summary:     The party must cross a dangerous and unforgiving desert to continue their journey westward.
+Suggestions: ['The party can try to conserve their water supply by traveling at night and resting during the day to avoid the blistering heat.', 'The party can attempt to find an oasis or a water source in the desert, but they must be careful of potential dangers lurking in the area.', 'The party can try to find a guide or a group of travelers who have successfully crossed the desert before for advice and assistance.']
+Player action The party can try to conserve their water supply by traveling at night and resting during the day to avoid the blistering heat.
+Parsing error!!! None

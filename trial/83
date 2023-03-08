@@ -1,0 +1,53 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party travels through a dense forest, they are suddenly ambushed by a group of bandits who demand all of their supplies in exchange for safe passage. The bandits seem heavily armed and are outnumbering the party.
+Summary:     The party is ambushed by bandits and must find a way to protect their supplies and possibly fight back.
+Suggestions: ['Attempt to negotiate with the bandits and offer them a portion of their supplies in exchange for safe passage', 'Fight back against the bandits with their rifles and bullets, taking cover behind nearby trees and rocks', 'Create a distraction by setting up a small fire or sound and then quickly sneak away with their supplies']
+Player action Attempt to negotiate with the bandits and offer them a portion of their supplies in exchange for safe passage
+Outcome: The negotiation was successful and the bandits agreed to let the party pass unharmed in exchange for half of their bullets and some of their dried fruit. The party continues on their journey.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Bullets, Dried Fruit
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a river that has flooded its banks and is now too wide and too deep to safely cross. The current is strong and there are no bridges in sight.
+Summary:     The party must find a way to cross the flooded river in order to continue on their journey.
+Suggestions: ['Attempt to build a makeshift raft using nearby materials and float across the river.', 'Search for a shallow area of the river and attempt to wade across while holding onto each other for support.', 'Look for a local guide or expert who can provide advice on the best way to safely cross the river.']
+Player action Attempt to build a makeshift raft using nearby materials and float across the river.
+Outcome: The party successfully builds a makeshift raft using nearby materials and safely crosses the river.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Bullets, Dried Fruit
+Wagon: health is 100 out of 100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party continues on their journey, they come across a large and dense forest that seems to go on for miles. The path ahead is blocked by thick trees and foliage, making it impossible to see what lies ahead or to navigate through easily.
+Summary:     The party must find a way to navigate through the dense forest blocking their path.
+Suggestions: ['Send out a scout to try and find a path through the forest.', 'Attempt to clear a path through the forest using machetes or other tools.', 'Consider going around the forest, even if it means adding more distance to the journey.']
+Player action Send out a scout to try and find a path through the forest.
+Outcome: The scout successfully finds a path through the forest, but the wagon takes some damage from the dense foliage. The party loses 10 health points on the wagon.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Bullets, Dried Fruit
+Wagon: health is 90 out of 100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    The party comes across a steep and rocky mountain pass that they must cross in order to continue on their journey. The path is narrow and treacherous, with loose rocks and potential rockslides.
+Summary:     Crossing the steep and rocky mountain pass.
+Suggestions: ['Attempt to find a safer route around the mountain pass, potentially adding extra time to the journey.', 'Carefully navigate the narrow path, using caution and teamwork to avoid rockslides and falling off the edge.', 'Hire a local guide who knows the path well to help the party safely cross the mountain pass.']
+Player action Attempt to find a safer route around the mountain pass, potentially adding extra time to the journey.
+Parsing error!!! None

@@ -1,0 +1,52 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues their journey, they come across a river that has flooded its banks, making it impossible to cross safely.
+Summary:     The party must find a way to cross a flooded river.
+Suggestions: ['Attempt to build a makeshift raft using the hammer, knife, and pots and pans.', 'Try to find a shallow area of the river to cross, using the compass to navigate.', 'Wait it out and hope the water level recedes, using the alcohol and dried fruit to keep morale up.']
+Player action Attempt to build a makeshift raft using the hammer, knife, and pots and pans.
+Outcome: The party successfully built a raft and crossed the river without losing any items or characters.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Knife, Matches, Medicine Chest, (damaged) Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain pass that seems impassable without proper equipment.
+Summary:     The party must find a way to traverse a steep mountain pass.
+Suggestions: ['Search for alternative routes that may be less treacherous.', 'Use the gunpowder and rifle to blast a path through the mountain.', 'Trade some items with a nearby settlement for climbing gear.']
+Player action Search for alternative routes that may be less treacherous.
+Outcome: After some scouting, the party discovers a longer but safer route that will take a few extra days to traverse.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Knife, Matches, Medicine Chest, (damaged) Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a deep and wide ravine that blocks their path. The ravine is too wide to jump across, and the walls are too steep to climb.
+Summary:     The party must find a way to cross the ravine to continue their journey west.
+Suggestions: ['Attempt to find a safe place to ford the ravine, using the compass to navigate to a shallower area.', 'Try to construct a makeshift bridge using the damaged pots and pans, knife, and any other materials available.', 'Explore the surrounding area for an alternate route or a natural bridge that can be crossed safely.']
+Player action Attempt to find a safe place to ford the ravine, using the compass to navigate to a shallower area.
+Outcome: The party successfully found a safe place to ford the ravine, but the wagon sustained minor damage. Everyone made it across safely.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Knife, Matches, Medicine Chest, (damaged) Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: minor damage
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party continues their journey, they come across a vast desert with no end in sight. There is no water source in sight, and the sun is scorching hot, making it difficult for the party to travel.
+Summary:     The party must cross a vast desert without any water source.
+Suggestions: ['The party could attempt to find shade and conserve their water supply until they find a water source.', "The party could attempt to create a makeshift shade using the tent and blankets to protect themselves from the sun's rays.", 'The party could attempt to follow animal tracks or signs of vegetation to locate a water source.']
+Player action The party could attempt to find shade and conserve their water supply until they find a water source.

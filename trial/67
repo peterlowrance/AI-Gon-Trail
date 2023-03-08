@@ -1,0 +1,25 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a swollen river that is too deep and fast-moving to cross on foot. They must find a way to safely transport themselves and their wagon to the other side.
+Summary:     The party must find a way to cross a deep and fast-moving river.
+Suggestions: ['Try to build a makeshift raft using the wagon and available materials.', 'Search for a nearby ford where the river is shallower and attempt to cross there.', 'Wait until the water level recedes before attempting to cross.']
+Player action Try to build a makeshift raft using the wagon and available materials.
+Outcome: The party successfully builds a raft using the wagon, saw, and vinegar to secure the logs together. They safely cross the river without incident.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Skillet, Spices, Telescope, Wagon Cover
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep and rocky mountain pass, with narrow paths and sharp drops on either side.
+Summary:     The party must navigate a dangerous mountain pass to continue their journey.
+Suggestions: ['Have the party slowly and carefully navigate the pass on foot, leading the wagon behind them.', 'Attempt to find an alternate route around the mountain, but risk losing time and supplies.', 'Hire a local guide to lead the party through the pass safely, but potentially face higher costs and possible betrayal.']
+Player action Have the party slowly and carefully navigate the pass on foot, leading the wagon behind them.
+Parsing error!!! None

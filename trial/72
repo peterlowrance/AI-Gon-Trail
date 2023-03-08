@@ -1,0 +1,53 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues their journey, they come across a river that has swelled due to recent rains, making it difficult to cross. The current is strong and there are no bridges in sight.
+Summary:     The party must find a way to safely cross a swollen river without any bridges in sight.
+Suggestions: ['Attempt to find a shallow area to cross, using the axe to clear a path if necessary.', 'Use the fishing rod and pickaxe to catch fish and build a makeshift raft to cross the river.', 'Wait for the water level to decrease before attempting to cross or try to find an alternate route.']
+Player action Attempt to find a shallow area to cross, using the axe to clear a path if necessary.
+Outcome: The party successfully finds a shallow area to cross and uses the axe to clear a path. The crossing is slow and tiring but everyone makes it safely to the other side.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (slightly used) Axe
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party continues their journey, they come across a steep and rocky mountain pass that they must traverse in order to continue westward.
+Summary:     The party must navigate a dangerous mountain pass to continue on their journey.
+Suggestions: ['Use the axe to cut footholds into the rock to create a safer path', 'Take a longer route around the mountain pass to avoid the danger', 'Attempt to find a local guide who knows the safest way through the pass']
+Player action Use the axe to cut footholds into the rock to create a safer path
+Outcome: The party successfully creates footholds and safely navigates through the mountain pass. The axe is now (heavily used).
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (heavily used) Axe
+Wagon: health 100/100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party continues their journey, they come across a dense forest that stretches for miles. The forest is filled with dangerous predators and the trees are so thick that it's nearly impossible to find a clear path through. The party must find a way to safely make it through the forest and avoid any harm that may come their way.
+Summary:     The party must navigate through a dense and dangerous forest in order to continue their journey west.
+Suggestions: ['Use the axe to clear a path through the dense forest', 'Send out a scouting party to search for a safer route through the forest', 'Set up traps to catch any predators that may attack the party']
+Player action Use the axe to clear a path through the dense forest
+Outcome: The party successfully clears a path through the dense forest, but the axe breaks in the process.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: 
+Wagon: health 100/100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party continues westward, they come across a vast and unforgiving desert. The scorching heat and lack of resources make it nearly impossible to cross without proper preparation.
+Summary:     Crossing a dangerous desert with limited resources.
+Suggestions: ['Scavenge for water and supplies before attempting to cross the desert.', 'Try to find a safer route around the desert, even if it means traveling further.', 'Attempt to travel at night when the temperatures are cooler and conserve energy during the day.']
+Player action Scavenge for water and supplies before attempting to cross the desert.
+Parsing error!!! None

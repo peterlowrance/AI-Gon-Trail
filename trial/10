@@ -1,0 +1,39 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has recently flooded, making it too deep and swift to cross by wagon or on foot. The only bridge in the area has been washed out by the flood, leaving the party stranded on one side of the river.
+Summary:     The party must find a way to cross a flooded river with no bridge.
+Suggestions: ['Attempt to construct a makeshift raft or boat using the saw, needle and thread, and wagon cover.', 'Search for a shallower area of the river to attempt to ford.', 'Scout the area for any other potential crossings or alternate routes to their destination.']
+Player action Attempt to construct a makeshift raft or boat using the saw, needle and thread, and wagon cover.
+Outcome: The party successfully constructs a makeshift raft using the saw, needle and thread, and wagon cover. They cross the flooded river without incident.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Pocket Watch, Quilt, Skillet, Spices, Telescope, Vinegar
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain pass that has become blocked by a recent rockslide, leaving no clear path through.
+Summary:     The party must navigate a blocked mountain pass to continue their journey west.
+Suggestions: ['Attempt to clear a path through the rocks using the flintlock pistol and the Skillet.', 'Search for an alternate route around the mountain, using the Telescope and the Map to try and find a suitable path.', 'Attempt to climb the rocky terrain with the help of the Glasses and the Boots, but risk injury or exhaustion.']
+Player action Attempt to clear a path through the rocks using the flintlock pistol and the Skillet.
+Outcome: The party successfully clears a path through the rocks using the flintlock pistol and skillet. However, the pistol is now out of ammo and the skillet is slightly damaged.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (used) Flintlock Pistol, (slightly damaged) Skillet, Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Glasses, Hat, Jacket, Lantern, Map, Pocket Watch, Quilt, Spices, Telescope, Vinegar
+Wagon: health is 100 out of 100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a steep and rocky mountain path that is covered in loose gravel and ice, making it treacherous to pass.
+Summary:     The party must find a way to safely cross a slippery and unstable mountain pass.
+Suggestions: ['Try to find a safer path around the mountain by exploring the surrounding areas.', 'Use ropes and other climbing gear to secure the party as they traverse the mountain pass.', 'Wait for the weather to clear up and the path to become less dangerous before attempting to cross.']
+Player action Try to find a safer path around the mountain by exploring the surrounding areas.
+Parsing error!!! None

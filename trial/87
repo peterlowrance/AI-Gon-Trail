@@ -1,0 +1,8 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Exception: UnboundLocalError
+Exception message: local variable 'data_str' referenced before assignment

@@ -1,0 +1,25 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has flooded due to heavy rain, making it difficult to cross. The water is murky and fast-moving, and there are no clear indicators of the river's depth or the strength of the current.
+Summary:     The party must find a way to safely cross a flooded river with murky water and a strong current.
+Suggestions: ['Attempt to find a shallower area of the river to cross', 'Build a makeshift raft using items such as the hammer, knife, and pots and pans', 'Wait for the water to recede before attempting to cross']
+Player action Attempt to find a shallower area of the river to cross
+Outcome: The party spends several hours searching for a shallower area of the river and eventually finds a spot that appears safer to cross. They successfully make it to the other side without incident.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: 
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a large canyon with no visible way to cross it. The canyon is deep and wide with steep sides, making it impossible to climb down and back up again. The party must find a way to safely cross the canyon to continue their journey to the west.
+Summary:     The party must figure out how to cross a deep and wide canyon.
+Suggestions: ['Try to build a bridge using available resources.', 'Look for a natural bridge or alternate route around the canyon.', 'Attempt to rappel down the sides of the canyon and back up again.']
+Player action Try to build a bridge using available resources.
+Parsing error!!! None

@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    As the party travels further west, they come across a vast river that blocks their path. The river is deep and fast-moving, making it difficult for the party to cross safely.
+Summary:     The party must cross a deep and fast-moving river in order to continue their journey west.
+Suggestions: ['Attempt to ford the river with the wagon, using ropes and teamwork to keep it from tipping over.', 'Look for a nearby bridge or shallow area to cross the river.', 'Trade with nearby locals for a boat or other means of crossing the river safely.']
+Player action Attempt to ford the river with the wagon, using ropes and teamwork to keep it from tipping over.
+Outcome: The party successfully fords the river with the wagon, but Leo and Zoe both lose their boots in the process.
+State: [
+Characters: Nora, (barefoot) Leo, Eva, Oscar, (barefoot) Zoe
+Items: Biscuits, (wet) Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: Good condition
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep and treacherous mountain pass that must be crossed in order to continue their journey west. The path is narrow and rocky, with sheer drops on either side, and the area is prone to sudden storms and rockslides.
+Summary:     Cross a dangerous mountain pass.
+Suggestions: ['Attempt to scout the route ahead and plan the safest path.', 'Use the saw and flintlock pistol to clear any obstacles and create a safer path.', 'Wait for better weather conditions before attempting to cross.']
+Player action Attempt to scout the route ahead and plan the safest path.
+Parsing error!!! None

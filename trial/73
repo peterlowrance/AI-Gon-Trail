@@ -1,0 +1,25 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues westward, they come across a river that has recently flooded, making it too dangerous to cross. The water is murky and moving fast, with debris scattered throughout the river. The party must find a way to safely cross the river to continue their journey.
+Summary:     The party encounters a flooded river that presents a dangerous obstacle to their journey.
+Suggestions: ['Attempt to build a makeshift raft or bridge with available resources (saw, wagon cover, and rope).', 'Look for a shallower area of the river to cross, possibly by sending a scout ahead to search for a safe path.', 'Trade with nearby locals for assistance in crossing the river or for a safer route to continue their journey.']
+Player action Attempt to build a makeshift raft or bridge with available resources (saw, wagon cover, and rope).
+Outcome: The party successfully builds a makeshift raft and crosses the flooded river without incident.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: (used) Saw, (used) Wagon Cover, (used) Rope, Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Skillet, Spices, Telescope, Vinegar
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party continues on their journey, they come across a steep mountain pass that seems impossible to traverse with their wagon.
+Summary:     The party must find a way to safely cross a steep mountain pass with their wagon.
+Suggestions: ['The party could attempt to find an alternate route around the mountain pass.', 'The party could try to lighten the load of the wagon by leaving some items behind.', 'The party could attempt to reinforce the wagon and take a slow and steady approach to crossing the pass.']
+Player action The party could attempt to find an alternate route around the mountain pass.
+Parsing error!!! None

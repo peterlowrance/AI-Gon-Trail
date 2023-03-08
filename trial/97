@@ -1,0 +1,39 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has suddenly become too deep to cross on foot, and they do not have a boat or any means of crossing. The river is also too wide to attempt to jump across.
+Summary:     The party is faced with an uncrossable river.
+Suggestions: ['Try to find a nearby settlement and purchase or borrow a boat to cross the river.', 'Use the supplies they have to try and construct a makeshift raft to cross the river.', 'Attempt to follow the river upstream or downstream to find a shallower crossing point.']
+Player action Try to find a nearby settlement and purchase or borrow a boat to cross the river.
+Outcome: The party successfully finds a nearby settlement and is able to purchase a boat to cross the river. They lose some time, but otherwise the journey continues smoothly.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (used) Bullets, (used) Dried Fruit, (used) Matches
+Wagon: Good condition
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a dense forest that they must cross in order to continue on their journey, but they quickly realize that there are dangerous predators lurking in the shadows.
+Summary:     The party must navigate a dangerous forest filled with predators.
+Suggestions: ['Set up traps to catch the predators, using whatever materials they can find in the forest.', 'Make loud noises and use fire to scare off the predators.', 'Attempt to travel through the forest quickly and quietly, hoping to avoid attracting the attention of the predators.']
+Player action Set up traps to catch the predators, using whatever materials they can find in the forest.
+Outcome: The party successfully set up traps throughout the forest and caught several predators, avoiding any dangerous encounters. They were able to gather some fresh meat and replenish their food supply. The traps damaged some of the bullets, but they still have enough to defend themselves if needed. Lena suffered a minor injury while setting up the traps.
+State: [
+Characters: Lena (injured), Ricardo, Mira, Jesse, Kai
+Items: (used) Dried Fruit, (damaged) (used) Bullets
+Wagon: Good condition
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party travels along the trail, they notice a thick fog rolling in, reducing visibility to just a few feet. The air is damp and cold, and the ground beneath their feet is slick with mud. The party must navigate through the fog, avoiding any potential dangers along the way.
+Summary:     The party must navigate through a thick fog, reducing visibility and increasing the risk of danger.
+Suggestions: ['The party can slow their pace and move cautiously through the fog, keeping an eye out for any potential danger.', 'The party can use their remaining dried fruit to light a small fire, creating a beacon to guide them through the fog.', 'The party can use their damaged bullets to create loud noises, scaring off any potential predators and alerting the group of their location in the fog.']
+Player action The party can slow their pace and move cautiously through the fog, keeping an eye out for any potential danger.
+Parsing error!!! None

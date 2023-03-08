@@ -1,0 +1,11 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party crosses a river, they notice that one of the oxen is struggling to swim and is in danger of drowning. The party must decide whether to try to save the oxen or let it drown and lose valuable resources.
+Summary:     The party must decide whether to save the struggling oxen or let it drown.
+Suggestions: ['Attempt to rescue the oxen by using the rope and pickaxe to create a makeshift pulley system.', "Sacrifice some of the party's supplies to create a floatation device for the oxen.", 'Leave the oxen to fend for itself and continue on the journey without it.']
+Player action Attempt to rescue the oxen by using the rope and pickaxe to create a makeshift pulley system.
+Parsing error!!! None

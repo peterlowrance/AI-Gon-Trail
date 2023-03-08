@@ -1,0 +1,109 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues on their journey, they come across a deep river with a strong current that appears to be too dangerous to cross on foot or with their wagon.
+Summary:     The party encounters a dangerous river that must be crossed to continue their journey to the west.
+Suggestions: ['Attempt to build a makeshift raft using the items they have and cross the river that way.', 'Look for a nearby town or settlement and see if there is a ferry or bridge that can be used to cross the river.', 'Find a local guide or expert who can help them navigate the river safely.']
+Player action Attempt to build a makeshift raft using the items they have and cross the river that way.
+Outcome: The party successfully builds a makeshift raft using the saw, quilt, and vinegar to seal the seams. They safely cross the river without incident.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Skillet, Spices, Telescope, Wagon Cover
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party's wagon wheel breaks while traveling through a rough and rocky terrain, leaving them stranded and unable to continue their journey.
+Summary:     The wagon wheel breaks down in rough and rocky terrain, leaving the party stranded.
+Suggestions: ['Try to fix the wagon wheel with the items available.', 'Search for help from nearby settlements or travelers.', 'Abandon the wagon and continue the journey on foot.']
+Player action Try to fix the wagon wheel with the items available.
+Outcome: Jesse successfully fixes the wagon wheel using the flintlock pistol as a makeshift hammer. The party is able to continue on their journey.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, (used) Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Skillet, Spices, Telescope, Wagon Cover
+Wagon: health 100/100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party continues on their journey, they come across a steep and treacherous mountain pass, with cliffs on both sides and loose rocks tumbling down the slopes. The trail is narrow and winding, and the terrain is unforgiving.
+Summary:     The party must navigate a dangerous mountain pass to continue their journey west.
+Suggestions: ['Use ropes and harnesses to secure the wagon and prevent it from tipping over the edge', 'Scout ahead to find the safest path and clear any obstacles', 'Unload some of the heavier items from the wagon to make it lighter and easier to maneuver']
+Player action Use ropes and harnesses to secure the wagon and prevent it from tipping over the edge
+Outcome: The party successfully secures the wagon with ropes and harnesses, preventing it from tipping over the edge of the mountain pass. They continue their journey with no injuries or damage to their supplies.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, (used) Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Skillet, Spices, Telescope, Wagon Cover
+Wagon: health 100/100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party travels through the plains, they spot a menacing storm cloud in the distance. Within minutes, the storm hits, unleashing a violent windstorm with lightning and hail that damages their wagon and scatters their supplies.
+Summary:     A violent windstorm damages the party's wagon and scatters their supplies.
+Suggestions: ['The party can quickly try to gather as much of their scattered supplies as possible before the storm causes further damage.', 'The party can attempt to use their wagon cover to shield them from the hail and lightning.', 'The party can try to find shelter or create a makeshift shelter to wait out the storm before continuing their journey.']
+Player action The party can quickly try to gather as much of their scattered supplies as possible before the storm causes further damage.
+Outcome: The party manages to gather most of their supplies, but some items are damaged beyond repair. Ricardo's hat is lost in the wind.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (damaged) Biscuits, Boots, (damaged) Butter, Candy, Coffee Pot, Dress, Fiddle, (used) Flintlock Pistol, Glasses, (lost) Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Skillet, Spices, Telescope, Wagon Cover
+Wagon: health 100/100
+On step 5/10
+]
+
+
+Scenario 5
+Scenario:    As the party moves forward, a sudden snowstorm hits the area, leaving them stranded in the middle of nowhere without any shelter or supplies.
+Summary:     The party is stranded in the middle of nowhere during a sudden snowstorm.
+Suggestions: ['Try to build a makeshift shelter using the wagon cover and any available materials.', 'Scavenge for food and supplies in the area, but be cautious of any potential dangers.', 'Start a fire using the flintlock pistol and gather firewood to keep warm until the snowstorm passes.']
+Player action Try to build a makeshift shelter using the wagon cover and any available materials.
+Outcome: The party successfully builds a makeshift shelter using the wagon cover and some branches they gathered. They huddle together to stay warm through the night.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (damaged) Biscuits, Boots, (damaged) Butter, Candy, Coffee Pot, Dress, Fiddle, (used) Flintlock Pistol, Glasses, (lost) Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Skillet, Spices, Telescope
+Wagon: health 100/100
+On step 6/10
+]
+
+
+Scenario 6
+Scenario:    The party stumbles upon a vast desert with no end in sight, and their water supplies are running dangerously low.
+Summary:     The party must find a way to survive in a harsh desert with limited water supplies.
+Suggestions: ['The party can attempt to find a nearby oasis or water source.', 'They can conserve their water by traveling at night and resting during the day.', 'The party can try to catch any small animals or insects for food and water.']
+Player action The party can attempt to find a nearby oasis or water source.
+Outcome: The party was successful in finding a nearby oasis and refilling their water supplies.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (damaged) Biscuits, Boots, (damaged) Butter, Candy, Coffee Pot, Dress, Fiddle, (used) Flintlock Pistol, Glasses, (lost) Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Skillet, Spices, Telescope
+Wagon: health 100/100
+On step 7/10
+]
+
+
+Scenario 7
+Scenario:    As the party sets up camp for the night, they hear rustling in the nearby bushes and realize they are being surrounded by a pack of hungry wolves.
+Summary:     The party is being threatened by a pack of wolves while camping for the night.
+Suggestions: ['Build a fire to scare off the wolves and keep them at bay', 'Set up traps or barriers around the campsite to prevent the wolves from getting too close', 'Use the flintlock pistol to fend off the wolves if they get too close']
+Player action Build a fire to scare off the wolves and keep them at bay
+Outcome: The party successfully builds a fire and scares off the wolves. No one is injured.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (damaged) Biscuits, Boots, (damaged) Butter, Candy, Coffee Pot, Dress, Fiddle, (used) Flintlock Pistol, Glasses, (lost) Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Skillet, Spices, Telescope
+Wagon: health 100/100
+On step 8/10
+]
+
+
+Scenario 8
+Scenario:    The party comes across a dense forest that seems to go on for miles, with no clear path through it. As they try to navigate through the forest, they come across a river that they must cross to continue their journey west. The river is deep and swift, and there are no clear signs of a safe crossing point.
+Summary:     The party must find a way to safely cross a deep and swift river in the middle of a dense forest.
+Suggestions: ['Attempt to build a makeshift raft using materials from the forest and cross the river that way.', 'Look for a shallow area of the river that may be easier to cross and ford the river on foot.', 'Try to find a local guide or someone who knows the area well to help them navigate through the forest and find a safer crossing point.']
+Player action Attempt to build a makeshift raft using materials from the forest and cross the river that way.
+Parsing error!!! None

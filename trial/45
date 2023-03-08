@@ -1,0 +1,39 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that is too deep to wade through and too wide to jump over. They will need to find a way to cross it in order to continue on their journey.
+Summary:     The party faces a deep and wide river that blocks their path.
+Suggestions: ['Attempt to find a shallow area of the river to try and wade through.', 'Gather materials to build a makeshift raft to cross the river.', 'Hunt for a nearby ferry or bridge that can help them cross the river.']
+Player action Attempt to find a shallow area of the river to try and wade through.
+Outcome: The party spends several hours scouting the river and eventually finds a shallow area to wade through. They successfully cross without incident.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: 
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a large boulder blocking the path, too big to go around and too steep to climb over.
+Summary:     A large boulder blocks the path.
+Suggestions: ['Use tools and brute force to try and move the boulder out of the way', 'Try to find a way to break the boulder into smaller pieces', 'Scout the area for an alternate path or trail that may lead around the boulder']
+Player action Use tools and brute force to try and move the boulder out of the way
+Outcome: After a lot of effort and sweat, the group was able to move the boulder out of the way. The path is now clear to continue on their journey.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: 
+Wagon: full health
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party trudges along the dusty path, they are suddenly surrounded by a pack of hungry wolves, growling and baring their teeth.
+Summary:     The party must fend off a pack of hungry wolves on their journey west.
+Suggestions: ['Use any weapons or tools available to fight off the wolves', 'Attempt to scare the wolves away with loud noises or fire', 'Try to slowly back away and avoid confrontation with the wolves']
+Player action Use any weapons or tools available to fight off the wolves
+Parsing error!!! None

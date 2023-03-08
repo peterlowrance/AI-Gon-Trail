@@ -1,0 +1,53 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has flooded due to heavy rain, making it impossible to cross without a raft or boat. The water is moving fast and the current is strong, making it difficult to navigate.
+Summary:     The party must find a way to cross a flooded river with a strong current.
+Suggestions: ['Search for materials to build a makeshift raft or boat', 'Attempt to trade with nearby settlements for a raft or boat', 'Wait for the water levels to recede before attempting to cross']
+Player action Search for materials to build a makeshift raft or boat
+Outcome: The party was able to find enough materials to construct a makeshift raft and successfully cross the river. However, the Wool Coat got soaked and is now damp.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, (damp) Wool Coat
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep and treacherous mountain pass that they must navigate in order to continue their journey.
+Summary:     The party must navigate a dangerous mountain pass.
+Suggestions: ['Attempt to find a safer route, potentially adding extra days onto the journey', 'Carefully climb the pass with the use of the hammer and knife to create handholds and footholds', 'Split the party and send a smaller group ahead to scout the pass and report back with any potential dangers']
+Player action Attempt to find a safer route, potentially adding extra days onto the journey
+Outcome: The party decides to attempt to find a safer route through the mountain pass, adding two extra days to the journey. They encounter rough terrain and their wagon takes 20 points of damage. Jesse injures their leg while helping to repair the wagon. Ricardo suggests using gunpowder to start a fire, but accidentally ignites the entire supply and it explodes, killing him instantly. The party is able to salvage some of the items, but the gunpowder and matches are lost.
+State: [
+Characters: Lena, (injured) Jesse, Mira, Kai
+Items: (damaged) Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, (damaged) Hammer, Knife, (fewer) Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, (damp) Wool Coat
+Wagon: health is 80 out of 100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a dense forest that seems to stretch on forever. The trees are so close together that it's difficult to see beyond them, and the ground is covered in thick underbrush.
+Summary:     Navigating through the dense forest presents a challenge for the party.
+Suggestions: ['Attempt to find a higher vantage point to get a better view of the surrounding area.', "Use the compass to keep track of the party's direction and avoid getting lost.", 'Send out scouts to explore the area ahead and report back with any obstacles or dangers.']
+Player action Attempt to find a higher vantage point to get a better view of the surrounding area.
+Outcome: The party manages to climb up a nearby hill and gain a better view of the surrounding area. They spot a river a few miles ahead which could provide fresh water and possibly fish. However, they also notice a pack of wolves in the distance and need to be cautious.
+State: [
+Characters: Lena, (injured) Jesse, Mira, Kai
+Items: (damaged) Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, (damaged) Hammer, Knife, (fewer) Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, (damp) Wool Coat
+Wagon: health is 80 out of 100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party continues their journey, they come across a wide and deep canyon that they must cross in order to continue westward. The canyon is filled with treacherous rocks and steep cliffs, making it difficult to navigate.
+Summary:     The party must cross a treacherous canyon in order to continue their journey westward.
+Suggestions: ['Attempt to find a way around the canyon, potentially adding extra time to the journey.', 'Use ropes and climbing gear to carefully navigate down into the canyon and back up the other side.', 'Try to find a local guide or expert who can assist the party in safely crossing the canyon.']
+Player action Attempt to find a way around the canyon, potentially adding extra time to the journey.
+Parsing error!!! None

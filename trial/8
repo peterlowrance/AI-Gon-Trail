@@ -1,0 +1,53 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that is too wide and fast-moving to cross safely, and they must find a way to get to the other side.
+Summary:     The party faces a river too dangerous to cross and must find a way to overcome it.
+Suggestions: ['Attempt to build a makeshift raft using available materials and cross the river that way.', 'Search for a nearby bridge or ford to cross the river safely.', 'Try to find a local guide who can assist in safely crossing the river.']
+Player action Attempt to build a makeshift raft using available materials and cross the river that way.
+Outcome: The party successfully constructs a makeshift raft using the available materials and crosses the river safely.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep incline that the wagon cannot pass through easily. There are several large boulders blocking the path and the terrain is too steep for the oxen to pull the wagon over.
+Summary:     The party encounters a steep incline with boulders blocking the path.
+Suggestions: ['Attempt to clear the boulders from the path using the pickaxe and shovel.', 'Unload some of the heavier items from the wagon and carry them up the incline on foot.', 'Find a longer but less steep path around the incline.']
+Player action Attempt to clear the boulders from the path using the pickaxe and shovel.
+Outcome: The party successfully clears the boulders from the path using the pickaxe and shovel.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Pickaxe (slightly damaged), Shovel (slightly damaged)
+Wagon: health is 100 out of 100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a dense forest that seems to have no end. The path is narrow, and the trees are so close together that they have to walk single-file. The party can hear strange noises coming from the trees and bushes, making them feel uneasy.
+Summary:     The party encounters a dense and eerie forest that may be hiding dangerous creatures.
+Suggestions: ['Send someone ahead to scout the area and look for any signs of danger.', 'Use the pickaxe and shovel to clear a wider path through the forest and create a better view of the surroundings.', 'Light a fire and camp for the night, posting someone on guard duty to keep watch for any unexpected visitors.']
+Player action Send someone ahead to scout the area and look for any signs of danger.
+Outcome: Leo volunteers to scout ahead and after a few minutes, he returns to report that he saw no signs of danger but the forest seems to go on forever. The party decides to proceed cautiously through the forest.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (slightly damaged) Pickaxe, (slightly damaged) Shovel
+Wagon: health is 100 out of 100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party continues on their journey, they come across a wide and deep ravine that seems impossible to cross. The ravine is filled with jagged rocks and a fast-flowing river at the bottom, making it too dangerous to attempt to cross without proper equipment.
+Summary:     The party must find a way to safely cross a wide and deep ravine on their journey.
+Suggestions: ['Look for a safer crossing point upstream or downstream.', 'Build a makeshift bridge using fallen trees and ropes.', 'Attempt to rappel down the side of the ravine and climb back up the other side.']
+Player action Look for a safer crossing point upstream or downstream.
+Parsing error!!! None

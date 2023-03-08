@@ -1,0 +1,25 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party hikes through the mountains, they encounter a narrow path with a sheer drop on one side and a steep incline on the other, making it difficult to traverse. The path is also slick with ice and snow, making it even more treacherous to navigate.
+Summary:     The party must safely cross a narrow, icy mountain path.
+Suggestions: ['Use the saw to cut down trees and create makeshift handrails for support', 'Tie ropes around each other and use teamwork to slowly cross the path', 'Attempt to backtrack and find an alternate route through the mountains']
+Player action Use the saw to cut down trees and create makeshift handrails for support
+Outcome: The party successfully creates makeshift handrails with the saw and safely crosses the narrow, icy mountain path.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, (used) Saw, Needle and Thread, Pocket Watch, Quilt, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party travels through a dense forest, they come across a river that has flooded and is blocking their path. The water is fast-moving and appears to be deep, making it difficult to cross.
+Summary:     The party must find a way to safely cross a flooded river in their path.
+Suggestions: ['Attempt to build a makeshift bridge using the wagon cover, saw, and some sturdy branches found nearby.', 'Search for a shallow area of the river to attempt to wade through.', 'Use the flintlock pistol to hunt for fish in the river and use them as bait to lure a nearby boat to help them across.']
+Player action Attempt to build a makeshift bridge using the wagon cover, saw, and some sturdy branches found nearby.
+Parsing error!!! None

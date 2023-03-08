@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues west, they come across a treacherous river with swift currents and rocks jutting out of the water, making it nearly impossible to ford. They see a ferry operator on the other side who offers to take them across, but he demands a high price that they cannot afford.
+Summary:     Party needs to cross a treacherous river but cannot afford the high price demanded by the ferry operator on the other side.
+Suggestions: ['Try to negotiate with the ferry operator for a lower price', 'Search for a nearby ford in the river that may be less dangerous to cross', 'Attempt to build a makeshift raft or bridge to cross the river']
+Player action Try to negotiate with the ferry operator for a lower price
+Outcome: Despite their best efforts, the party is unable to negotiate a lower price with the ferry operator. They must find another way to cross the river.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: Good condition
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a narrow mountain pass that is blocked by a massive boulder, making it impossible for the wagon to pass through. The only way around is a dangerous cliffside path that could result in injury or death.
+Summary:     The party must navigate a treacherous cliffside path to bypass a massive boulder blocking the mountain pass.
+Suggestions: ['The party could attempt to dislodge the boulder by using the saw and flintlock pistol to weaken it and then push it off the path.', 'The party could try to find an alternate route by using the telescope to scout the surrounding mountains for a safer path.', 'The party could split up, with some members staying behind to guard the wagon while others attempt to carefully navigate the cliffside path with the assistance of the glasses and lantern.']
+Player action The party could attempt to dislodge the boulder by using the saw and flintlock pistol to weaken it and then push it off the path.
+Parsing error!!! None

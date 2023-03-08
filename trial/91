@@ -1,0 +1,25 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues on their journey, they come across a rushing river that is too wide to cross on foot and too deep to ford with their wagon. They must find a way to safely cross the river before continuing on their journey.
+Summary:     The party must find a way to safely cross a deep and wide river on their journey west.
+Suggestions: ['Try to build a sturdy raft using the available materials.', 'Search for a shallow point in the river that they can safely cross through.', 'Attempt to find a local guide who knows the area and can help them safely navigate the river.']
+Player action Try to build a sturdy raft using the available materials.
+Outcome: The party works together to build a sturdy raft using the rope, spare wheel, and logs they find nearby. After several hours of hard work, they successfully cross the river without any incidents.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Shovel, Snakebite Kit, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a narrow and treacherous mountain pass, with steep cliffs on either side and loose rocks that could easily cause a deadly avalanche.
+Summary:     The party must safely navigate a dangerous mountain pass to continue on their journey west.
+Suggestions: ['Carefully scout the pass for the safest route before attempting to cross.', 'Use the pickaxe and shovel to clear a path and create footholds in the loose rocks.', 'Split the party into smaller groups to reduce the risk of a deadly avalanche.']
+Player action Carefully scout the pass for the safest route before attempting to cross.
+Parsing error!!! None

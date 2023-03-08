@@ -1,0 +1,11 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues on their journey, they come across a river that has flooded due to heavy rainfall, blocking their path forward. The water is deep and rapid, and there's no way of telling how long it will take for the river to recede.
+Summary:     The party is blocked by a flooded river.
+Suggestions: ['Wait for the river to recede and continue on foot if possible.', 'Try to find a shallow section of the river to ford, using the wagon as a makeshift bridge.', 'Attempt to trade with nearby locals for a boat or raft to cross the river.']
+Player action Wait for the river to recede and continue on foot if possible.
+Parsing error!!! None

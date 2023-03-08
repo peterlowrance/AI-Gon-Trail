@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party travels through a narrow canyon, they come across a large boulder blocking the path ahead. It's too big to move by hand and will require some kind of tool or explosive to clear the way.
+Summary:     The party encounters a large boulder blocking their path through a narrow canyon.
+Suggestions: ['Use the saw to try and cut the boulder into smaller pieces.', 'Use the flintlock pistol to try and blast the boulder apart.', 'Search for alternative routes around the canyon and boulder.']
+Player action Use the saw to try and cut the boulder into smaller pieces.
+Outcome: The party successfully cuts the boulder into smaller pieces and is able to move through the canyon. The saw is now dull and will need to be sharpened before its next use.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (dull) Saw, Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a river that has recently flooded and is now too wide and deep to cross by foot or wagon. The current is strong and dangerous looking, with debris floating by frequently.
+Summary:     The party must find a way to safely cross the flooded river in order to continue their journey west.
+Suggestions: ['Attempt to scout the river upstream or downstream to find a shallower or narrower crossing point.', 'Build a makeshift raft or boat using the wagon cover, saw, and needle and thread.', 'Wait for the water level to recede by setting up camp nearby and conserving their resources in the meantime.']
+Player action Attempt to scout the river upstream or downstream to find a shallower or narrower crossing point.
+Parsing error!!! None

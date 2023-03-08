@@ -1,0 +1,11 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party treks through a dense forest, they hear rustling in the bushes and suddenly find themselves surrounded by a pack of hungry wolves, eager for their next meal.
+Summary:     The party is attacked by a pack of wolves while passing through a dense forest.
+Suggestions: ['Fight off the wolves with the axe and pickaxe', 'Distract the wolves with bacon and throw the rope over a tree to climb to safety', 'Use the musical instrument to try and calm the wolves down and slowly walk away']
+Player action Fight off the wolves with the axe and pickaxe
+Parsing error!!! None

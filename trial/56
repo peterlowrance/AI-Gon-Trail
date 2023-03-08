@@ -1,0 +1,39 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues their journey, they come across a river that has flooded its banks, making it impossible to cross without risking their lives.
+Summary:     A flooded river blocks the party's path.
+Suggestions: ['Wait for the water level to go down before attempting to cross.', 'Try to find a shallower part of the river to cross.', 'Attempt to build a makeshift raft to cross the river.']
+Player action Wait for the water level to go down before attempting to cross.
+Outcome: The party waits for several days for the water level to recede. During this time, they fish with the Fishing Rod and gather additional supplies. Eventually, they are able to cross the river safely without losing any health or supplies.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain pass that is covered in snow and ice, making it treacherous to cross. There are no alternate routes available and the party must find a way to safely navigate their wagons and oxen through the pass.
+Summary:     The party must navigate a snow-covered mountain pass to continue their journey.
+Suggestions: ['Use the pickaxe and shovel to clear a path through the snow and ice.', "Wrap the oxen's hooves in warm blankets to prevent slipping.", 'Take turns leading the oxen and wagon down the pass to ensure steady footing.']
+Player action Use the pickaxe and shovel to clear a path through the snow and ice.
+Outcome: The party successfully clears a path through the snow and ice with the pickaxe and shovel.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Quinine, Rope, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health is 100 out of 100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a dense forest, but as they proceed they realize that they are being followed by a pack of wolves. The wolves are slowly closing in on them, and the party must find a way to protect themselves and their oxen.
+Summary:     The party is being followed by a pack of wolves and must find a way to protect themselves and their oxen.
+Suggestions: ['Build a fire and create a circle of protection around the party and their oxen.', 'Use the spare wheel and rope to create a barricade to protect the party from the wolves.', 'Use the musical instrument and peppermint to create a distraction and lure the wolves away from the party.']
+Player action Build a fire and create a circle of protection around the party and their oxen.
+Parsing error!!! None

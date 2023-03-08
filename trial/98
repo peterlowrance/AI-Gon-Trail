@@ -1,0 +1,53 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party approaches a river, they notice that the bridge has been destroyed by a recent storm, leaving them with no way to cross. The water is too deep to ford and the banks are too steep to climb.
+Summary:     The party must find a way to cross a river with a destroyed bridge.
+Suggestions: ['Attempt to build a makeshift raft or boat to cross the river.', 'Search for a nearby ford or shallow point in the river to cross.', 'Find a local guide who can lead them to a safer crossing point.']
+Player action Attempt to build a makeshift raft or boat to cross the river.
+Outcome: The party works together to build a sturdy raft using the saw, wagon cover, and vinegars. They successfully cross the river without any issues.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (used) Saw, (used) Wagon Cover, (used) Vinegar, Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Skillet, Spices, Telescope
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain pass that they must navigate through in order to continue on their journey.
+Summary:     The party must navigate through a steep mountain pass.
+Suggestions: ['The party can try to carefully traverse the pass on foot, taking care not to slip or fall.', 'The party can attempt to find a safer route around the mountain, perhaps by consulting their map or asking locals for advice.', 'The party can try to hire a guide who knows the area well and can help them safely navigate through the pass.']
+Player action The party can try to carefully traverse the pass on foot, taking care not to slip or fall.
+Outcome: The party successfully navigated the steep mountain pass without incident.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (used) Saw, (used) Wagon Cover, (used) Vinegar, Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Skillet, Spices, Telescope
+Wagon: health is 100 out of 100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a large river that they must cross, but the only option is a rickety rope bridge that looks like it could collapse at any moment.
+Summary:     Cross a rickety rope bridge over a large river.
+Suggestions: ['Attempt to reinforce the bridge with the saw and extra wood to make it sturdier.', 'Send one member across at a time while the others hold the bridge steady.', 'Look for an alternative route or try to build a raft to cross the river.']
+Player action Attempt to reinforce the bridge with the saw and extra wood to make it sturdier.
+Outcome: The group successfully reinforces the bridge, making it sturdy enough to cross safely.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (used) Saw, (used) Wagon Cover
+Wagon: health is 100 out of 100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    The party reaches a vast desert that stretches for miles. They must cross it to continue their journey, but the intense heat is already taking its toll on their supplies and health. Water is scarce, and the party must make a decision on how to cross the desert safely.
+Summary:     Crossing a vast desert that stretches for miles with limited supplies and water.
+Suggestions: ['Attempt to cross the desert during the night to avoid the scorching heat.', 'Scout ahead for any sources of water or shelter before crossing the desert.', 'Consider trading items or seeking help from nearby settlements to acquire more supplies before crossing the desert.']
+Player action Attempt to cross the desert during the night to avoid the scorching heat.
+Parsing error!!! None

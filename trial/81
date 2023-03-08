@@ -1,0 +1,11 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that is too deep and fast to ford, and there is no bridge in sight. They must find a way to cross the river safely.
+Summary:     River crossing without a bridge or ford.
+Suggestions: ['Attempt to build a raft out of available materials such as rope, wood, and spare wheels.', 'Search for a shallow area to cross the river, and use the oxen to pull the wagon through the water.', 'Hire a local guide who knows the area and can lead the party to a safe river crossing.']
+Player action Attempt to build a raft out of available materials such as rope, wood, and spare wheels.
+Parsing error!!! None

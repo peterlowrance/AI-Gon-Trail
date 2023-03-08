@@ -1,0 +1,25 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues on their journey, they come across a wide river with a strong current that they must cross in order to proceed. The water is too deep to wade through and there is no bridge in sight. They must find a way to safely cross the river and keep their supplies dry.
+Summary:     Crossing a wide river with a strong current presents a challenge for the party as they must find a way to safely cross and keep their supplies dry.
+Suggestions: ['Use the saw to cut down trees and build a sturdy raft to float across the river', 'Attempt to find a shallow area of the river and use the wagon cover to create a makeshift boat', 'Try to trade with nearby travelers for a means of crossing the river, such as a boat or horses to pull the wagon across']
+Player action Use the saw to cut down trees and build a sturdy raft to float across the river
+Outcome: The party successfully uses the saw to cut down trees and build a sturdy raft to float across the river. They are able to safely cross and keep their supplies dry.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, (damaged) Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party travels through a narrow canyon, they come across a boulder blocking the path. The boulder is too large to move by hand and there is no other way around it.
+Summary:     A large boulder blocks the path through a narrow canyon.
+Suggestions: ['Attempt to chisel away at the boulder with the damaged saw', 'Use the flintlock pistol to blast away at the boulder', 'Try to find a way to go around the boulder by exploring the surrounding area']
+Player action Attempt to chisel away at the boulder with the damaged saw
+Parsing error!!! None

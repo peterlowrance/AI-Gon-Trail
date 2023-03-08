@@ -1,0 +1,39 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that has swelled due to recent rains, making it difficult to cross. The current is strong and the water is cold, making it dangerous for the party to attempt to cross.
+Summary:     The party must find a way to safely cross a swollen river.
+Suggestions: ['Search for a shallower area to cross the river', 'Build a makeshift raft to cross the river', 'Wait for the water level to lower before attempting to cross']
+Player action Search for a shallower area to cross the river
+Outcome: The party successfully finds a shallower area to cross the river and makes it safely to the other side.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain pass covered in snow and ice, making it nearly impossible to cross safely without proper equipment.
+Summary:     The party must find a way to safely cross a treacherous snow-covered mountain pass.
+Suggestions: ['Search for a safer, alternate route through the mountains.', 'Trade or scavenge for appropriate equipment such as crampons or ice axes.', 'Wait for the weather to improve before attempting to cross.']
+Player action Search for a safer, alternate route through the mountains.
+Outcome: The party was unable to find a safer route and must cross the treacherous snow-covered mountain pass. The journey is slow and dangerous, but they manage to make it to the other side without any major incidents.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: full health
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a large and fast-moving river that has no easy crossing point. The water is too deep to ford, and the banks are too steep to climb. The only option seems to be finding a way to build a bridge or raft to cross the river safely. However, the party's supplies are limited, and there are no suitable materials around.
+Summary:     The party must find a way to cross a deep and fast river without suitable materials.
+Suggestions: ['Scavenge for materials along the riverbank and attempt to build a raft or bridge', 'Split the party and send someone ahead to search for a safer crossing point', 'Attempt to trade with any nearby settlements for materials to build a raft or bridge']
+Player action Scavenge for materials along the riverbank and attempt to build a raft or bridge
+Parsing error!!! None

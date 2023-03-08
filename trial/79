@@ -1,0 +1,25 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a river that is much wider and more rapid than they anticipated, making it impossible to ford or swim across. They must find a way to cross the river to continue on their journey.
+Summary:     The party encounters a wide, rapid river blocking their path.
+Suggestions: ['Attempt to build a raft using the available materials and cross the river that way.', 'Scout for a shallow or narrower section of the river that they could potentially cross on foot.', 'Trade with nearby locals for a boat or other means of crossing the river.']
+Player action Attempt to build a raft using the available materials and cross the river that way.
+Outcome: The party successfully builds a raft and crosses the river without incident.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: (used) Blanket, (used) Hammer, (used) Knife, (used) Pots and Pans, (used) Wool Coat
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party stumbles upon a steep mountain pass with rocky terrain and unpredictable weather conditions making it extremely difficult to traverse.
+Summary:     The party must navigate through a treacherous mountain pass with unpredictable weather and rocky terrain.
+Suggestions: ['Attempt to find a guide who is familiar with the mountain pass to assist the party.', 'Search for alternate routes or paths to avoid the mountain pass altogether.', 'Stock up on warm clothing and supplies to prepare for the unpredictable weather conditions.']
+Player action Attempt to find a guide who is familiar with the mountain pass to assist the party.
+Parsing error!!! None

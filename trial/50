@@ -1,0 +1,54 @@
+Running with Characters: Mila, Eli, Lila, Max, Ruby
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: full health
+On step 1/10
+
+Scenario 1
+Scenario:    As the party travels through a dense forest, they come across a river that has flooded its banks and is now too wide and deep to cross safely. The current is strong, and the water is ice-cold, making it a dangerous obstacle to overcome. The banks are steep, and there are no bridges in sight.
+Summary:     The party must find a way to cross a flooded river without risking their lives.
+Suggestions: ['Attempt to build a makeshift raft using the wagon cover, saw, and needle and thread.', 'Search for a shallow spot in the river and attempt to ford it, using the glasses to look for the best spot.', 'Wait for the water level to recede and hope that it will become safe to cross soon.']
+Player action Attempt to build a makeshift raft using the wagon cover, saw, and needle and thread.
+Outcome: The party successfully built a raft using the wagon cover, saw, and needle and thread. They safely crossed the river without any casualties.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Pocket Watch, Quilt, Skillet, Spices, Telescope, Vinegar
+Wagon: full health
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party has come across a steep mountain pass that they must cross to continue their journey, but the path is narrow and treacherous with loose rocks and a steep drop-off on one side.
+Summary:     The party must navigate a dangerous mountain pass to continue their journey.
+Suggestions: ['Have the party scout ahead to find the safest path and use ropes to secure themselves to the mountain.', 'Attempt to find an alternate route, even if it means going off course.', 'Take a day or two to rest and build up their strength before attempting to cross the pass.']
+Player action Have the party scout ahead to find the safest path and use ropes to secure themselves to the mountain.
+Outcome: The party successfully navigates the mountain pass with only a few close calls. They use ropes to secure themselves and find the safest path. Eli's boots become worn from the rough terrain, but they make it through unscathed. 
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: Biscuits, (worn) Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Pocket Watch, Quilt, Skillet, Spices, Telescope, Vinegar
+Wagon: full health
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party continues their journey, they come across a vast desert with no visible water source. Their water supply is running low and there is no sign of civilization for miles.
+Summary:     The party must find a way to survive in the desert with limited water supply.
+Suggestions: ['The party can try to conserve water by rationing it and traveling during the cooler parts of the day.', 'The party can try to find a natural water source by following animal tracks or looking for signs of vegetation.', 'The party can attempt to trade some of their items for water with any travelers they may come across.']
+Player action The party can try to conserve water by rationing it and traveling during the cooler parts of the day.
+Outcome: The party successfully rationed their water and traveled during the cooler parts of the day. They were able to make it to the next water source without any issues.
+State: [
+Characters: Mila, Eli, Lila, Max, Ruby
+Items: (partially used) Biscuits, (slightly worn) Boots, Butter, (partially eaten) Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Pocket Watch, Quilt, Skillet, Spices, Telescope, Vinegar
+Wagon: full health
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party continues their journey, they come across a narrow bridge over a deep canyon that appears to be unstable and dangerous to cross.
+Summary:     The party must find a way to safely cross a narrow and unstable bridge over a deep canyon.
+Suggestions: ['Attempt to reinforce the bridge using items such as the quilt and vinegar to make it more stable and secure.', 'Look for an alternate route, such as following the canyon to find a safer crossing point.', 'Cross the bridge one at a time, using the flintlock pistol to shoot at any loose boards or rocks that could cause the bridge to collapse.']
+Player action Attempt to reinforce the bridge using items such as the quilt and vinegar to make it more stable and secure.
+Exception: UnboundLocalError
+Exception message: local variable 'data_str' referenced before assignment

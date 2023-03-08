@@ -1,0 +1,25 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    As the party travels through a dense forest, they come across a river that is too deep to ford and too wide to jump across. The current is swift and the water is freezing, making it dangerous to cross.
+Summary:     Crossing a swift and freezing river in a dense forest poses a dangerous obstacle for the party.
+Suggestions: ['Attempt to build a raft or boat to safely cross the river', 'Search for a shallow area to cross the river on foot', 'Find a local guide who knows the area and can show the party a safer way to cross the river']
+Player action Attempt to build a raft or boat to safely cross the river
+Outcome: Using the available materials, the party successfully built a sturdy raft and navigated across the river without incident.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: Good condition
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a vast and barren desert, with no signs of water or shelter for miles around.
+Summary:     The party must find a way to traverse across the harsh desert without succumbing to dehydration or exhaustion.
+Suggestions: ['The party could try to conserve their water by traveling during the cooler hours of the day, and resting during the heat of the day.', 'They could also attempt to find a local guide or map to help navigate through the desert.', 'Finally, the party could try to find a reliable source of water, such as an oasis or watering hole, before continuing their journey.']
+Player action The party could try to conserve their water by traveling during the cooler hours of the day, and resting during the heat of the day.
+Parsing error!!! None

@@ -1,0 +1,144 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    The party comes across a wide river that they must cross, but the water is deep and fast-moving, making it dangerous to attempt. They need to find a way to get across safely.
+Summary:     Crossing a deep and fast-moving river poses a major obstacle for the party's journey west.
+Suggestions: ['Attempt to build a raft or makeshift boat to safely cross the river.', 'Search for a shallow area of the river to ford across on foot.', 'Look for a local guide or ferryman who can help them safely cross the river.']
+Player action Attempt to build a raft or makeshift boat to safely cross the river.
+Outcome: The party is able to build a sturdy raft and safely cross the river. However, the wagon takes some damage in the process (-10 health).
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, (damaged) Wool Coat
+(90 health) Wagon
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party continues on their journey, they come across a steep and rocky mountain pass that seems impossible to cross with their current equipment and supplies. The path is treacherous and there is no clear way around it.
+Summary:     The party faces a daunting mountain pass that they must navigate in order to continue on their journey west.
+Suggestions: ['Attempt to find a less treacherous path or a guide who knows the area well and can lead the party safely through the pass.', "Scout ahead and carefully plan out a route through the pass, taking into account the party's supplies and equipment.", 'Divide the party into smaller groups and have them work together to safely navigate the pass, with one group scouting ahead and the other bringing up the rear.']
+Player action Attempt to find a less treacherous path or a guide who knows the area well and can lead the party safely through the pass.
+Outcome: The party is unable to find a guide or alternate path and must attempt the pass. The journey is treacherous, but the party manages to make it through with only minor scrapes and bruises.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, (slightly damaged) Wool Coat
+(85 health) Wagon
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    As the party continues their journey, they come across a vast and barren desert with no visible sources of water. With their supplies dwindling, the party must find a way to traverse the desert and find water before it's too late.
+Summary:     The party must navigate a waterless desert in order to continue on their journey west.
+Suggestions: ['Search for any signs of water or vegetation in the surrounding area.', 'Ration their supplies and travel during the cooler parts of the day to conserve energy.', 'Consider hiring a guide or seeking assistance from a nearby town or settlement.']
+Player action Search for any signs of water or vegetation in the surrounding area.
+Outcome: The party searches the surrounding area but finds no signs of water or vegetation. The journey through the desert continues with growing concern for the party's survival.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, (slightly damaged) Wool Coat
+(85 health) Wagon
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    The party has come across a large, raging wildfire that is blocking their path west. The fire is spreading quickly, and the smoke is making it difficult to breathe. The party must find a way to safely navigate through the flames.
+Summary:     A wildfire is blocking the party's path west, and they must find a way to safely navigate through the flames.
+Suggestions: ['Attempt to find a detour around the fire, even if it means adding extra days to the journey', 'Use any available shovels, pots, and pans to dig trenches or create firebreaks to divert the flames', 'Risk walking through the fire, but only if the wind is blowing in the opposite direction and the flames are not too high']
+Player action Attempt to find a detour around the fire, even if it means adding extra days to the journey
+Outcome: The party successfully found a detour around the fire and added 3 extra days to the journey. However, the wagon suffered minor damage and needs repairs. The party used some gunpowder to create a controlled burn to clear a path. Zoe accidentally cut herself with the knife while gathering firewood, but the wound is not serious.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (injured) Zoe
+Items: (slightly damaged) Wool Coat, Candles, Cheese, Clothing, Compass, Dried Fruit, (slightly damaged) Gunpowder, Hammer, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask
+(80 health) Wagon
+On step 5/10
+]
+
+
+Scenario 5
+Scenario:    The party comes across a deep and muddy bog that stretches for miles, making it difficult to navigate and slowing down their progress significantly. The ground is unstable and the risk of getting stuck is high, making it a dangerous obstacle to overcome.
+Summary:     The party must navigate through a treacherous, muddy bog to continue their journey west.
+Suggestions: ['Try to find a path with more solid ground and use wooden boards or planks to bridge the gaps.', 'Use ropes and teamwork to pull the wagon through the bog.', 'Unload some of the heavier items from the wagon and carry them individually to make it easier to navigate through the bog.']
+Player action Try to find a path with more solid ground and use wooden boards or planks to bridge the gaps.
+Outcome: The party successfully navigates through the bog and avoids getting stuck. They use some wooden planks to bridge the worst gaps. However, the wagon loses 20 health from the strain. Everyone is tired and covered in mud, but morale remains high.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (injured) Zoe
+Items: (slightly damaged) Wool Coat, Candles, Cheese, Clothing, Compass, Dried Fruit, (slightly damaged) Gunpowder, Hammer, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask
+(60 health) Wagon
+On step 6/10
+]
+
+
+Scenario 6
+Scenario:    The party comes across a narrow and rickety bridge over a deep and rocky canyon, which they must cross in order to continue on their journey west. However, the bridge is old and unstable, and the party must decide how to safely cross it without falling to their deaths.
+Summary:     The party must safely cross a narrow and rickety bridge over a deep and rocky canyon.
+Suggestions: ['Try to repair the bridge with the hammer and spare wood from the wagon.', 'Send one or two party members across the bridge first to test its stability before crossing with the rest of the party.', 'Attempt to find an alternate route around the canyon, even if it means going off the main trail for a while.']
+Player action Try to repair the bridge with the hammer and spare wood from the wagon.
+Outcome: The party successfully repairs the bridge with the hammer and wood from the wagon, and crosses safely to the other side.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (injured) Zoe
+Items: (slightly damaged) Wool Coat, Candles, Cheese, Clothing, Compass, Dried Fruit, (slightly damaged) Gunpowder, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask
+(58 health) Wagon
+On step 7/10
+]
+
+
+Scenario 7
+Scenario:    The party comes across a dense forest that seems to go on forever, with no clear path through. The trees are tall and close together, making it difficult to see and move around. The ground is muddy and wet, making it easy to slip and get stuck. The party must find a way through the forest to continue their journey west.
+Summary:     The party must navigate a dense and muddy forest in order to continue their journey west.
+Suggestions: ['Attempt to find a higher vantage point to get a better view of the forest and find a clear path.', "Use the party's tools to clear a path through the forest, such as the rifle to cut down branches or the pots and pans to dig through the mud.", 'Split the party up and have them search for a path through the forest, then regroup and compare their findings.']
+Player action Attempt to find a higher vantage point to get a better view of the forest and find a clear path.
+Outcome: The party spends hours trying to climb trees and hills in search of a better view, but the dense forest makes it impossible. They eventually give up and continue on their current path.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (injured) Zoe
+Items: (slightly damaged) Wool Coat, Candles, Cheese, Clothing, Compass, Dried Fruit, (slightly damaged) Gunpowder, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask
+(58 health) Wagon
+On step 8/10
+]
+
+
+Scenario 8
+Scenario:    The party comes across a wide and deep ravine with no clear path across, and the only way to reach the other side is through a narrow and unstable bridge that could collapse at any moment.
+Summary:     The party must cross a dangerous and unstable bridge over a deep ravine to continue their journey west.
+Suggestions: ['Attempt to reinforce the bridge using available supplies such as wood and rope.', 'Find an alternate route by exploring the surrounding area.', 'Carefully cross the bridge one at a time, distributing weight evenly and using ropes to support each other.']
+Player action Attempt to reinforce the bridge using available supplies such as wood and rope.
+Outcome: The party successfully reinforced the bridge using available supplies and safely crossed without incident.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (injured) Zoe
+Items: (slightly damaged) Wool Coat, Candles, Cheese, Clothing, Compass, Dried Fruit, (slightly damaged) Gunpowder, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wood, Rope
+(58 health) Wagon
+On step 9/10
+]
+
+
+Scenario 9
+Scenario:    The party comes across a deep and narrow canyon that they must cross in order to continue their journey west. The canyon is filled with rushing water, jagged rocks, and a steep drop-off on either side.
+Summary:     The party must safely cross a dangerous and narrow canyon to continue their journey west.
+Suggestions: ['Try to find a sturdy fallen tree to use as a makeshift bridge.', 'Use ropes and pulleys to create a zipline system across the canyon.', 'Split the party and have some members swim across while others create a human chain to cross.']
+Player action Try to find a sturdy fallen tree to use as a makeshift bridge.
+Outcome: The party searches and finds a sturdy fallen tree, successfully using it as a makeshift bridge to cross the canyon.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (injured) Zoe
+Items: (slightly damaged) Wool Coat, Candles, Cheese, Clothing, Compass, Dried Fruit, (slightly damaged) Gunpowder, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wood, Rope
+(58 health) Wagon
+On step 10/10
+]
+
+
+Scenario 10
+Scenario:    The party comes across a deep and wide gorge that they must cross in order to continue on their journey, but the only way across is a rope bridge that looks old and unstable.
+Summary:     The party must cross a treacherous rope bridge to continue their journey west.
+Suggestions: ['Inspect the bridge for any signs of damage or instability before crossing.', 'Send one person across at a time, with the others holding onto the ropes for support.', 'Use the rope and wood from their supplies to reinforce any weak spots in the bridge before crossing.']
+Player action Inspect the bridge for any signs of damage or instability before crossing.
+Outcome: The party carefully inspects the bridge and finds it to be stable enough to cross safely.
+State: [
+Characters: Nora, Leo, Eva, Oscar, (injured) Zoe
+Items: (slightly damaged) Wool Coat, Candles, Cheese, Clothing, Compass, Dried Fruit, (slightly damaged) Gunpowder, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wood, Rope
+(58 health) Wagon
+On step 11/10
+]
+

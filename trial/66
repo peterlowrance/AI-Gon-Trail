@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    The party has reached a river that has flooded due to heavy rains. The water is too deep and fast to cross safely, and they do not have a boat to use. The nearest town is a day's journey back the way they came, and they are running low on supplies.
+Summary:     The party must find a way to cross a flooded river without a boat.
+Suggestions: ['Attempt to build a makeshift raft using available materials such as wood and blankets.', 'Try to find a shallow area of the river to cross, even if it means traveling further upstream.', 'Search the surrounding area for a friendly local who may be able to provide assistance or a boat to cross the river.']
+Player action Attempt to build a makeshift raft using available materials such as wood and blankets.
+Outcome: The party successfully constructs a makeshift raft using available materials and safely crosses the flooded river.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: Good condition
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party travels through the dense forest, they come across a narrow gorge with steep cliffs on either side, making it impossible to go around. The only way through is to climb down one side and up the other, but the terrain is treacherous and one wrong move could prove fatal.
+Summary:     The party must navigate a dangerous gorge in order to continue their journey.
+Suggestions: ['Use the hammer and knife to create makeshift climbing gear and secure ropes for safety.', 'Split the party into smaller groups and have each group take a different route through the gorge to increase the chances of success.', 'Attempt to find an alternate route by exploring the area around the gorge and potentially risking getting lost.']
+Player action Use the hammer and knife to create makeshift climbing gear and secure ropes for safety.
+Parsing error!!! None

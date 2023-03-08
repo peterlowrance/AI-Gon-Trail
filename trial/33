@@ -1,0 +1,81 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Biscuits, Boots, Butter, Candy, Coffee Pot, Dress, Fiddle, Flintlock Pistol, Glasses, Hat, Jacket, Lantern, Map, Needle and Thread, Pocket Watch, Quilt, Saw, Skillet, Spices, Telescope, Vinegar, Wagon Cover
+Wagon: health is 100 out of 100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party crosses a river, their wagon wheel gets stuck in the mud on the other side, leaving them stranded with limited supplies and no means of transportation.
+Summary:     Wagon wheel stuck in mud, party stranded with limited supplies and no means of transportation.
+Suggestions: ['Use the saw to cut down nearby timber and attempt to build a makeshift raft to ferry the party and supplies across the river.', 'Unpack the wagon and attempt to carry as much as possible across the river, leaving the wagon behind.', 'Use the flintlock pistol to hunt for game and gather additional food supplies while they wait for help or devise a plan.']
+Player action Use the saw to cut down nearby timber and attempt to build a makeshift raft to ferry the party and supplies across the river.
+Outcome: The party successfully uses the saw to cut down timber and build a makeshift raft. They are able to ferry themselves and their supplies safely across the river.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (used) Saw
+Wagon: health is 100 out of 100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a river that has flooded and is now too wide and rapid to cross with their wagon. The water is too deep to walk through and there are no nearby bridges or ferries to help them cross. They need to find a way to get their wagon and supplies to the other side of the river to continue their journey westward.
+Summary:     The party must find a way to cross a flooded river with no bridges or ferries.
+Suggestions: ['Try to construct a makeshift raft using the saw and other materials available.', 'See if there are any locals nearby who may be able to help them cross the river.', 'Attempt to ford the river by attaching ropes to the wagon and having the party pull it across while wading through the water.']
+Player action Try to construct a makeshift raft using the saw and other materials available.
+Outcome: The party successfully constructs a makeshift raft and safely crosses the flooded river.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: 
+Wagon: health is 100 out of 100
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a steep and rocky mountain pass that they must navigate through in order to continue their journey. The pass is treacherous and will require careful maneuvering to avoid falling rocks and potential avalanches.
+Summary:     The party must navigate a dangerous mountain pass in order to continue their journey.
+Suggestions: ['Have the party scout ahead to identify the safest path through the pass.', 'Use ropes and harnesses to secure the party and prevent falls.', 'Gather large rocks and boulders to create barriers against potential avalanches.']
+Player action Have the party scout ahead to identify the safest path through the pass.
+Outcome: The party successfully scouted ahead and identified a safe path through the pass.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: 
+Wagon: health is 100 out of 100
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    As the party travels through a dense forest, they suddenly hear the sound of growling and rustling in the bushes. A pack of wolves emerges, surrounding the party and blocking their path, hungry for their next meal.
+Summary:     The party is ambushed by a pack of wolves while traveling through a forest.
+Suggestions: ['Try to scare off the wolves with loud noises or fire.', 'Use weapons to defend against the wolves.', 'Attempt to peacefully negotiate with the wolves or offer them food as a distraction.']
+Player action Try to scare off the wolves with loud noises or fire.
+Outcome: The wolves are successfully scared off by the loud noises and fire. The party sustains no injuries.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: 
+Wagon: health is 100 out of 100
+On step 5/10
+]
+
+
+Scenario 5
+Scenario:    The party comes across a vast desert with no sign of water or food for miles. The heat is unbearable and it seems impossible to cross without restocking their supplies.
+Summary:     Crossing a vast desert with no supplies.
+Suggestions: ['Try to ration the remaining supplies and cross the desert as quickly as possible.', 'Scavenge for food and water in the surrounding area before crossing.', 'Trade with any nearby settlements for supplies before attempting to cross.']
+Player action Try to ration the remaining supplies and cross the desert as quickly as possible.
+Outcome: The group successfully rationed the remaining supplies and crossed the desert in a timely manner. They arrive at their destination with no casualties.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: 
+Wagon: health is 100 out of 100
+On step 6/10
+]
+
+
+Scenario 6
+Scenario:    As the party travels through a dense forest, they come across a fallen tree blocking the path ahead. Upon closer inspection, they realize that the tree is too large to move by hand and it will take a lot of effort to clear a path around it.
+Summary:     A fallen tree blocks the path in a dense forest, requiring significant effort to clear a path.
+Suggestions: ['Use axes and saws to chop the tree into smaller pieces and move them out of the way.', 'Explore the forest for an alternate route around the fallen tree.', 'Attempt to move the tree with the help of nearby animals, such as horses or oxen.']
+Player action Use axes and saws to chop the tree into smaller pieces and move them out of the way.
+Parsing error!!! None

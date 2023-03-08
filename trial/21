@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    As the party approaches a river, they notice that it has flooded and the water is too high to cross safely. The current is strong and the water is murky, making it difficult to see the bottom. They must find a way to cross the river.
+Summary:     The party must find a way to cross a flooded river.
+Suggestions: ['Attempt to build a raft using the available materials.', 'Look for a shallower area of the river to cross, even if it means traveling upstream for a while.', 'Hunt for a nearby settlement or village to seek assistance from locals or use a bridge if one is available.']
+Player action Attempt to build a raft using the available materials.
+Outcome: The party successfully builds a raft using the rope, axe, and spare wheel to cross the flooded river. However, the spare wheel is now damaged.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: (damaged) Spare Wheel
+Wagon: Good condition
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party moves deeper into the wilderness, they encounter a dense fog that makes it impossible to see more than a few feet in front of them. The fog is so thick that they cannot navigate and are forced to camp out until it clears out. As they wait, they hear strange noises coming from the darkness.
+Summary:     The party is enveloped in a dense fog and must wait it out while being tormented by mysterious noises.
+Suggestions: ['Set up a perimeter of tripwires and alarms to alert the party of any impending danger.', 'Light a fire to ward off any potential predators and provide warmth for the party.', 'Send out scouts to investigate the source of the noises and determine if they are a threat to the party.']
+Player action Set up a perimeter of tripwires and alarms to alert the party of any impending danger.
+Parsing error!!! None

@@ -1,0 +1,25 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party treks through the mountains, they encounter a raging river that has flooded its banks, making it impossible to cross without risking their lives.
+Summary:     The party faces a treacherous flooded river that blocks their path.
+Suggestions: ['Attempt to find a safer spot to ford the river.', 'Build a makeshift raft to cross the river.', 'Wait for the water level to recede before attempting to cross.']
+Player action Attempt to find a safer spot to ford the river.
+Outcome: The party spends several hours searching upstream and downstream for a safer spot to ford the river. They eventually find a shallow area where the current is slower and successfully cross without incident.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: 
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a steep mountain range that blocks their path. The terrain is treacherous and there are no clear paths to follow. The party will have to find a way to cross the mountains in order to continue their journey to the west.
+Summary:     The party must find a way to cross a steep and treacherous mountain range in order to continue on their journey.
+Suggestions: ['Attempt to find a pass through the mountains that may be less treacherous.', 'Try to climb the mountain range, using ropes and grappling hooks to help navigate the steep terrain.', 'Look for a local guide who may be able to help the party navigate the treacherous terrain and find a safe way across the mountains.']
+Player action Attempt to find a pass through the mountains that may be less treacherous.
+Parsing error!!! None

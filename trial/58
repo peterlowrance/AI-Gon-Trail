@@ -1,0 +1,25 @@
+Running with Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Axe, Bacon, Beads, Books, Coffee, Fishing Rod, Flour, Hiking Boots, Laudanum, Money, Musical Instrument, Oxen, Peppermint, Pickaxe, Quinine, Rope, Shovel, Snakebite Kit, Spare Wheel, Tobacco, Warm Blanket, Water Keg
+Wagon: health 100/100
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues on their journey, they come across a wide and deep river that seems impossible to cross with their current resources.
+Summary:     The party must find a way to cross the river in order to continue on their journey.
+Suggestions: ['Attempt to ford the river with the oxen and spare wheel, but be cautious of the current.', 'Look for a shallow area or a natural bridge to cross the river.', 'Try to trade with nearby settlers for a boat or other means of crossing the river.']
+Player action Attempt to ford the river with the oxen and spare wheel, but be cautious of the current.
+Outcome: The river was too deep and swift for the oxen to ford. The party had to turn back and find another way to cross.
+State: [
+Characters: Nora, Leo, Eva, Oscar, Zoe
+Items: Spare Wheel
+Wagon: health 100/100
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    As the party travels further west, they come across a large canyon that blocks their path. The canyon is too wide to jump across and too deep to climb down into, leaving the party with no clear way to continue on their journey.
+Summary:     The party must find a way to cross the canyon to continue their journey westward.
+Suggestions: ['The party could attempt to find a shallow part of the canyon to ford across, potentially risking getting wet or losing supplies in the process.', 'The party could try to fashion a makeshift bridge out of fallen tree branches and rope to cross over the canyon.', 'The party could attempt to find an alternate route around the canyon, potentially adding time and distance to their journey.']
+Player action The party could attempt to find a shallow part of the canyon to ford across, potentially risking getting wet or losing supplies in the process.
+Parsing error!!! None
