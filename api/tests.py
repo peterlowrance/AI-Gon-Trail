@@ -1,6 +1,5 @@
 from django.test import TestCase
 from api.ai_client import AiClient
-from api.free_ai_client import FreeAiClient
 from api.prompts import *
 from api.game_state import GameState
 import time
@@ -10,7 +9,7 @@ class PromptTestCase(TestCase):
 
     def setUp(self):
         # Set up data for the tests
-        self.client = FreeAiClient()
+        self.client = AiClient()
 
     def test_validate_action_prompt(self):
         scenario = 'the party encounters a river that blocks their path'
@@ -42,7 +41,7 @@ class PromptTestCase(TestCase):
 # Run with:
 # python manage.py test api.tests.PromptTestCase.test_scenario
     def test_scenario(self):
-        state = GameState(characters=['Peter', 'Dustin', 'Bryce', 'Abinav', 'Sara'], items=['Wagon', 'Warm Blanket', 'Hiking Boots', 'Jacket', 'Shovel', 'Pickaxe', 'Rations'], vehicle="Wagon: health is 100 out of 100")
+        state = GameState(characters=['Peter', 'Dustin', 'Bryce', 'Abinav', 'Sara'], items=['Warm Blanket', 'Hiking Boots', 'Jacket', 'Shovel', 'Pickaxe', 'Rations'], vehicle="Wagon: health is 100 out of 100")
         while state.current_step <= state.total_steps and len(state.characters) > 0:
             print(f'\nScenario {state.current_step}')
             prompt = get_scenario_prompt(state)
@@ -69,8 +68,8 @@ class PromptTestCase(TestCase):
                 characters = res['characters']
                 #TODO parametrize this for space
                 vehicle = res['vehicle']
-            except:
-                print('Parsing error!!!', res)
+            except Exception as e: 
+                print('Parsing error! Failed to parse the following', prompt)
                 break
             state.progress(characters, items, vehicle, summary)
             print('Outcome:', outcome)

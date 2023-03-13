@@ -70,7 +70,7 @@ Characters: {json.dumps(state.characters)}
 Vehicle: {json.dumps(state.vehicle)}
 The player action is "{player_action}"
 
-Respond with a brief description of the outcome and provide updated items and players. The outcome should conclude the scenario and allow the party to move on. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. Extremely negative outcomes should be rare. Example format:
+Respond with a brief description of the outcome and provide updated items, players, and vehicle. The outcome should conclude the scenario and allow the party to move on. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. If it is a bad outcome damage the vehicle health a bit. Extremely negative outcomes should be rare. Example format:
 {{"outcome":"description", "items":["(damaged) {example_item}", ...], "characters":["(injured) {state.characters[0]}", ...]}}
 
 Respond with only the json object""",
