@@ -1,21 +1,36 @@
 import { EuiBadge, EuiButton, EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiText } from "@elastic/eui";
 import { useState } from "react";
 import { useTakeActionMutation } from "./api";
-import { RootState } from "./store";
-import { useSelector } from 'react-redux';
+import { addStory, RootState } from "./store";
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function UserInput(props: { disabled: boolean, suggestions: string[] }) {
+export default function UserInput(props: { disabled: boolean }) {
+    const dispatch = useDispatch();
     const [value, setValue] = useState('');
     const session = useSelector((state: RootState) => state.game.session);
+    const suggestions = useSelector((state: RootState) => state.game.suggestions);
+    const story = useSelector((state: RootState) => state.game.story);
+    
+    let scenario = null as null | string;
+    if (story.length > 0){
+        const lastStory = story[story.length - 1];
+        if (lastStory.type === 'SCENARIO') {
+            scenario = lastStory.text;
+        }
+    }
 
     const [takeAction] = useTakeActionMutation();
 
     const handleTakeAction = () => {
-        if (session)
-            takeAction({ action: value, session: session }).unwrap()
-                .then(() => {
+        if (session && scenario) {
+            // TODO: validate action
+            dispatch(addStory({text: value, type: 'ACTION'}));
+            takeAction({ action: value, scenario: scenario, session: session }).unwrap()
+                .then((res) => {
                     setValue('');
+                    dispatch(addStory({text: res, type: 'OUTCOME'}))
                 });
+        }
     }
 
     const handleChangeValue = (e) => {
@@ -24,15 +39,15 @@ export default function UserInput(props: { disabled: boolean, suggestions: strin
     }
 
     return <EuiFlexGroup direction='column' gutterSize='s'>
-        {!props.disabled &&
+        {!props.disabled && suggestions.length > 0 &&
             <EuiFlexItem>
-                <EuiFlexGroup gutterSize='s' alignItems='baseline'>
+                <EuiFlexGroup gutterSize='s' alignItems='baseline' wrap>
                     <EuiFlexItem grow={false}>
                         <EuiText>
                             Suggestions:
                         </EuiText>
                     </EuiFlexItem>
-                    {props.suggestions.map(sug =>
+                    {suggestions.map(sug => value !== sug &&
                         <EuiFlexItem key={sug} grow={false}>
                             <EuiBadge color='default' onClick={() => setValue(sug)}>
                                 {sug}
@@ -49,8 +64,7 @@ export default function UserInput(props: { disabled: boolean, suggestions: strin
                         placeholder="Action..."
                         value={value}
                         onChange={handleChangeValue}
-                        disabled={props.disabled}
-                        // resize='none'
+                        disabled={props.disabled || !scenario}
                         fullWidth
                     />
                 </EuiFlexItem>

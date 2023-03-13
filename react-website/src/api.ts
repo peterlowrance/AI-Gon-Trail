@@ -4,7 +4,6 @@ type GameStatus = {
     vehicle: string,
     items: string[],
     characters: string[],
-    current_scenario: string
     //current_step/total_steps ?
 }
 
@@ -43,12 +42,21 @@ export const gameApi = createApi({
             }),
             providesTags: ['GAME']
         }),
-        takeAction: builder.mutation<void, {session: string, action: string}>({
-            query: ({ session, action }) => ({
+        getScenario: builder.query<{scenario: string, suggestions: string[]}, string>({
+            query: (session) => ({
+                url: 'game-scenario',
+                params: {
+                    session: session
+                }
+            })
+        }),
+        takeAction: builder.mutation<string, {session: string, scenario: string, action: string}>({
+            query: ({ session, scenario, action }) => ({
                 url: 'take-action',
                 method: 'POST',
                 body: {
                     session: session,
+                    scenario: scenario,
                     action: action
                 }
             }),
@@ -57,4 +65,4 @@ export const gameApi = createApi({
     }),
 })
 
-export const { useLazyGetGameStartQuery, useChooseItemsMutation, useGetStatusQuery, useTakeActionMutation } = gameApi;
+export const { useLazyGetGameStartQuery, useLazyGetScenarioQuery, useChooseItemsMutation, useGetStatusQuery, useTakeActionMutation } = gameApi;

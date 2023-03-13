@@ -2,6 +2,7 @@ import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit'
 import { gameApi } from './api';
 
 export type GameState = 'NOT_STARTED' | 'CHOOSING_ITEMS' | 'FACING_SCENARIOS';
+export type StoryType = 'SCENARIO' | 'ACTION' | 'OUTCOME';
 
 // Slice
 const gameSlice = createSlice({
@@ -9,7 +10,9 @@ const gameSlice = createSlice({
   initialState: {
     gameState: 'NOT_STARTED' as GameState,
     itemsToBuy: {} as {[item: string]: number},
-    session: null as null | string
+    session: null as null | string,
+    story: [] as {text: string, type: StoryType}[],
+    suggestions: [] as string[]
   },
   reducers: {
     setGameState: (state, action: PayloadAction<GameState>) => {
@@ -20,11 +23,17 @@ const gameSlice = createSlice({
     },
     setSession: (state, action: PayloadAction<string>) => {
       state.session = action.payload;
+    },
+    addStory: (state, action: PayloadAction<{text: string, type: StoryType}>) => {
+      state.story.push(action.payload);
+    },
+    setSuggestions: (state, action: PayloadAction<string[]>) => {
+      state.suggestions = action.payload;
     }
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions } = gameSlice.actions;
 
 
 // Store

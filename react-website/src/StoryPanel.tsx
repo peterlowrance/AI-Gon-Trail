@@ -1,20 +1,34 @@
-import UserInput from "./UserInput";
-import {useSelector} from 'react-redux';
-import { RootState } from "./store";
-import { useGetStatusQuery } from "./api";
-import { skipToken } from "@reduxjs/toolkit/dist/query";
+import { useSelector, useDispatch } from 'react-redux';
+import { addStory, RootState, setSuggestions } from "./store";
+import { useLazyGetScenarioQuery } from "./api";
 import { EuiText } from "@elastic/eui";
+import { useEffect } from 'react';
 
 
 export default function StoryPanel(props) {
+    const dispatch = useDispatch();
+    const session = useSelector((state: RootState) => state.game.session);
+    const story = useSelector((state: RootState) => state.game.story);
 
-    const scenario = useSelector((state: RootState) => state.game.session);
+    const [getScenario] = useLazyGetScenarioQuery();
 
-    const {data: gameStatus} = useGetStatusQuery(scenario ?? skipToken);
+    useEffect(() => {
+        if (session && (story.length === 0 || story[story.length - 1].type === 'OUTCOME')) {
+            console.log('Fetching scenario')
+            getScenario(session).unwrap().then(res => {
+                dispatch(setSuggestions(res.suggestions));
+                dispatch(addStory({ text: res.scenario, type: 'SCENARIO' }));
+            });
+        }
+    }, [story])
 
     return <div>
         <EuiText>
-            {gameStatus?.current_scenario}
+            {story.map((s, i) =>
+                <p key={i}>
+                    {s.text}
+                </p>
+            )}
         </EuiText>
     </div>
 }

@@ -3,7 +3,7 @@ import { useGetStatusQuery } from "./api";
 import { RootState } from "./store";
 import { useSelector } from 'react-redux';
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
-import Item from "./Item";
+import Item, { parseText } from "./Item";
 import { Fragment } from "react";
 
 export default function StatusSidebar(props) {
@@ -38,10 +38,10 @@ export default function StatusSidebar(props) {
                     <EuiTitle size='xs'>
                         <h3>Items:</h3>
                     </EuiTitle>
-                    {gameStatus.items.map(i =>
-                        <Fragment key={i}>
+                    {gameStatus.items.map(item =>
+                        <Fragment key={parseText(item)}>
                             <EuiSpacer size='xs' />
-                            <Item value={i} />
+                            <Item value={item} />
                         </Fragment>
                     )}
                 </EuiPanel>
