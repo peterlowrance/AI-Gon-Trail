@@ -18,10 +18,9 @@ class GameState:
         self.items = items
         self.previous_summaries = []
 
-    def progress(self, characters: list[str], items: list[str], summary: str):
+    def progress(self, characters: list[str], items: list[str]):
         self.characters = characters
         self.items = items
-        self.previous_summaries.append(summary)
         self.current_step += 1
         # TODO: consider limiting the max size of previous_summaries
 
