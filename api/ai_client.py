@@ -3,7 +3,7 @@ import openai
 import json
 import yaml
 from api.prompts import Prompt
-
+import re
 
 class AiClient:
 
@@ -48,7 +48,12 @@ class AiClient:
 					end = res.rfind("}") + 1
 					# Extract the json substring
 					data_str = res[start:end]
-					data_dict = json.loads(data_str)
+					try:
+						data_dict = json.loads(data_str)
+					except:
+						# If unable to parse, try to fix quotes
+						data_str = fix_missing_quotes(data_str)
+						data_dict = json.loads(data_str)
 			except:
 				print(f"Invalid {data_str} from response {res}")
 				continue
@@ -59,6 +64,12 @@ class AiClient:
 					continue
 			return data_dict
 		return None
+
+# Thanks bing for this regex :)
+def fix_missing_quotes(json_string):
+    # Use a regular expression to find object keys without quotes
+    fixed_json = re.sub(r'([{,])(\s*)([A-Za-z0-9_]+)(\s*):', r'\1"\3":', json_string)
+    return fixed_json
 
 	
 # Bing generated validation function

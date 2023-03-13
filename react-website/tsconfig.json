@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strictNullChecks": true,
+    "target": "es2020",
+    "lib": [
+      "ES6",
+      "dom",
+      "ES2021"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
+  }
+}

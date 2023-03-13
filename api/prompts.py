@@ -44,6 +44,7 @@ Is this player action valid? Respond in the format {{"valid": true or false, "ex
     }
 
 def get_scenario_prompt(state: GameState) -> Prompt: 
+    # TODO: add last outcome to this prompt?
     previous_scenario_str = ''
     if len(state.previous_summaries) > 0:
         previous_scenario_str = f"\nPreviously, the party overcame these challenges: {', '.join(state.previous_summaries)}\nMake sure to not create a duplicate scenario.\n"
@@ -69,8 +70,8 @@ Characters: {json.dumps(state.characters)}
 Vehicle: {json.dumps(state.vehicle)}
 The player action is "{player_action}"
 
-Respond with a brief description of the outcome and provide updated items and players. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. Extremely negative outcomes should be rare. Example format:
-{{"outcome":"description", "items":["(damaged) {example_item}"], "characters":["(injured) {state.characters[0]}"]}}
+Respond with a brief description of the outcome and provide updated items and players. The outcome should conclude the scenario and allow the party to move on. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. Extremely negative outcomes should be rare. Example format:
+{{"outcome":"description", "items":["(damaged) {example_item}", ...], "characters":["(injured) {state.characters[0]}", ...]}}
 
 Respond with only the json object""",
         "temperature": .7,
