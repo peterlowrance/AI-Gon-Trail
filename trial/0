@@ -1,0 +1,144 @@
+Running with Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: Good condition
+On step 1/10
+
+Scenario 1
+Scenario:    As the party continues their journey, they come across a river that has flooded due to heavy rains. The water is fast and deep, making it difficult to cross safely.
+Summary:     The party must find a way to safely cross a flooded river on their journey.
+Suggestions: ['Attempt to find a shallower area of the river to cross.', 'Build a makeshift raft using the materials they have.', 'Wait for the water to recede before attempting to cross.']
+Player action Attempt to find a shallower area of the river to cross.
+Outcome: The party spends several hours scouting the river and eventually finds a shallow area to cross. They are able to safely make it to the other side with no issues.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, Bullets, Candles, Cheese, Clothing, Compass, Dried Fruit, Gunpowder, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Salt, Soap, Sugar, Tea, Tent, Whiskey Flask, Wool Coat
+Wagon: Good condition
+On step 2/10
+]
+
+
+Scenario 2
+Scenario:    The party comes across a group of bandits who demand all of their supplies in exchange for safe passage through their territory.
+Summary:     Bandits demand all the party's supplies for safe passage.
+Suggestions: ['Attempt to negotiate with the bandits for a smaller amount of supplies', "Fight off the bandits with the party's weapons and risk injury or death", 'Divert their path and try to avoid the bandits altogether.']
+Player action Attempt to negotiate with the bandits for a smaller amount of supplies
+Outcome: The bandits refuse to negotiate and threaten violence. The party decides to give up some supplies to avoid conflict. The bandits take half of the party's bullets, dried fruit, and salt, as well as a few items they find interesting (compass, wool coat, whiskey flask). The party is able to keep the rest of their supplies and continue on their journey.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: Alcohol, Blanket, (halved) Bullets, Candles, Cheese, Clothing, (taken) Compass, (halved) Dried Fruit, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+Wagon: Good condition
+On step 3/10
+]
+
+
+Scenario 3
+Scenario:    The party comes across a dense forest that they must navigate through to continue on their journey. The trees are tightly packed together, making it difficult to see far ahead and slowing progress. The forest is also home to dangerous wildlife, including bears and wolves, that could attack the party at any moment.
+Summary:     Navigate through a dense forest while avoiding dangerous wildlife.
+Suggestions: ['Scavenge for food and supplies before entering the forest to ensure the party is well-equipped.', 'Assign a lookout to keep an eye out for any nearby wildlife that could pose a threat.', 'Create loud noises and use fire to scare off any predators that may approach the party.']
+Player action Scavenge for food and supplies before entering the forest to ensure the party is well-equipped.
+Outcome: The party successfully scavenges for food and supplies, finding extra bullets and dried fruit. They enter the dense forest and navigate carefully, avoiding dangerous wildlife. The journey is slow but uneventful, and they emerge on the other side unscathed.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Bullets, (halved) Dried Fruit, (taken) Compass, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+Wagon: Good condition
+On step 4/10
+]
+
+
+Scenario 4
+Scenario:    A massive wildfire has broken out in the area, blocking the party's path and threatening to engulf them in flames. The smoke is making it hard to breathe and see, and the party must act quickly to avoid being trapped by the flames.
+Summary:     The party must navigate through a wildfire that is rapidly spreading in their path.
+Suggestions: ['Attempt to find a safe route around the wildfire, potentially by using the compass to navigate through nearby hills or mountains.', "Use the party's rifle and gunpowder to start a controlled burn, clearing a safe path through the wildfire.", 'Quickly set up the tent and use it as a makeshift shelter until the wildfire passes, being sure to cover any openings to prevent smoke inhalation.']
+Player action Attempt to find a safe route around the wildfire, potentially by using the compass to navigate through nearby hills or mountains.
+Outcome: The party successfully navigates around the wildfire, using the compass to guide them through nearby hills. Although they encounter some rough terrain and steep slopes, they manage to avoid the dangerous flames and smoke. The Wool Coat proves to be useful in protecting them from the heat and ash, and the Whiskey Flask is a much needed source of comfort at the end of a long and stressful day. The party reaches the other side of the wildfire unscathed.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Bullets, (halved) Dried Fruit, (taken) Compass, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+Wagon: Good condition
+On step 5/10
+]
+
+
+Scenario 5
+Scenario:    The party comes across a steep mountain pass that they must traverse in order to continue their journey. The pass is narrow and rocky, with loose gravel and large boulders making footing treacherous. The wind is strong and gusty, threatening to knock the party off balance and send them tumbling down the side of the mountain. To make matters worse, a sudden snowstorm sets in, making visibility poor and footing even more treacherous.
+Summary:     The party must navigate a treacherous mountain pass in the midst of a snowstorm.
+Suggestions: ['Use ropes and harnesses to secure the party and prevent falls.', 'Take a more circuitous route to avoid the most dangerous parts of the pass.', 'Wait out the snowstorm in a sheltered area and attempt the pass when conditions improve.']
+Player action Use ropes and harnesses to secure the party and prevent falls.
+Outcome: The party successfully navigates the mountain pass with the use of ropes and harnesses. Although it was a slow and difficult journey, no one fell or suffered any injuries. They arrive safely at the other side of the pass.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Dried Fruit, (taken) Compass, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Hammer, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+Wagon: Good condition
+On step 6/10
+]
+
+
+Scenario 6
+Scenario:    The party comes across a river that has frozen over, but the ice looks thin and unstable. They must find a way to safely cross the river without falling through the ice.
+Summary:     Cross a frozen river without falling through the ice.
+Suggestions: ['Use the hammer to break a path through the ice to check for stability.', 'Send one person across at a time with a rope tied to them, to pull them back if they fall through.', 'Build a makeshift bridge using the pots and pans and any fallen trees in the area.']
+Player action Use the hammer to break a path through the ice to check for stability.
+Outcome: The hammer breaks through the ice easily and reveals a solid path. The party is able to cross safely.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Dried Fruit, (taken) Compass, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+Wagon: Good condition
+On step 7/10
+]
+
+
+Scenario 7
+Scenario:    The party comes across a large river that has frozen over, but the ice looks thin and unstable. They must find a way to safely cross the river without falling through the ice and losing supplies or worse, their lives.
+Summary:     Cross a frozen river with thin and unstable ice.
+Suggestions: ['Build a makeshift bridge using logs and other materials to distribute weight evenly across the ice.', 'Test the ice near the shore with a long stick or rope to see if it can support the weight of the party and supplies.', 'Find a local guide or experienced outdoorsman who can advise the party on the safest route to take and how to properly cross the river.']
+Player action Build a makeshift bridge using logs and other materials to distribute weight evenly across the ice.
+Outcome: The party successfully builds a makeshift bridge using logs and other materials. They distribute their weight evenly across the ice and make it safely to the other side.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Dried Fruit, (taken) Compass, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+Wagon: Good condition
+On step 8/10
+]
+
+
+Scenario 8
+Scenario:    As the party continues their journey, they come across a vast desert with no end in sight. With limited water supplies, they must navigate through the scorching hot sands to reach the other side.
+Summary:     Navigate through a seemingly endless desert with limited water supplies.
+Suggestions: ['Travel at night to avoid the scorching heat of the day', 'Create a makeshift sun shade using the tent and pots and pans', 'Attempt to find a nearby oasis or water source']
+Player action Travel at night to avoid the scorching heat of the day
+Outcome: The party successfully navigated through the desert at night, avoiding the scorching heat of the day. They rationed their limited water supplies carefully and made it to the other side of the desert. However, the wagon's wheels took a beating and need some repair before continuing on.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Dried Fruit, (taken) Compass, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+(damaged) Wagon: Needs wheel repair
+On step 9/10
+]
+
+
+Scenario 9
+Scenario:    As the party approaches the final leg of their journey, they are forced to navigate through a treacherous and unpredictable minefield that has claimed the lives of many travelers before them. The ground is littered with hidden explosives that could go off at any moment, and the party must use all their wits and instincts to avoid them and reach their destination safely.
+Summary:     Navigate through a minefield filled with hidden explosives to reach the final destination.
+Suggestions: ['Carefully study the terrain and look for any signs of explosives before proceeding.', 'Use a long stick or pole to probe the ground ahead and trigger any hidden explosives before stepping on them.', 'Split the party into smaller groups and have them take different paths to increase the chances of at least one group making it through safely.']
+Player action Carefully study the terrain and look for any signs of explosives before proceeding.
+Outcome: The party carefully studies the terrain and manages to avoid the hidden explosives. They reach the final destination unscathed.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Dried Fruit, (taken) Compass, (taken) Wool Coat, (halved) Salt, Soap, Sugar, Tea, Tent, (taken) Whiskey Flask, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+(damaged) Wagon: Needs wheel repair
+On step 10/10
+]
+
+
+Scenario 10
+Scenario:    As the party approaches the final stretch of their journey, they come across a raging river that must be crossed in order to reach their destination. The river is too deep to wade through and too wide to jump across, and the current is strong and treacherous. The party must find a way to safely cross the river without losing any of their supplies or members.
+Summary:     Cross a raging river without losing supplies or members.
+Suggestions: ['Attempt to construct a makeshift raft from available supplies and navigate across the river.', 'Search for a shallower area of the river to cross, but be cautious of hidden rocks and strong currents.', 'Attempt to find a local guide who is familiar with the area and can safely lead the party across the river.']
+Player action Attempt to construct a makeshift raft from available supplies and navigate across the river.
+Outcome: The party successfully constructs a sturdy raft from the available supplies and navigates across the river without losing any supplies or members. The Wool Coat and Tent were used to keep the supplies dry during the crossing. The party celebrates their success with a small sip of Whiskey from the flask.
+State: [
+Characters: Lena, Ricardo, Mira, Jesse, Kai
+Items: (halved) Salt, Soap, Sugar, Tea, Knife, Matches, Medicine Chest, Pots and Pans, Rifle, Gunpowder
+(damaged) Wagon: Needs wheel repair
+On step 11/10
+]
+

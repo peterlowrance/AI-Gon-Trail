@@ -54,7 +54,7 @@ The current status of the game is:
 Characters: {', '.join(state.characters)}
 Items: {', '.join(state.items)}
 
-The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. They are about to face some sort of obstacle on their journey. It will be a challenge that they will have to overcome in order to progress. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
+The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. They are about to face some sort of obstacle on their journey. It will be a challenge that they will have to overcome in order to progress. Make the situation difficulty harder the closer the player is to the end. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
         "temperature": .7,
         "response_type": "json",
         "validation_schema": {"scenario": str, "summary": str, "suggestions": [str]}
@@ -67,13 +67,14 @@ def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameS
 Scenario: "{scenario}"
 Available items {json.dumps(state.items)}
 Characters: {json.dumps(state.characters)}
+Vehicle: {json.dumps(state.vehicle)}
 The player action is "{player_action}"
 
-Respond with a brief description of the outcome and provide updated items and players. The outcome should conclude the scenario and allow the party to move on. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. Extremely negative outcomes should be rare. Example format:
+Respond with a brief description of the outcome and provide updated items, players, and vehicle. The outcome should conclude the scenario and allow the party to move on. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. If it is a bad outcome damage the vehicle health a bit. Extremely negative outcomes should be rare. Example format:
 {{"outcome":"description", "items":["(damaged) {example_item}", ...], "characters":["(injured) {state.characters[0]}", ...]}}
 
 Respond with only the json object""",
         "temperature": .7,
         "response_type": "json",
-        "validation_schema": {"outcome": str, "items": [str], "characters": [str]}
+        "validation_schema": {"outcome": str, "items": [str], "characters": [str], "vehicle": str}
     }
