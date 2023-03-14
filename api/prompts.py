@@ -54,7 +54,7 @@ The current status of the game is:
 Characters: {', '.join(state.characters)}
 Items: {', '.join(state.items)}
 
-The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. They are about to face some sort of obstacle on their journey. It will be a challenge that they will have to overcome in order to progress. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
+The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. They are about to face some sort of obstacle on their journey. It will be a challenge that they will have to overcome in order to progress. Make the situation difficulty harder the closer the player is to the end. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
         "temperature": .7,
         "response_type": "json",
         "validation_schema": {"scenario": str, "summary": str, "suggestions": [str]}
