@@ -23,12 +23,17 @@ export default function StoryPanel(props) {
     }, [story])
 
     return <div>
-        <EuiText>
-            {story.map((s, i) =>
-                <p key={i}>
+        {story.map((s, i) =>
+            <EuiText color={s.invalid ? 'danger' : undefined} key={i}>
+                <p>
                     {s.text}
                 </p>
-            )}
-        </EuiText>
+                {s.invalidMsg &&
+                    <p>
+                        {s.invalidMsg}
+                    </p>
+                }
+            </EuiText>
+        )}
     </div>
 }

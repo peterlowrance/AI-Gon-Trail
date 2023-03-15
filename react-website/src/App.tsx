@@ -34,7 +34,7 @@ function App() {
       {gameState === 'NOT_STARTED' && <EuiButton onClick={handleStart}>Start</EuiButton>}
     </EuiPageTemplate.Header>
     <EuiPageTemplate.Section grow={true}>
-      <div style={{ height: '100%' }} >
+      <div style={{ height: '100%', overflowY: 'scroll' }} >
         {gameState === 'CHOOSING_ITEMS' &&
           <PurchaseItemPanel />
         }

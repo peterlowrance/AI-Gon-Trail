@@ -32,7 +32,7 @@ def game_start_items(request):
     # }
 
     # Save initial data to state
-    database[session] = GameState(characters=res['crew'], items=[])
+    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'])
     return Response({'items': res['items'], 'session': session, 'description': res['description']})
 
 
@@ -42,7 +42,7 @@ def get_game_status(request):
     state = database[session]
 
     return Response({
-        'vehicle': 'wagon', # TODO: add vehicle to start prompt and state
+        'vehicle': state.vehicle,
         'items': state.items,
         'characters': state.characters,
     })
@@ -68,20 +68,27 @@ def take_action(request):
     Modifies the items, characters, and vehicle of the state
     Returns the text of the outcome of this action
     """
+    client = AiClient()
     session = request.data['session']
     state = database[session]
     scenario = request.data['scenario']
     action = request.data['action']
     # TODO: validate the user's input
 
+    prompt = get_validate_action_prompt(scenario, state, action)
+    res = client.gen_dict(prompt)
+    valid = res['valid']
+    valid_explanation = res['explanation']
+    if not valid:
+        return Response({'valid': False, 'text': valid_explanation})
     prompt = get_scenario_outcome_prompt(scenario, action, state)
-    res = AiClient().gen_dict(prompt)
+    res = client.gen_dict(prompt)
     outcome = res['outcome']
     # TODO: also update the vehicle
     items = res['items']
     characters = res['characters']
     state.progress(items=items, characters=characters)
-    return Response(outcome)
+    return Response({'valid': True, 'text': outcome})
 
 
 @api_view(['GET'])

@@ -39,6 +39,8 @@ class AiClient:
 			tries -= 1
 			res = self.gen(prompt['prompt'], params={'temperature': prompt['temperature']})
 			# Parse it into a Python dictionary
+			data_str = ''
+			data_dict = {}
 			try:
 				if prompt['response_type'] == 'yaml':
 					data_dict = yaml.safe_load(res)
@@ -55,7 +57,7 @@ class AiClient:
 						data_str = fix_missing_quotes(data_str)
 						data_dict = json.loads(data_str)
 			except:
-				print(f"Invalid {data_str} from response {res}")
+				print(f"Invalid {data_str} from response {res} with dict {data_dict}")
 				continue
 			if 'validation_schema' in prompt:
 				valid = validate(data_dict, prompt['validation_schema'])

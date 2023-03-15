@@ -10,7 +10,7 @@ class Prompt(TypedDict):
 
 def get_start_prompt(theme: str) -> Prompt:
     return {
-        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme. The custom theme is "{theme}". Respond with a yaml object that shows the available items to purchase at the start of the game. The yaml should have a field 'items' which is a mapping with keys of the item and value of the cost. There should be 20 items. The items should be things that the group can use to overcome challenges. Their cost should be 1 to 20 for each item. The user will have a total of 100 to spend on them. Also generate a sequence of 5 characters that are in the crew. A field wagon which is a string. A field description which explains how the crew starts out on their journey based on the theme. Each item, character, and the wagon can have optional modifiers for extraneous features, shown in parentheses with the item name, for example "(broken) gun", " or "(strong, steel) shovel". Make these fields match the custom theme. Add modifiers to only some of the values.
+        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme. The custom theme is "{theme}". Respond with a yaml object that shows the available items to purchase at the start of the game. The yaml should have a field 'items' which is a mapping with keys of the item and value of the cost. There should be 20 items. The items should be things that the group can use to overcome challenges. Their cost should be 1 to 20 for each item. The user will have a total of 100 to spend on them. Also generate a sequence of 5 characters that are in the crew. A field vehicle which is a string. A field description which explains how the crew starts out on their journey based on the theme. Each item, character, and the vehicle can have optional modifiers for extraneous features, shown in parentheses with the item name, for example "(broken) gun", " or "(strong, steel) shovel". Make these fields match the custom theme. Add modifiers to only some of the values.
 Example:
 
 items:
@@ -18,23 +18,23 @@ items:
   (stale) rations: 3
 crew:
  - (cartographer) Bob
-wagon: (old) wooden wagon
+vehicle: (old) wooden wagon
 description: The group sets out...
 
 
 Respond with only this yaml object""",
         "temperature": 0.7,
         "response_type": "yaml",
-        "validation_schema": {"items": {"*": int}, "crew": [str], "wagon": str, "description": str}
+        "validation_schema": {"items": {"*": int}, "crew": [str], "vehicle": str, "description": str}
     }
 
-def get_validate_action_prompt(scenario: str, items: list[str], characters: list[str], action: str) -> Prompt:
+def get_validate_action_prompt(scenario: str, state: GameState, action: str) -> Prompt:
     return {
         "prompt": f"""Your job is to determine whether or not a payers action is valid and humanly possible. If the player action involves an object not in the Scenario, Available items, or Characters it is not valid.
 
 Scenario: "{scenario}"
-Available items {json.dumps(items)}
-Characters: {json.dumps(characters)}
+Available items {json.dumps(state.items)}
+Characters: {json.dumps(state.characters)}
 Players action: "{action}"
 
 Is this player action valid? Respond in the format {{"valid": true or false, "explanation": "..."}}""",

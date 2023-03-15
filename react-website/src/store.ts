@@ -11,7 +11,7 @@ const gameSlice = createSlice({
     gameState: 'NOT_STARTED' as GameState,
     itemsToBuy: {} as {[item: string]: number},
     session: null as null | string,
-    story: [] as {text: string, type: StoryType}[],
+    story: [] as {text: string, type: StoryType, invalid?: boolean, invalidMsg?: string}[],
     suggestions: [] as string[]
   },
   reducers: {
@@ -25,7 +25,16 @@ const gameSlice = createSlice({
       state.session = action.payload;
     },
     addStory: (state, action: PayloadAction<{text: string, type: StoryType}>) => {
+      // If this is an action and the last story is invalid, overwrite it
+      if (action.payload.type === 'ACTION' && state.story.length > 0 && state.story[state.story.length - 1].invalid) {
+        state.story[state.story.length - 1] = action.payload;
+      }
       state.story.push(action.payload);
+    },
+    invalidateStoryAction: (state, action: PayloadAction<string>) => {
+      const lastStory = state.story[state.story.length - 1];
+      lastStory.invalid = true;
+      lastStory.invalidMsg = action.payload;
     },
     setSuggestions: (state, action: PayloadAction<string[]>) => {
       state.suggestions = action.payload;
@@ -33,7 +42,7 @@ const gameSlice = createSlice({
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction } = gameSlice.actions;
 
 
 // Store

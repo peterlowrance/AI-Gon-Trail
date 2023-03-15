@@ -1,8 +1,9 @@
 import { EuiBadge, EuiButton, EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiText } from "@elastic/eui";
 import { useState } from "react";
 import { useTakeActionMutation } from "./api";
-import { addStory, RootState } from "./store";
+import { addStory, invalidateStoryAction, RootState } from "./store";
 import { useSelector, useDispatch } from 'react-redux';
+import _ from 'lodash';
 
 export default function UserInput(props: { disabled: boolean }) {
     const dispatch = useDispatch();
@@ -10,25 +11,26 @@ export default function UserInput(props: { disabled: boolean }) {
     const session = useSelector((state: RootState) => state.game.session);
     const suggestions = useSelector((state: RootState) => state.game.suggestions);
     const story = useSelector((state: RootState) => state.game.story);
-    
-    let scenario = null as null | string;
-    if (story.length > 0){
-        const lastStory = story[story.length - 1];
-        if (lastStory.type === 'SCENARIO') {
-            scenario = lastStory.text;
-        }
+
+    let scenario = undefined as undefined | string;
+    if (story.length > 0) {
+        scenario = _.findLast(story, s => s.type === 'SCENARIO')?.text;
     }
 
     const [takeAction] = useTakeActionMutation();
 
     const handleTakeAction = () => {
         if (session && scenario) {
-            // TODO: validate action
-            dispatch(addStory({text: value, type: 'ACTION'}));
+            dispatch(addStory({ text: value, type: 'ACTION' }));
             takeAction({ action: value, scenario: scenario, session: session }).unwrap()
                 .then((res) => {
-                    setValue('');
-                    dispatch(addStory({text: res, type: 'OUTCOME'}))
+                    if (res.valid) {
+                        dispatch(addStory({ text: res.text, type: 'OUTCOME' }));
+                        setValue('');
+                    }
+                    else {
+                        dispatch(invalidateStoryAction(res.text));
+                    }
                 });
         }
     }
