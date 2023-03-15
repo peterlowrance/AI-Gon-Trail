@@ -84,7 +84,7 @@ class PromptTestCase(TestCase):
                         except:
                             print('Parsing error!!!', res, file=f)
                             break
-                        state.progress(characters, items, vehicle, summary)
+                        state.progress(characters, items, vehicle)
                         print('Outcome:', outcome, file=f)
                         print('State: [', file=f)
                         print(state, file=f)
