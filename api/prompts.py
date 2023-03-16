@@ -44,20 +44,25 @@ Is this player action valid? Respond in the format {{"valid": true or false, "ex
     }
 
 def get_scenario_prompt(state: GameState) -> Prompt: 
-    # TODO: add last outcome to this prompt?
-    previous_scenario_str = ''
-    if len(state.previous_summaries) > 0:
-        previous_scenario_str = f"\nPreviously, the party overcame these challenges: {', '.join(state.previous_summaries)}\nMake sure to not create a duplicate scenario.\n"
     return {
-        "prompt": f"""This is a game similar to Oregon Trail. You control the NPC's and world in an attempt to make the game realistic.{previous_scenario_str}
+        "prompt": f"""This is a game similar to Oregon Trail. You control the NPC's and world in an attempt to make the game realistic.
 The current status of the game is:
 Characters: {', '.join(state.characters)}
 Items: {', '.join(state.items)}
 
-The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. They are about to face some sort of obstacle on their journey. It will be a challenge that they will have to overcome in order to progress. Make the situation difficulty harder the closer the player is to the end. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
+The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step]}. It will be a challenge that they will have to overcome in order to progress. Make the situation difficulty harder the closer the player is to the end. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
         "temperature": .7,
         "response_type": "json",
         "validation_schema": {"scenario": str, "summary": str, "suggestions": [str]}
+    }
+
+
+def get_scenario_list_prompt() -> Prompt: 
+    return {
+        "prompt": """Your job is to generate 10 short situations of increasing difficulty for the player to try to overcome in an Oregon Trail game. The situations should be related to the theme of traveling across the American frontier in the 19th century. The situations should involve challenges such as weather, terrain, wildlife, health, resources, and conflicts. Reply in json in this format {"situations":["Cross a river", "", ...]}. Try to make them unique and interesting.""",
+        "temperature": .7,
+        "response_type": "json",
+        "validation_schema": {"situations": [str]}
     }
 
 def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameState) -> Prompt:

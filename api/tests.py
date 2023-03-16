@@ -3,6 +3,7 @@ from api.ai_client import AiClient
 from api.prompts import *
 from api.game_state import GameState
 import random 
+import re
 
 class PromptTestCase(TestCase):
     client: AiClient
@@ -38,6 +39,12 @@ class PromptTestCase(TestCase):
             res = self.client.gen_dict(prompt)
             self.assertFalse(res['valid'], f'Invalid response {res}')
 
+    def test_get_scenario_list(self):
+        prompt = get_scenario_list_prompt()
+        prompts = self.client.gen_dict(prompt)
+        self.assertFalse(prompts == None, "Failed to generate scenario list")
+
+
 # Run with:
 # python manage.py test api.tests.PromptTestCase.test_scenario
     def test_scenario(self):      
@@ -50,10 +57,12 @@ class PromptTestCase(TestCase):
         characters3 = ['Mila', 'Eli', 'Lila', 'Max', 'Ruby']
         charactersSets = [characters1, characters2, characters3]
         vehicleOptions = ["Wagon: health is 100 out of 100", "Wagon: Good condition", "Wagon: health 100/100", "Wagon: full health"]
+        scenario_list_prompt = get_scenario_list_prompt()
+        scenario_list = self.client.gen_dict(scenario_list_prompt)["situations"]
         for i in range(1):
             with open("trial/"+str(i), mode="w+") as f:
                 try:
-                    state = GameState(characters=random.choice(charactersSets), items=random.choice(itemSets), vehicle=random.choice(vehicleOptions))
+                    state = GameState(characters=random.choice(charactersSets), items=random.choice(itemSets), vehicle=random.choice(vehicleOptions), situations=scenario_list)
                     print(f"Running with {state}", file=f)
                     while state.current_step <= state.total_steps and len(state.characters) > 0:
                         print(f'\nScenario {state.current_step}', file=f)
@@ -91,3 +100,6 @@ class PromptTestCase(TestCase):
                         print(']\n', file=f)
                 except Exception as e:
                     print(f"Exception: {type(e).__name__}\nException message: {e}", file=f)
+
+
+
