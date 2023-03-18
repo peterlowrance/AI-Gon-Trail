@@ -12,6 +12,8 @@ class AiClient:
 			openai.api_key = key
 		else:
 			openai.api_key = os.getenv("OPENAI_API_KEY")
+		if not openai.api_key:
+			raise Exception('No key provided')
 		self.model = 'gpt-3.5-turbo'
 
 	def __call__(self):
