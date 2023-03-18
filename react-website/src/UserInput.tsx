@@ -17,7 +17,7 @@ export default function UserInput(props: { disabled: boolean }) {
         scenario = _.findLast(story, s => s.type === 'SCENARIO')?.text;
     }
 
-    const [takeAction] = useTakeActionMutation();
+    const [takeAction, takeActionRes] = useTakeActionMutation();
 
     const handleTakeAction = () => {
         if (session && scenario) {
@@ -71,7 +71,7 @@ export default function UserInput(props: { disabled: boolean }) {
                     />
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
-                    <EuiButton isDisabled={!value || props.disabled} onClick={handleTakeAction}>Take Action</EuiButton>
+                    <EuiButton isDisabled={!value || props.disabled || takeActionRes.isLoading} onClick={handleTakeAction}>Take Action</EuiButton>
                 </EuiFlexItem>
             </EuiFlexGroup>
         </EuiFlexItem>

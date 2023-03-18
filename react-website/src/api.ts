@@ -17,7 +17,8 @@ export const gameApi = createApi({
                 url: 'game-start-items',
                 method: 'POST',
                 params: {
-                    theme: theme
+                    theme: theme,
+                    key: window.key
                 }
             })
         }),
@@ -27,7 +28,8 @@ export const gameApi = createApi({
                 method: 'POST',
                 body: {
                     session: session,
-                    items: items
+                    items: items,
+                    key: window.key
                 }
             }),
             invalidatesTags: ['GAME']
@@ -37,7 +39,8 @@ export const gameApi = createApi({
             query: (session) => ({
                 url: 'game-status',
                 params: {
-                    session: session
+                    session: session,
+                    key: window.key
                 }
             }),
             providesTags: ['GAME']
@@ -46,7 +49,8 @@ export const gameApi = createApi({
             query: (session) => ({
                 url: 'game-scenario',
                 params: {
-                    session: session
+                    session: session,
+                    key: window.key
                 }
             })
         }),
@@ -57,7 +61,8 @@ export const gameApi = createApi({
                 body: {
                     session: session,
                     scenario: scenario,
-                    action: action
+                    action: action,
+                    key: window.key
                 }
             }),
             invalidatesTags: ['GAME']

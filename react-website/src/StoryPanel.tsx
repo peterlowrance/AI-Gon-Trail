@@ -28,6 +28,7 @@ export default function StoryPanel(props) {
                 <p>
                     {s.text}
                 </p>
+                {s.type === 'OUTCOME' && <br />}
                 {s.invalidMsg &&
                     <p>
                         {s.invalidMsg}

@@ -57,9 +57,14 @@ The party is trying to reach the west and they are {state.current_step}/{state.t
     }
 
 
-def get_scenario_list_prompt() -> Prompt: 
+def get_scenario_list_prompt() -> Prompt:
     return {
-        "prompt": """Your job is to generate 10 short situations of increasing difficulty for the player to try to overcome in an Oregon Trail game. The situations should be related to the theme of traveling across the American frontier in the 19th century. The situations should involve challenges such as weather, terrain, wildlife, health, resources, and conflicts. Reply in json in this format {"situations":["Cross a river", "", ...]}. Try to make them unique and interesting.""",
+        "prompt": """Your job is to generate 10 short situations of increasing difficulty for the player to try to overcome in an Oregon Trail game.
+The situations should be related to the theme of traveling across the American frontier in the 19th century.
+The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, resources, and conflicts.
+Each situation should be 4 sentences long
+
+Reply in json in this format {"situations":["Cross a river...", ...]}. Try to make them unique and interesting.""",
         "temperature": .7,
         "response_type": "json",
         "validation_schema": {"situations": [str]}

@@ -29,7 +29,9 @@ const gameSlice = createSlice({
       if (action.payload.type === 'ACTION' && state.story.length > 0 && state.story[state.story.length - 1].invalid) {
         state.story[state.story.length - 1] = action.payload;
       }
-      state.story.push(action.payload);
+      else {
+        state.story.push(action.payload);
+      }
     },
     invalidateStoryAction: (state, action: PayloadAction<string>) => {
       const lastStory = state.story[state.story.length - 1];

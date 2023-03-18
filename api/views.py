@@ -16,9 +16,13 @@ def game_start_items(request):
     """
     session = uuid4().hex
     theme = request.GET.get('theme', 'Oregon Trail')
-    client = AiClient()
+    key = request.GET.get('key')
+    client = AiClient(key)
     prompt = get_start_prompt(theme)
     res = client.gen_dict(prompt)
+
+    scenario_prompt = get_scenario_list_prompt()
+    scenario_res = client.gen_dict(scenario_prompt)
     # {"items": {"*": int}, "crew": [str], "wagon": str, "description": str}
     # res = {
     #     'items': {
@@ -32,7 +36,7 @@ def game_start_items(request):
     # }
 
     # Save initial data to state
-    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'])
+    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=scenario_res['situations'])
     return Response({'items': res['items'], 'session': session, 'description': res['description']})
 
 
@@ -68,12 +72,12 @@ def take_action(request):
     Modifies the items, characters, and vehicle of the state
     Returns the text of the outcome of this action
     """
-    client = AiClient()
     session = request.data['session']
     state = database[session]
     scenario = request.data['scenario']
     action = request.data['action']
-    # TODO: validate the user's input
+    key = request.data.get('key')
+    client = AiClient(key)
 
     prompt = get_validate_action_prompt(scenario, state, action)
     res = client.gen_dict(prompt)
@@ -84,10 +88,11 @@ def take_action(request):
     prompt = get_scenario_outcome_prompt(scenario, action, state)
     res = client.gen_dict(prompt)
     outcome = res['outcome']
-    # TODO: also update the vehicle
+
     items = res['items']
     characters = res['characters']
-    state.progress(items=items, characters=characters)
+    vehicle = res['vehicle']
+    state.progress(items=items, characters=characters, vehicle=vehicle)
     return Response({'valid': True, 'text': outcome})
 
 
@@ -98,12 +103,13 @@ def get_scenario(request):
     Also returns a list of suggested actions
     """
     session = request.GET['session']
+    key = request.GET.get('key')
     state = database[session]
-    prompt = get_scenario_prompt(state)
-    client = AiClient()
-    res = client.gen_dict(prompt)
-    scenario = res['scenario']
-    summary = res['summary']
-    suggestions = res['suggestions']
-    state.previous_summaries.append(summary)
-    return Response({'scenario': scenario, 'suggestions': suggestions})
+    scenario = state.situations[state.current_step]
+    # prompt = get_scenario_prompt(state)
+    # client = AiClient(key)
+    # res = client.gen_dict(prompt)
+    # scenario = res['scenario']
+    # summary = res['summary']
+    # suggestions = res['suggestions']
+    return Response({'scenario': scenario, 'suggestions': []})
