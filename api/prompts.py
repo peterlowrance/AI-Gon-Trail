@@ -47,13 +47,14 @@ def get_scenario_prompt(state: GameState) -> Prompt:
     return {
         "prompt": f"""This is a game similar to Oregon Trail. You control the NPC's and world in an attempt to make the game realistic.
 The current status of the game is:
+Vehicle: {state.vehicle}
 Characters: {', '.join(state.characters)}
 Items: {', '.join(state.items)}
 
-The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step]}. It will be a challenge that they will have to overcome in order to progress. Make the situation difficulty harder the closer the player is to the end. Respond with a json object with fields scenario, summary, and suggestions. scenario is 75 words of description and summary is one sentence exact summary of the scenario. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
+The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a challenge that they will have to overcome in order to progress. Make the situation difficulty harder the closer the player is to the end. Respond with a json object with fields scenario, and suggestions. scenario is 75 words of description. Suggestions is an array of 3 actions the player could possibly take to attempt to overcome the scenario.""",
         "temperature": .7,
         "response_type": "json",
-        "validation_schema": {"scenario": str, "summary": str, "suggestions": [str]}
+        "validation_schema": {"scenario": str, "suggestions": [str]}
     }
 
 
@@ -62,7 +63,6 @@ def get_scenario_list_prompt() -> Prompt:
         "prompt": """Your job is to generate 10 short situations of increasing difficulty for the player to try to overcome in an Oregon Trail game.
 The situations should be related to the theme of traveling across the American frontier in the 19th century.
 The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, resources, and conflicts.
-Each situation should be 4 sentences long
 
 Reply in json in this format {"situations":["Cross a river...", ...]}. Try to make them unique and interesting.""",
         "temperature": .7,

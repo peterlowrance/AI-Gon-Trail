@@ -31,6 +31,9 @@ export default function UserInput(props: { disabled: boolean }) {
                     else {
                         dispatch(invalidateStoryAction(res.text));
                     }
+                }).catch(res => {
+                    console.error(res);
+                    alert('Failed to take action');
                 });
         }
     }
@@ -71,7 +74,7 @@ export default function UserInput(props: { disabled: boolean }) {
                     />
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
-                    <EuiButton isDisabled={!value || props.disabled || takeActionRes.isLoading} onClick={handleTakeAction}>Take Action</EuiButton>
+                    <EuiButton isLoading={takeActionRes.isLoading} isDisabled={!value || props.disabled} onClick={handleTakeAction}>Take Action</EuiButton>
                 </EuiFlexItem>
             </EuiFlexGroup>
         </EuiFlexItem>

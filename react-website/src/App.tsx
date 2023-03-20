@@ -33,7 +33,7 @@ function App() {
     grow={true}
     responsive={['s']}
   >
-    <EuiPageTemplate.Sidebar sticky={true}>
+    <EuiPageTemplate.Sidebar responsive={['xs']} sticky>
       <StatusSidebar />
     </EuiPageTemplate.Sidebar>
     <EuiPageTemplate.Header pageTitle={'The AI-Gon Trail'} rightSideItems={[<EuiButton size='s' onClick={handleAddKey}>Add key</EuiButton>]}>

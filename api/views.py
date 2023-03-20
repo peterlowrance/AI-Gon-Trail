@@ -105,11 +105,9 @@ def get_scenario(request):
     session = request.GET['session']
     key = request.GET.get('key')
     state = database[session]
-    scenario = state.situations[state.current_step]
-    # prompt = get_scenario_prompt(state)
-    # client = AiClient(key)
-    # res = client.gen_dict(prompt)
-    # scenario = res['scenario']
-    # summary = res['summary']
-    # suggestions = res['suggestions']
-    return Response({'scenario': scenario, 'suggestions': []})
+    prompt = get_scenario_prompt(state)
+    client = AiClient(key)
+    res = client.gen_dict(prompt)
+    scenario = res['scenario']
+    suggestions = res['suggestions']
+    return Response({'scenario': scenario, 'suggestions': suggestions})
