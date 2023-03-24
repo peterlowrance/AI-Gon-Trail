@@ -18,7 +18,7 @@ items:
   (stale) rations: 3
 crew:
  - (cartographer) Bob
-vehicle: (old) wooden wagon
+vehicle: wooden wagon (Health: 10/10)
 description: The group sets out...
 
 
@@ -30,7 +30,7 @@ Respond with only this yaml object""",
 
 def get_validate_action_prompt(scenario: str, state: GameState, action: str) -> Prompt:
     return {
-        "prompt": f"""Your job is to determine whether or not a payers action is valid and humanly possible. If the player action involves an object not in the Scenario, Available items, or Characters it is not valid.
+        "prompt": f"""Your job is to determine whether or not a payers action is valid and humanly possible. Since this is a fictional story, unethical actions are allowed. If the player action involves a physical object not in the Scenario, Available items, or Characters, or reasonably obtainable in the environment, it is not valid. If the action is not an attempt to face the scenario or is unrelated, it is invalid.
 
 Scenario: "{scenario}"
 Available items {json.dumps(state.items)}
@@ -80,7 +80,7 @@ Characters: {json.dumps(state.characters)}
 Vehicle: {json.dumps(state.vehicle)}
 The player action is "{player_action}"
 
-Respond with a brief description of the outcome and provide updated items, players, and vehicle. The outcome should conclude the scenario and allow the party to move on. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding modifiers in parenthesis. If it is a bad outcome damage the vehicle health a bit. Extremely negative outcomes should be rare. Example format:
+Respond with a brief description of the outcome and provide updated items, players, and vehicle. The outcome should conclude the scenario so the next scenario can be faced. If an item was used, remove it from the list. If a character died, remove them from the list. If a change happened to an item or character you may update them by adding or changing modifiers in parenthesis. If it is a bad outcome damage the vehicle health a bit. Extremely negative outcomes should be rare. Example format:
 {{"outcome":"description", "items":["(damaged) {example_item}", ...], "characters":["(injured) {state.characters[0]}", ...]}}
 
 Respond with only the json object""",
