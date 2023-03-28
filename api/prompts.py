@@ -18,7 +18,7 @@ items:
   (stale) rations: 3
 crew:
  - (cartographer) Bob
-vehicle: wooden wagon (Health: 10/10)
+vehicle: Wooden Wagon (Health 10/10)
 description: The group sets out...
 
 

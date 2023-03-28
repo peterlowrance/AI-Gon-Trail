@@ -19,7 +19,11 @@ class AiClient:
 	def __call__(self):
 		return self
 
-	def gen(self, msg: str, params: dict) -> str:
+	def gen(self, msg: str, params: dict, system_msg: str | None) -> str:
+		messages = []
+		if system_msg:
+			messages.append({'role': 'system', 'content': system_msg})
+		messages.append({'role': 'user', 'content': msg})
 		completion = openai.ChatCompletion.create(
 			model=self.model,
 			temperature=params.get('temperature', 0.7),
@@ -27,50 +31,48 @@ class AiClient:
 			# max_tokens=255,
 			presence_penalty=params.get('presence_penalty', 0),
 			frequency_penalty=params.get('frequency_penalty', 0),
-			messages=[
-				{"role": "user", "content": msg}
-			]
+			messages=messages
 		)
 		# print(completion)
 		return completion.choices[0].message.to_dict()['content']
 
-	def gen_dict(self, prompt: Prompt, tries = 1) -> dict | None:
+	def gen_dict(self, prompt: Prompt) -> dict | None:
 		"""
 		Generate an AI response to the prompt
 		based on the prompt, either json or yaml will be parsed
-		tries: the number of tries to get correct formatting from the prompt
 		"""
-		while tries > 0:
-			tries -= 1
-			res = self.gen(prompt['prompt'], params={'temperature': prompt['temperature']})
-			# Parse it into a Python dictionary
-			data_str = ''
-			data_dict = {}
-			try:
-				if prompt['response_type'] == 'yaml':
-					data_dict = yaml.safe_load(res)
-				elif prompt['response_type'] == 'json':
-					# Find the start and end index of the json object
-					start = res.find("{")
-					end = res.rfind("}") + 1
-					# Extract the json substring
-					data_str = res[start:end]
-					try:
-						data_dict = json.loads(data_str)
-					except:
-						# If unable to parse, try to fix quotes
-						data_str = fix_missing_quotes(data_str)
-						data_dict = json.loads(data_str)
-			except:
-				print(f"Invalid {data_str} from response {res} with dict {data_dict}")
-				continue
-			if 'validation_schema' in prompt:
-				valid = validate(data_dict, prompt['validation_schema'])
-				if not valid:
-					print("Invalid response", data_dict)
-					continue
-			return data_dict
-		return None
+		system_msg = None
+		if prompt['response_type'] == 'yaml':
+			system_msg = 'Respond only in yaml format'
+		if prompt['response_type'] == 'json':
+			system_msg = 'Respond only in json format'
+		res = self.gen(prompt['prompt'], params={'temperature': prompt['temperature']}, system_msg=system_msg)
+		# Parse it into a Python dictionary
+		data_str = ''
+		data_dict = {}
+		try:
+			if prompt['response_type'] == 'yaml':
+				data_dict = yaml.safe_load(res)
+			elif prompt['response_type'] == 'json':
+				# Find the start and end index of the json object
+				start = res.find("{")
+				end = res.rfind("}") + 1
+				# Extract the json substring
+				data_str = res[start:end]
+				try:
+					data_dict = json.loads(data_str)
+				except:
+					# If unable to parse, try to fix quotes
+					data_str = fix_missing_quotes(data_str)
+					data_dict = json.loads(data_str)
+		except:
+			print(f"Invalid {data_str} from response {res} with dict {data_dict}")
+			raise
+		if 'validation_schema' in prompt:
+			valid = validate(data_dict, prompt['validation_schema'])
+			if not valid:
+				raise Exception(f'Invalid response {data_dict}')
+		return data_dict
 
 # Thanks bing for this regex :)
 def fix_missing_quotes(json_string):

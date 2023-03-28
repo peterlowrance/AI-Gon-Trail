@@ -69,6 +69,7 @@ export default function UserInput(props: { disabled: boolean }) {
                         placeholder="Action..."
                         value={value}
                         onChange={handleChangeValue}
+                        onKeyDown={e => e.code === 'Enter' && handleTakeAction()}
                         disabled={props.disabled || !scenario}
                         fullWidth
                     />

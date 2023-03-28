@@ -1,15 +1,17 @@
-import { EuiButton, EuiPageTemplate } from "@elastic/eui";
+import { EuiButton, EuiHeader, EuiPageTemplate, EuiSpacer, EuiText } from "@elastic/eui";
 import UserInput from "./UserInput";
 import PurchaseItemPanel from "./PurchaseItemPanel";
-import { RootState, setGameState, setItemsToBuy, setSession } from "./store";
+import { addStory, RootState, setGameState, setItemsToBuy, setSession } from "./store";
 import { useLazyGetGameStartQuery } from "./api";
 import { useDispatch, useSelector } from 'react-redux';
 import StatusSidebar from "./StatusSidebar";
 import StoryPanel from "./StoryPanel";
+import { useState } from "react";
 
 function App() {
   const dispatch = useDispatch();
   const gameState = useSelector((state: RootState) => state.game.gameState);
+  const [desc, setDesc] = useState('');
 
   const [getGameStart, gameStartRes] = useLazyGetGameStartQuery();
 
@@ -17,7 +19,8 @@ function App() {
     getGameStart('Oregon Trail').unwrap().then(res => {
       dispatch(setSession(res.session));
       dispatch(setItemsToBuy(res.items));
-      dispatch(setGameState('CHOOSING_ITEMS'))
+      dispatch(setGameState('CHOOSING_ITEMS'));
+      setDesc(res.description);
     });
   }
 
@@ -26,6 +29,7 @@ function App() {
     if (key) {
       window.key = key;
     }
+    dispatch(setGameState('NOT_STARTED'));
   }
 
   return <EuiPageTemplate
@@ -36,13 +40,19 @@ function App() {
     <EuiPageTemplate.Sidebar responsive={['xs']} sticky>
       <StatusSidebar />
     </EuiPageTemplate.Sidebar>
-    <EuiPageTemplate.Header pageTitle={'The AI-Gon Trail'} rightSideItems={[<EuiButton size='s' onClick={handleAddKey}>Add key</EuiButton>]}>
-      {gameState === 'NOT_STARTED' && <EuiButton disabled={gameStartRes.isFetching} onClick={handleStart}>Start</EuiButton>}
+    <EuiPageTemplate.Header pageTitle={'The AI-Gon Trail'} rightSideItems={[<EuiButton size='s' onClick={handleAddKey}>{gameState === 'NO_KEY' ? 'Add key' : 'Change key'}</EuiButton>]}>
+      {gameState === 'NO_KEY' && <EuiText>Add a key to begin</EuiText>}
+      {gameState === 'NOT_STARTED' && <EuiButton isLoading={gameStartRes.isFetching} disabled={gameStartRes.isFetching} onClick={handleStart}>Start</EuiButton>}
+      {gameStartRes.isError && <EuiText color='danger'>Failed to start the game, try again</EuiText>}
     </EuiPageTemplate.Header>
     <EuiPageTemplate.Section grow={true}>
       <div style={{ height: '100%', overflowY: 'scroll' }} >
         {gameState === 'CHOOSING_ITEMS' &&
-          <PurchaseItemPanel />
+          <>
+            <EuiText>{desc}</EuiText>
+            <EuiSpacer />
+            <PurchaseItemPanel />
+          </>
         }
         {gameState === 'FACING_SCENARIOS' &&
           <StoryPanel />

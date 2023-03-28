@@ -12,7 +12,7 @@ export const gameApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: window.location.origin + '/api/' }),
     tagTypes: ['GAME'],
     endpoints: (builder) => ({
-        getGameStart: builder.query<{session: string, items: {[item: string]: number}}, string>({
+        getGameStart: builder.query<{session: string, items: {[item: string]: number}, description: string}, string>({
             query: (theme) => ({
                 url: 'game-start-items',
                 method: 'POST',

@@ -1,14 +1,14 @@
 import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit'
 import { gameApi } from './api';
 
-export type GameState = 'NOT_STARTED' | 'CHOOSING_ITEMS' | 'FACING_SCENARIOS';
+export type GameState = 'NO_KEY' | 'NOT_STARTED' | 'CHOOSING_ITEMS' | 'FACING_SCENARIOS';
 export type StoryType = 'SCENARIO' | 'ACTION' | 'OUTCOME';
 
 // Slice
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
-    gameState: 'NOT_STARTED' as GameState,
+    gameState: 'NO_KEY' as GameState,
     itemsToBuy: {} as {[item: string]: number},
     session: null as null | string,
     story: [] as {text: string, type: StoryType, invalid?: boolean, invalidMsg?: string}[],

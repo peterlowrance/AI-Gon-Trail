@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { addStory, RootState, setSuggestions } from "./store";
 import { useLazyGetScenarioQuery } from "./api";
-import { EuiButton, EuiText } from "@elastic/eui";
+import { EuiButton, EuiLoadingSpinner, EuiSkeletonText, EuiText } from "@elastic/eui";
 import { useEffect } from 'react';
 
 
@@ -34,7 +34,7 @@ export default function StoryPanel(props) {
         {story.map((s, i) =>
             <EuiText color={s.invalid ? 'danger' : undefined} key={i}>
                 <p>
-                    {s.text}
+                    {s.type === 'ACTION' ? <em>{s.text}</em> : s.text}
                 </p>
                 {s.type === 'OUTCOME' && <br />}
                 {s.invalidMsg &&
@@ -44,5 +44,9 @@ export default function StoryPanel(props) {
                 }
             </EuiText>
         )}
+        {getScenarioRes.isFetching &&
+            <EuiSkeletonText lines={3} size="m" isLoading={getScenarioRes.isFetching}>
+            </EuiSkeletonText>
+        }
     </div>
 }
