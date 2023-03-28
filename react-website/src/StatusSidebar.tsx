@@ -2,12 +2,11 @@ import { skipToken } from "@reduxjs/toolkit/dist/query";
 import { useGetStatusQuery } from "./api";
 import { RootState } from "./store";
 import { useSelector } from 'react-redux';
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
+import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
 import Item, { parseText } from "./Item";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 export default function StatusSidebar(props) {
-
     const session = useSelector((state: RootState) => state.game.session);
     const { data: gameStatus, isLoading } = useGetStatusQuery(session ?? skipToken);
 

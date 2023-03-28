@@ -12,6 +12,8 @@ function App() {
   const dispatch = useDispatch();
   const gameState = useSelector((state: RootState) => state.game.gameState);
   const [desc, setDesc] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 800);
+
 
   const [getGameStart, gameStartRes] = useLazyGetGameStartQuery();
 
@@ -37,10 +39,20 @@ function App() {
     grow={true}
     responsive={['s']}
   >
-    <EuiPageTemplate.Sidebar responsive={['xs']} sticky>
-      <StatusSidebar />
-    </EuiPageTemplate.Sidebar>
-    <EuiPageTemplate.Header pageTitle={'The AI-Gon Trail'} rightSideItems={[<EuiButton size='s' onClick={handleAddKey}>{gameState === 'NO_KEY' ? 'Add key' : 'Change key'}</EuiButton>]}>
+    {sidebarOpen &&
+      <EuiPageTemplate.Sidebar responsive={['xs']} sticky>
+        <StatusSidebar />
+      </EuiPageTemplate.Sidebar>
+    }
+    <EuiPageTemplate.Header
+      pageTitle={'The AI-Gon Trail'}
+      title='The Ai-Gon Trail'
+      rightSideItems={[
+        <EuiButton size='s' onClick={handleAddKey}>{gameState === 'NO_KEY' ? 'Add key' : 'Change key'}</EuiButton>,
+        // Mobile view toggle
+        window.innerWidth <= 800 && <EuiButton style={{position: 'absolute', top: 8, right: 8}} size='s' color='text' onClick={() => setSidebarOpen(!sidebarOpen)}>{sidebarOpen ? 'Hide status' : 'View status'}</EuiButton>
+      ]}
+    >
       {gameState === 'NO_KEY' && <EuiText>Add a key to begin</EuiText>}
       {gameState === 'NOT_STARTED' && <EuiButton isLoading={gameStartRes.isFetching} disabled={gameStartRes.isFetching} onClick={handleStart}>Start</EuiButton>}
       {gameStartRes.isError && <EuiText color='danger'>Failed to start the game, try again</EuiText>}
