@@ -2,9 +2,10 @@ import { skipToken } from "@reduxjs/toolkit/dist/query";
 import { useGetStatusQuery } from "./api";
 import { RootState } from "./store";
 import { useSelector } from 'react-redux';
-import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
-import Item, { parseText } from "./Item";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
+import Item from "./Item";
 import { Fragment, useState } from "react";
+import ItemPanel from "./ItemPanel";
 
 export default function StatusSidebar(props) {
     const session = useSelector((state: RootState) => state.game.session);
@@ -33,17 +34,7 @@ export default function StatusSidebar(props) {
                 </EuiPanel>
             </EuiFlexItem>
             <EuiFlexItem>
-                <EuiPanel>
-                    <EuiTitle size='xs'>
-                        <h3>Items:</h3>
-                    </EuiTitle>
-                    {gameStatus.items.map(item =>
-                        <Fragment key={parseText(item)}>
-                            <EuiSpacer size='xs' />
-                            <Item value={item} />
-                        </Fragment>
-                    )}
-                </EuiPanel>
+                <ItemPanel items={gameStatus.items} />
             </EuiFlexItem>
         </EuiFlexGroup>
         : null;

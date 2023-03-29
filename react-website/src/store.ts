@@ -12,7 +12,8 @@ const gameSlice = createSlice({
     itemsToBuy: {} as {[item: string]: number},
     session: null as null | string,
     story: [] as {text: string, type: StoryType, invalid?: boolean, invalidMsg?: string}[],
-    suggestions: [] as string[]
+    suggestions: [] as string[],
+    toasts: [] as any[]
   },
   reducers: {
     setGameState: (state, action: PayloadAction<GameState>) => {
@@ -40,11 +41,17 @@ const gameSlice = createSlice({
     },
     setSuggestions: (state, action: PayloadAction<string[]>) => {
       state.suggestions = action.payload;
+    },
+    addToast: (state, action: PayloadAction<any>) => {
+      state.toasts.push({id: Math.random().toString(), ...action.payload});
+    },
+    removeToast: (state, action: PayloadAction<string>) => {
+      state.toasts = state.toasts.filter(t => t.id !== action.payload);
     }
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, addToast, removeToast } = gameSlice.actions;
 
 
 // Store

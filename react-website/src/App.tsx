@@ -1,7 +1,7 @@
-import { EuiButton, EuiHeader, EuiPageTemplate, EuiSpacer, EuiText } from "@elastic/eui";
+import { EuiButton, EuiGlobalToastList, EuiHeader, EuiPageTemplate, EuiSpacer, EuiText } from "@elastic/eui";
 import UserInput from "./UserInput";
 import PurchaseItemPanel from "./PurchaseItemPanel";
-import { addStory, RootState, setGameState, setItemsToBuy, setSession } from "./store";
+import { addStory, removeToast, RootState, setGameState, setItemsToBuy, setSession } from "./store";
 import { useLazyGetGameStartQuery } from "./api";
 import { useDispatch, useSelector } from 'react-redux';
 import StatusSidebar from "./StatusSidebar";
@@ -11,6 +11,7 @@ import { useState } from "react";
 function App() {
   const dispatch = useDispatch();
   const gameState = useSelector((state: RootState) => state.game.gameState);
+  const toasts = useSelector((state: RootState) => state.game.toasts);
   const [desc, setDesc] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 800);
 
@@ -35,8 +36,8 @@ function App() {
   }
 
   return <EuiPageTemplate
-    panelled={true}
-    grow={true}
+    panelled
+    grow
     responsive={['s']}
   >
     {sidebarOpen &&
@@ -50,7 +51,7 @@ function App() {
       rightSideItems={[
         <EuiButton size='s' onClick={handleAddKey}>{gameState === 'NO_KEY' ? 'Add key' : 'Change key'}</EuiButton>,
         // Mobile view toggle
-        window.innerWidth <= 800 && <EuiButton style={{position: 'absolute', top: 8, right: 8}} size='s' color='text' onClick={() => setSidebarOpen(!sidebarOpen)}>{sidebarOpen ? 'Hide status' : 'View status'}</EuiButton>
+        window.innerWidth <= 800 && <EuiButton style={{ position: 'absolute', top: 8, right: 8 }} size='s' color='text' onClick={() => setSidebarOpen(!sidebarOpen)}>{sidebarOpen ? 'Hide status' : 'View status'}</EuiButton>
       ]}
     >
       {gameState === 'NO_KEY' && <EuiText>Add a key to begin</EuiText>}
@@ -74,6 +75,11 @@ function App() {
     <EuiPageTemplate.Section grow={false}>
       <UserInput disabled={gameState === 'NOT_STARTED' || gameState === 'CHOOSING_ITEMS'} />
     </EuiPageTemplate.Section>
+    <EuiGlobalToastList
+      toasts={toasts}
+      dismissToast={t => dispatch(removeToast(t.id))}
+      toastLifeTimeMs={5000}
+    />
   </EuiPageTemplate>
 }
 

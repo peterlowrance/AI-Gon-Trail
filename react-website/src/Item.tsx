@@ -1,60 +1,8 @@
-import { EuiBadge, EuiCard, EuiPanel } from "@elastic/eui";
-import { useEffect, useState } from "react";
+import { EuiBadge, EuiPanel } from "@elastic/eui";
 import _ from 'lodash';
+import { parseAttributes, parseKey } from "./ItemPanel";
 
-const regExp = /\(([^)]+)\)/g; // matches anything between parentheses
-
-export const parseText = (value) => {
-    const parenContents = value.match(regExp);
-    let text = value;
-    parenContents?.forEach(content => {
-        // Remove parenthetical phrase
-        text = text.replace(content, '');
-    });
-    return text;
-}
-
-const parseAttributes = (value) => {
-    const attributes = [];
-    const parenContents = value.match(regExp);
-    parenContents?.forEach(content => {
-        // Remove ( and ) from attributeQ
-        const parsedContent = content.replaceAll('(', '').replaceAll(')', '');
-        // Add all comma separated attributes
-        parsedContent.split(',').forEach(val => attributes.push(val.trim()));
-    });
-    return attributes;
-}
-
-export default function Item(props: { value: string, cost?: number }) {
-    const [text, setText] = useState(parseText(props.value));
-    const [attributes, setAttributes] = useState<string[]>(parseAttributes(props.value));
-    const [addedAttributes, setAddedAttributes] = useState<string[]>([]);
-    const [removedAttributes, setRemovedAttributes] = useState<string[]>([]);
-
-    useEffect(() => {
-        const newAttributes = parseAttributes(props.value);
-        const newText = parseText(props.value);
-
-        if (newText !== text) {
-            setText(newText);
-        }
-        if (_.isEqual(attributes, newAttributes)) {
-            console.log(attributes, newAttributes)
-            const removed = _.difference(attributes, newAttributes);
-            const added = _.difference(newAttributes, attributes);
-            console.log('Removed attributes', removed, 'from', newText);
-            console.log('Added attributes', added, 'from', newText);
-            setAddedAttributes(added);
-            setRemovedAttributes(removed);
-            setAttributes(newAttributes);
-            setTimeout(() => {
-                setAddedAttributes([]);
-                setRemovedAttributes([]);
-            }, 5000);
-        }
-    }, [props.value]);
-
+export default function Item(props: { value: string, cost?: number, selected?: boolean, onClick?: any }) {
 
     return <EuiPanel
         onClick={props.onClick}
@@ -64,10 +12,10 @@ export default function Item(props: { value: string, cost?: number }) {
         color={props.selected ? 'primary' : 'subdued'}
         style={{ width: 'max-content', border: '1px solid lightblue', backgroundColor: props.selected ? 'lightblue' : undefined }}
     >
-        <strong>{text}</strong>
+        <strong>{parseKey(props.value)}</strong>
         &nbsp;
-        {attributes.map(at =>
-            <EuiBadge color={addedAttributes.includes(at) ? 'success' : (removedAttributes.includes(at) ? 'danger' : undefined)}>
+        {parseAttributes(props.value).map(at =>
+            <EuiBadge color='success'>
                 {at}
             </EuiBadge>
         )}
