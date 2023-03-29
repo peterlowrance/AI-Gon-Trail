@@ -13,7 +13,8 @@ const gameSlice = createSlice({
     session: null as null | string,
     story: [] as {text: string, type: StoryType, invalid?: boolean, invalidMsg?: string}[],
     suggestions: [] as string[],
-    toasts: [] as any[]
+    toasts: [] as any[],
+    win: false
   },
   reducers: {
     setGameState: (state, action: PayloadAction<GameState>) => {
@@ -38,12 +39,18 @@ const gameSlice = createSlice({
         const el = document.getElementById('scrolling-div');
         if (el)
             el.scrollTop = el.scrollHeight;
-      }, 0);
+      }, 50);
     },
     invalidateStoryAction: (state, action: PayloadAction<string>) => {
       const lastStory = state.story[state.story.length - 1];
       lastStory.invalid = true;
       lastStory.invalidMsg = action.payload;
+       // Scroll to bottom
+       setTimeout(() => {
+        const el = document.getElementById('scrolling-div');
+        if (el)
+            el.scrollTop = el.scrollHeight;
+      }, 50);
     },
     setSuggestions: (state, action: PayloadAction<string[]>) => {
       state.suggestions = action.payload;
@@ -53,11 +60,14 @@ const gameSlice = createSlice({
     },
     removeToast: (state, action: PayloadAction<string>) => {
       state.toasts = state.toasts.filter(t => t.id !== action.payload);
+    },
+    setWin: (state, action: PayloadAction<boolean>) => {
+      state.win = action.payload;
     }
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, addToast, removeToast } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, addToast, removeToast, setWin } = gameSlice.actions;
 
 
 // Store

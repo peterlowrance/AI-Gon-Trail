@@ -71,6 +71,9 @@ Reply in json in this format {"situations":["Cross a river...", ...]}. Try to ma
     }
 
 def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameState) -> Prompt:
+    final_scenario_str = ''
+    if state.current_step == state.total_steps:
+        final_scenario_str = '\nSince this is the final scenario, if the player was able to successfully overcome it with at least one character alive, include a description of reaching their destination in the outcome'
     example_item = state.items[0] if len(state.items) > 0 else 'shovel'
     return {
         "prompt": f"""This is a game similar to Oregon Trail. You control the world in an attempt to make the game engaging and realistic.
@@ -81,10 +84,9 @@ def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameS
 }}
 Scenario: "{scenario}"
 The player action is "{player_action}"
-
 Respond with a brief description of the outcome and provide updated items, characters, and vehicle. The outcome should conclude the scenario so the next scenario can be faced. If an item was used, remove it from the list. If a character died, remove them from the list, if the health of the vehicle changed, change it in the response. If a change happened to an item or character you may update them by adding or changing modifiers in parenthesis, example "(hunter) John" becomes "(sick, hunter) John". Extremely negative outcomes should be rare. Example format:
 {{"outcome":"description", "items":["(damaged) {example_item}", ...], "characters":["(injured, farmer) {state.characters[0]}", ...], "vehicle": "{state.vehicle}"}}
-
+{final_scenario_str}
 Respond with only the json object""",
         "temperature": .7,
         "response_type": "json",

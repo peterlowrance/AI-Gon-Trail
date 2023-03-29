@@ -1,7 +1,7 @@
 import { EuiBadge, EuiButton, EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiText } from "@elastic/eui";
 import { useState } from "react";
 import { useTakeActionMutation } from "./api";
-import { addStory, invalidateStoryAction, RootState } from "./store";
+import { addStory, invalidateStoryAction, RootState, setWin } from "./store";
 import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 
@@ -27,6 +27,9 @@ export default function UserInput(props: { disabled: boolean }) {
                     if (res.valid) {
                         dispatch(addStory({ text: res.text, type: 'OUTCOME' }));
                         setValue('');
+                        if (res.win) {
+                            dispatch(setWin(true));
+                        }
                     }
                     else {
                         dispatch(invalidateStoryAction(res.text));
@@ -54,7 +57,7 @@ export default function UserInput(props: { disabled: boolean }) {
                     </EuiFlexItem>
                     {suggestions.map(sug => value !== sug &&
                         <EuiFlexItem key={sug} grow={false}>
-                            <EuiBadge color='default' onClick={() => setValue(sug)} isDisabled={takeActionRes.isLoading}>
+                            <EuiBadge color='default' onClick={() => setValue(sug)} isDisabled={props.disabled || takeActionRes.isLoading}>
                                 {sug}
                             </EuiBadge>
                         </EuiFlexItem>

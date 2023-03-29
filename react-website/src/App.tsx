@@ -12,8 +12,8 @@ function App() {
   const dispatch = useDispatch();
   const gameState = useSelector((state: RootState) => state.game.gameState);
   const toasts = useSelector((state: RootState) => state.game.toasts);
+  const win = useSelector((state: RootState) => state.game.win);
   const [desc, setDesc] = useState('');
-  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 800);
 
   const [getGameStart, gameStartRes] = useLazyGetGameStartQuery();
 
@@ -35,7 +35,7 @@ function App() {
   }
 
   return <>
-    <EuiFlexGroup direction='row' gutterSize='none' style={{ height: '100vh' }}>
+    <EuiFlexGroup direction='row' gutterSize='none' style={{ height: '100vh', overflow: 'hidden' }}>
       {/* Sidebar */}
       <EuiHideFor sizes={['xs', 's']}>
         <EuiFlexItem grow={false} style={{ minWidth: 240 }}>
@@ -93,7 +93,7 @@ function App() {
               <EuiSpacer size='xs' />
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
-              <UserInput disabled={gameState === 'NOT_STARTED' || gameState === 'CHOOSING_ITEMS'} />
+              <UserInput disabled={win || gameState === 'NOT_STARTED' || gameState === 'CHOOSING_ITEMS'} />
             </EuiFlexItem>
           </EuiFlexGroup>
         </EuiPanel>

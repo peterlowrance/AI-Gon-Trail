@@ -23,8 +23,6 @@ class GameState:
         self.items = items
         self.vehicle = vehicle
         self.current_step += 1
-        if self.current_step > self.total_steps:
-            raise Exception('You have finished the game')
 
     def __str__(self):
         return f"Characters: {', '.join(self.characters)}\nItems: {', '.join(self.items)}\n{self.vehicle}\nOn step {self.current_step}/{self.total_steps}"

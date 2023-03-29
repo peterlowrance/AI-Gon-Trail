@@ -82,7 +82,7 @@ def take_action(request):
     characters = res['characters']
     vehicle = res['vehicle']
     state.progress(items=items, characters=characters, vehicle=vehicle)
-    return Response({'valid': True, 'text': outcome})
+    return Response({'valid': True, 'text': outcome, 'win': state.current_step > state.total_steps})
 
 
 @api_view(['GET'])

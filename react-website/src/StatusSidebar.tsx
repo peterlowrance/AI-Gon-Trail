@@ -14,8 +14,8 @@ export default function StatusSidebar(props) {
     const mobile = window.innerWidth <= 800;
 
     return gameStatus ?
-        <EuiFlexGroup direction='column' gutterSize={mobile ? 's' : 'l'} style={{overflowY: 'scroll'}}>
-            <EuiFlexItem>
+        <EuiFlexGroup direction='column' gutterSize={mobile ? 's' : 'l'} style={{overflowY: 'scroll', maxHeight: '100vh'}}>
+            <EuiFlexItem grow={false}>
                 <EuiTitle size='s'>
                     <h3 style={{ paddingLeft: 16 }}>
                         {gameStatus.vehicle}

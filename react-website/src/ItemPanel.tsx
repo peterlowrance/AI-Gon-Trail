@@ -97,7 +97,7 @@ function ItemPanel(props: { items: string[], title: string }) {
         prevItems.current = props.items;
     }, [props.items]);
 
-    return <EuiPanel paddingSize={mobile ? 's' : 'm'} hasShadow={false} hasBorder>
+    return <EuiPanel paddingSize={mobile ? 's' : 'm'} hasShadow={false} hasBorder style={{overflowY: 'scroll'}}>
         <EuiTitle size='xs'>
             <h3>{props.title}:</h3>
         </EuiTitle>
