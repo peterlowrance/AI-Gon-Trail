@@ -11,8 +11,10 @@ export default function StatusSidebar(props) {
     const session = useSelector((state: RootState) => state.game.session);
     const { data: gameStatus, isLoading } = useGetStatusQuery(session ?? skipToken);
 
+    const mobile = window.innerWidth <= 800;
+
     return gameStatus ?
-        <EuiFlexGroup direction='column'>
+        <EuiFlexGroup direction='column' gutterSize={mobile ? 's' : 'l'} style={{overflowY: 'scroll'}}>
             <EuiFlexItem>
                 <EuiTitle size='s'>
                     <h3 style={{ paddingLeft: 16 }}>
@@ -21,20 +23,10 @@ export default function StatusSidebar(props) {
                 </EuiTitle>
             </EuiFlexItem>
             <EuiFlexItem>
-                <EuiPanel>
-                    <EuiTitle size='xs'>
-                        <h3>Characters:</h3>
-                    </EuiTitle>
-                    {gameStatus.characters.map(c =>
-                        <Fragment key={c}>
-                            <EuiSpacer size='xs' />
-                            <Item value={c} />
-                        </Fragment>
-                    )}
-                </EuiPanel>
+                <ItemPanel items={gameStatus.characters} title='Characters' />
             </EuiFlexItem>
             <EuiFlexItem>
-                <ItemPanel items={gameStatus.items} />
+                <ItemPanel items={gameStatus.items} title='Items' />
             </EuiFlexItem>
         </EuiFlexGroup>
         : null;

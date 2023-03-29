@@ -1,4 +1,4 @@
-import { EuiButton, EuiGlobalToastList, EuiHeader, EuiPageTemplate, EuiSpacer, EuiText } from "@elastic/eui";
+import { EuiAccordion, EuiButton, EuiFlexGroup, EuiFlexItem, EuiGlobalToastList, EuiHeader, EuiHideFor, EuiPageTemplate, EuiPanel, EuiShowFor, EuiSpacer, EuiText, EuiTitle } from "@elastic/eui";
 import UserInput from "./UserInput";
 import PurchaseItemPanel from "./PurchaseItemPanel";
 import { addStory, removeToast, RootState, setGameState, setItemsToBuy, setSession } from "./store";
@@ -14,7 +14,6 @@ function App() {
   const toasts = useSelector((state: RootState) => state.game.toasts);
   const [desc, setDesc] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 800);
-
 
   const [getGameStart, gameStartRes] = useLazyGetGameStartQuery();
 
@@ -35,52 +34,77 @@ function App() {
     dispatch(setGameState('NOT_STARTED'));
   }
 
-  return <EuiPageTemplate
-    panelled
-    grow
-    responsive={['s']}
-  >
-    {sidebarOpen &&
-      <EuiPageTemplate.Sidebar responsive={['xs']} sticky>
-        <StatusSidebar />
-      </EuiPageTemplate.Sidebar>
-    }
-    <EuiPageTemplate.Header
-      pageTitle={'The AI-Gon Trail'}
-      title='The Ai-Gon Trail'
-      rightSideItems={[
-        <EuiButton size='s' onClick={handleAddKey}>{gameState === 'NO_KEY' ? 'Add key' : 'Change key'}</EuiButton>,
-        // Mobile view toggle
-        window.innerWidth <= 800 && <EuiButton style={{ position: 'absolute', top: 8, right: 8 }} size='s' color='text' onClick={() => setSidebarOpen(!sidebarOpen)}>{sidebarOpen ? 'Hide status' : 'View status'}</EuiButton>
-      ]}
-    >
-      {gameState === 'NO_KEY' && <EuiText>Add a key to begin</EuiText>}
-      {gameState === 'NOT_STARTED' && <EuiButton isLoading={gameStartRes.isFetching} disabled={gameStartRes.isFetching} onClick={handleStart}>Start</EuiButton>}
-      {gameStartRes.isError && <EuiText color='danger'>Failed to start the game, try again</EuiText>}
-    </EuiPageTemplate.Header>
-    <EuiPageTemplate.Section grow={true}>
-      <div style={{ height: '100%', overflowY: 'scroll' }} >
-        {gameState === 'CHOOSING_ITEMS' &&
-          <>
-            <EuiText>{desc}</EuiText>
-            <EuiSpacer />
-            <PurchaseItemPanel />
-          </>
-        }
-        {gameState === 'FACING_SCENARIOS' &&
-          <StoryPanel />
-        }
-      </div>
-    </EuiPageTemplate.Section>
-    <EuiPageTemplate.Section grow={false}>
-      <UserInput disabled={gameState === 'NOT_STARTED' || gameState === 'CHOOSING_ITEMS'} />
-    </EuiPageTemplate.Section>
+  return <>
+    <EuiFlexGroup direction='row' gutterSize='none' style={{ height: '100vh' }}>
+      {/* Sidebar */}
+      <EuiHideFor sizes={['xs', 's']}>
+        <EuiFlexItem grow={false} style={{ minWidth: 240 }}>
+          <EuiPanel hasBorder={false} borderRadius='none' color='subdued'>
+            <StatusSidebar />
+          </EuiPanel>
+        </EuiFlexItem>
+      </EuiHideFor>
+      {/* Main page */}
+      <EuiFlexItem className='eui-fullHeight'>
+        <EuiPanel hasBorder={false} borderRadius='none' color='plain' className='eui-fullHeight'>
+          <EuiFlexGroup direction='column' className='eui-fullHeight'>
+            {/* Header */}
+            <EuiFlexItem grow={false}>
+              <EuiTitle><h1>AI-Gone Trail</h1></EuiTitle>
+              {gameState === 'NO_KEY' &&
+                <EuiFlexGroup>
+                  <EuiFlexItem grow={false}>
+                    <EuiText>Add a key to begin</EuiText>
+                  </EuiFlexItem>
+                  <EuiFlexItem grow={false}>
+                    <EuiButton size='s' onClick={handleAddKey}>{gameState === 'NO_KEY' ? 'Add key' : 'Change key'}</EuiButton>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              }
+              {gameState === 'NOT_STARTED' && <EuiButton isLoading={gameStartRes.isFetching} disabled={gameStartRes.isFetching} onClick={handleStart}>Start</EuiButton>}
+              {gameStartRes.isError && <EuiText color='danger'>Failed to start the game, try again</EuiText>}
+            </EuiFlexItem>
+            {/* On mobile view, status goes here */}
+            <EuiShowFor sizes={['xs', 's']}>
+              {gameState === 'CHOOSING_ITEMS' || gameState === 'FACING_SCENARIOS' &&
+                <EuiFlexItem grow={false}>
+                  <EuiPanel color='subdued' paddingSize='s'>
+                    <EuiAccordion
+                      id='mobile-status-accordion'
+                      buttonContent='Status'
+                    >
+                      <StatusSidebar />
+                    </EuiAccordion>
+                  </EuiPanel>
+                </EuiFlexItem>
+              }
+            </EuiShowFor>
+            <EuiFlexItem id='scrolling-div' style={{ overflowY: 'scroll' }} grow>
+              {gameState === 'CHOOSING_ITEMS' &&
+                <>
+                  <EuiText>{desc}</EuiText>
+                  <EuiSpacer />
+                  <PurchaseItemPanel />
+                </>
+              }
+              {gameState === 'FACING_SCENARIOS' &&
+                <StoryPanel />
+              }
+              <EuiSpacer size='xs' />
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <UserInput disabled={gameState === 'NOT_STARTED' || gameState === 'CHOOSING_ITEMS'} />
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiPanel>
+      </EuiFlexItem>
+    </EuiFlexGroup>
     <EuiGlobalToastList
       toasts={toasts}
       dismissToast={t => dispatch(removeToast(t.id))}
       toastLifeTimeMs={5000}
     />
-  </EuiPageTemplate>
+  </>
 }
 
 export default App;

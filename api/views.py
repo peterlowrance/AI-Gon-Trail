@@ -23,17 +23,6 @@ def game_start_items(request):
 
     scenario_prompt = get_scenario_list_prompt()
     scenario_res = client.gen_dict(scenario_prompt)
-    # {"items": {"*": int}, "crew": [str], "wagon": str, "description": str}
-    # res = {
-    #     'items': {
-    #         "shovel (sharp)": 15,
-    #         "lumber (wet)": 7,
-    #         "blanket (warm)": 10,
-    #         "flint (sharp)": 3
-    #     },
-    #     'crew': ['Mary', 'Jack', 'Tom'],
-    #     'description': 'You are heading west'
-    # }
 
     # Save initial data to state
     database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=scenario_res['situations'])

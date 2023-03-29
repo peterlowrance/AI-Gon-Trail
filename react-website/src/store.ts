@@ -33,6 +33,12 @@ const gameSlice = createSlice({
       else {
         state.story.push(action.payload);
       }
+      // Scroll to bottom
+      setTimeout(() => {
+        const el = document.getElementById('scrolling-div');
+        if (el)
+            el.scrollTop = el.scrollHeight;
+      }, 0);
     },
     invalidateStoryAction: (state, action: PayloadAction<string>) => {
       const lastStory = state.story[state.story.length - 1];

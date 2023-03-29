@@ -40,7 +40,7 @@ export default function PurchaseItemPanel() {
                 });
     }
 
-    return <EuiPanel hasBorder>
+    return <EuiPanel hasBorder grow={false}>
         <EuiFlexGroup direction='column'>
             <EuiFlexItem grow={false}>
                 <EuiTitle size='s'>
@@ -50,7 +50,7 @@ export default function PurchaseItemPanel() {
                 </EuiTitle>
             </EuiFlexItem>
             <EuiFlexItem>
-                <EuiFlexGroup gutterSize='xs' wrap>
+                <EuiFlexGroup gutterSize='xs' wrap responsive={false}>
                     {itemsToBuy && Object.entries(itemsToBuy).map(([item, cost]) =>
                         <EuiFlexItem grow={false} key={item}>
                             <Item value={item} cost={cost} selected={selectedItems.includes(item)} onClick={() => toggleItem(item)} />

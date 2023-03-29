@@ -1,4 +1,4 @@
-import { EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
+import { EuiBadge, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
 import { Fragment, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import Item from "./Item";
@@ -14,7 +14,7 @@ export const parseKey = (value) => {
         // Remove parenthetical phrase
         key = key.replace(content, '');
     });
-    return key;
+    return key.trim();
 }
 
 export const parseAttributes = (value) => {
@@ -29,9 +29,11 @@ export const parseAttributes = (value) => {
     return attributes;
 }
 
-function ItemPanel(props: { items: string[] }) {
+function ItemPanel(props: { items: string[], title: string }) {
     const dispatch = useDispatch();
     const prevItems = useRef<null | string[]>(null);
+
+    const mobile = window.innerWidth <= 800;
 
     useEffect(() => {
         if (prevItems.current) {
@@ -71,29 +73,33 @@ function ItemPanel(props: { items: string[] }) {
             // Send notifications
             if (newItems.length > 0) {
                 const content = newItems.map(i => <Item value={i} />);
-                dispatch(addToast({ title: 'New items', text: content, color: 'success' }));
+                dispatch(addToast({ title: 'New ' + props.title.toLowerCase(), text: content, color: 'success' }));
             }
             if (removedItems.length > 0) {
                 const content = removedItems.map(i => <Item value={i} />);
-                dispatch(addToast({ title: 'Items lost', text: content, color: 'danger' }));
+                dispatch(addToast({ title: props.title + ' lost', text: content, color: 'danger' }));
             }
             if (Object.keys(changedAttrItems).length > 0) {
                 const content = <>
                     {Object.entries(changedAttrItems).map(([key, obj]) =>
                         <p>
-                            {key} changed {obj.prevAttr} to {obj.newAttr}
+                            <Item value={key} />
+                            changed
+                            {obj.prevAttr.map(a => <EuiBadge color='success'>{a}</EuiBadge>)}
+                            to
+                            {obj.newAttr.map(a => <EuiBadge color='success'>{a}</EuiBadge>)}
                         </p>
                     )}
                 </>;
-                dispatch(addToast({ title: 'Changed items', text: content }));
+                dispatch(addToast({ title: 'Changed ' + props.title.toLowerCase(), text: content }));
             }
         }
         prevItems.current = props.items;
     }, [props.items]);
 
-    return <EuiPanel>
+    return <EuiPanel paddingSize={mobile ? 's' : 'm'} hasShadow={false} hasBorder>
         <EuiTitle size='xs'>
-            <h3>Items:</h3>
+            <h3>{props.title}:</h3>
         </EuiTitle>
         {props.items.map(item =>
             <Fragment key={parseKey(item)}>

@@ -54,7 +54,7 @@ export default function UserInput(props: { disabled: boolean }) {
                     </EuiFlexItem>
                     {suggestions.map(sug => value !== sug &&
                         <EuiFlexItem key={sug} grow={false}>
-                            <EuiBadge color='default' onClick={() => setValue(sug)}>
+                            <EuiBadge color='default' onClick={() => setValue(sug)} isDisabled={takeActionRes.isLoading}>
                                 {sug}
                             </EuiBadge>
                         </EuiFlexItem>
