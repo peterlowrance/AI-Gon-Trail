@@ -50,7 +50,7 @@ function App() {
           <EuiFlexGroup direction='column' className='eui-fullHeight'>
             {/* Header */}
             <EuiFlexItem grow={false}>
-              <EuiTitle><h1>AI-Gone Trail</h1></EuiTitle>
+              <EuiTitle><h1>AI-Gon Trail</h1></EuiTitle>
               {gameState === 'NO_KEY' &&
                 <EuiFlexGroup>
                   <EuiFlexItem grow={false}>

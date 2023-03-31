@@ -1,5 +1,4 @@
 
-
 class GameState:
     characters: list[str]
     items: list[str]
@@ -23,6 +22,12 @@ class GameState:
         self.items = items
         self.vehicle = vehicle
         self.current_step += 1
+
+    def get_difficulty(self) -> str:
+        difficulties = ['easy', 'medium', 'hard', 'extremely hard']
+        percent = self.current_step / self.total_steps
+        diff_index = round(percent * (len(difficulties) - 1))
+        return difficulties[diff_index]
 
     def __str__(self):
         return f"Characters: {', '.join(self.characters)}\nItems: {', '.join(self.items)}\n{self.vehicle}\nOn step {self.current_step}/{self.total_steps}"
