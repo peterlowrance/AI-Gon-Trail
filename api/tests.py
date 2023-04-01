@@ -40,7 +40,7 @@ class PromptTestCase(TestCase):
             self.assertFalse(res['valid'], f'Invalid response {res}')
 
     def test_get_scenario_list(self):
-        prompt = get_scenario_list_prompt()
+        prompt = get_scenario_list_prompt("Oregon Trail")
         prompts = self.client.gen_dict(prompt)
         self.assertFalse(prompts == None, "Failed to generate scenario list")
 
@@ -57,7 +57,7 @@ class PromptTestCase(TestCase):
         characters3 = ['Mila', 'Eli', 'Lila', 'Max', 'Ruby']
         charactersSets = [characters1, characters2, characters3]
         vehicleOptions = ["Wagon: health is 100 out of 100", "Wagon: Good condition", "Wagon: health 100/100", "Wagon: full health"]
-        scenario_list_prompt = get_scenario_list_prompt()
+        scenario_list_prompt = get_scenario_list_prompt("Oregon Trail")
         scenario_list = self.client.gen_dict(scenario_list_prompt)["situations"]
         for i in range(1):
             with open("trial/"+str(i), mode="w+") as f:

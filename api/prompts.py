@@ -58,13 +58,13 @@ The party is trying to reach the west and they are {state.current_step}/{state.t
     }
 
 
-def get_scenario_list_prompt() -> Prompt:
+def get_scenario_list_prompt(theme: str) -> Prompt:
     return {
-        "prompt": """Your job is to generate 10 short situations of increasing difficulty for the player to try to overcome in an Oregon Trail game.
-The situations should be related to the theme of traveling across the American frontier in the 19th century.
-The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, resources, and conflicts.
+        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme. The custom theme is "{theme}". Your job is to generate 10 short situations of high difficulty for the player to try to overcome.
+The situations should be related to the theme.
+The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, and conflicts. None of the situations should mention the players supplies as those are handled elsewhere. 
 
-Reply in json in this format {"situations":["Cross a river...", ...]}. Try to make them unique and interesting.""",
+Reply in json in this format {{"situations":["Cross a river...", ...]}}. Try to make them unique and interesting.""",
         "temperature": .75,
         "response_type": "json",
         "validation_schema": {"situations": [str]}

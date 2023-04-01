@@ -21,7 +21,7 @@ def game_start_items(request):
     prompt = get_start_prompt(theme)
     res = client.gen_dict(prompt)
 
-    scenario_prompt = get_scenario_list_prompt()
+    scenario_prompt = get_scenario_list_prompt(theme)
     scenario_res = client.gen_dict(scenario_prompt)
 
     # Save initial data to state
