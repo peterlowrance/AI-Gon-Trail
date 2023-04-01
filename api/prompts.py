@@ -51,8 +51,8 @@ Vehicle: {state.vehicle}
 Characters: {', '.join(state.characters)}
 Items: {', '.join(state.items)}
 
-The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress. Respond with a json object with fields "scenario", and "suggestions". "scenario" is 75 words of description, "suggestions" is an array of 3 brief actions the player could possibly take to attempt to overcome the scenario based on common sense and the Items and the Characters. Make the scenario include specific details about the situation and/or the characters. Do not have any vague descriptions.""",
-        "temperature": .7,
+The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress. Based on the available items ({', '.join(state.items)}) and characters ({', '.join(state.characters)}), generate a json object with fields "scenario", and "suggestions". "scenario" is 75 words of description, "suggestions" is an array of 3 brief actions the player could possibly take to attempt to overcome the scenario. Make the scenario include specific details about the situation and/or the characters. Do not have any vague descriptions.""",
+        "temperature": .5,
         "response_type": "json",
         "validation_schema": {"scenario": str, "suggestions": [str]}
     }
@@ -65,12 +65,12 @@ The situations should be related to the theme.
 The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, and conflicts. None of the situations should mention the players supplies as those are handled elsewhere. 
 
 Reply in json in this format {{"situations":["Cross a river...", ...]}}. Try to make them unique and interesting.""",
-        "temperature": .75,
+        "temperature": .8,
         "response_type": "json",
         "validation_schema": {"situations": [str]}
     }
 
-def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameState) -> Prompt:
+def get_scenario_outcome_prompt(scenario: str, player_action: str, state: GameState) -> Prompt:
     final_scenario_str = ''
     if state.current_step == state.total_steps:
         final_scenario_str = '\nSince this is the final scenario, if the player was able to successfully overcome it with at least one character alive, include a description of reaching their destination in the outcome'
@@ -84,11 +84,15 @@ def get_scenario_outcome_prompt(scenario: str,  player_action: str, state: GameS
 }}
 Scenario: "{scenario}"
 The player action is "{player_action}"
+Consider the risk factor and effectiveness of the player's action when generating the outcome. If the action seems insufficient or unlikely to prevent damage, introduce negative consequences that logically stem from the player's choice. Make the outcome more realistic by considering the actual effectiveness of the chosen action in addressing the core challenges of the scenario, and include any negative consequences that may arise due to the chosen action.
+
+For example, if the player chooses to cook a meal to pass through a treacherous mountain pass, the outcome should include both the positive effects of the meal (increased energy and morale) and the negative consequences of not directly addressing the challenges of the mountain pass (possible injuries, vehicle damage, or lost items).
+
 Respond with a brief description of the outcome and provide updated items, characters, and vehicle. The outcome should conclude the scenario so the next scenario can be faced. If an item was used, remove it from the list. If a character died, remove them from the list, if the health of the vehicle changed, change it in the response. If a change happened to an item or character you may update them by adding or changing modifiers in parenthesis, example "(hunter) John" becomes "(sick, hunter) John". The scenario is {state.get_difficulty()}, but extremely negative outcomes should be rare. Example format:
 {{"outcome":"description", "items":["(damaged) {example_item}", ...], "characters":["(injured, farmer) {state.characters[0]}", ...], "vehicle": "{state.vehicle}"}}
 {final_scenario_str}
 Respond with only the json object""",
-        "temperature": .7,
+        "temperature": .8,
         "response_type": "json",
         "validation_schema": {"outcome": str, "items": [str], "characters": [str], "vehicle": str}
     }

@@ -44,6 +44,71 @@ class PromptTestCase(TestCase):
         prompts = self.client.gen_dict(prompt)
         self.assertFalse(prompts == None, "Failed to generate scenario list")
 
+# Run with:
+# python manage.py test api.tests.PromptTestCase.test_idealistic_scenario
+    def test_idealistic_scenario(self):
+        # Set up the scenario
+        scenario = "The party is faced with a treacherous mountain pass that winds through steep cliffs and narrow paths. Sarah's experience may come in handy as they navigate through the dangerous terrain. Alex's keen observation skills could help spot any potential danger ahead. John's toughness will be tested as he helps carry the heavy wagon through the rocky terrain. Maria's cooking skills could be put to use to keep the party's morale up during this challenging journey. James' mechanical knowledge may be useful in repairing any damages to the wagon. With limited resources, the party must strategize their next move."
+
+        # Set up the game state
+        state = GameState(
+            characters=["(experienced) Sarah", "(observant) Alex", "(tough) John", "(cook) Maria", "(mechanic) James"],
+            items=["Warm Blanket", "Hiking Boots", "Wagon"],
+            vehicle="Wagon: health is 100 out of 100",
+            situations=[scenario]
+        )
+
+        # Set up the player action
+        player_action = "Have Maria cook a hearty meal to boost the party's energy and morale before embarking on the journey."
+
+        # Run the get_scenario_outcome_prompt function
+        prompt = get_scenario_outcome_prompt(scenario, player_action, state)
+        res = self.client.gen_dict(prompt)
+
+        # Extract the outcome, items, characters, and vehicle from the response
+        outcome = res['outcome']
+        items = res['items']
+        characters = res['characters']
+        vehicle = res['vehicle']
+
+        print(outcome)
+
+        # Check if the outcome contains any negative consequences
+        negative_outcome = re.search(r'(damage|injure|injury|loss|negative|problem|issue|difficulty|hardship|adversity|complication)', outcome, re.IGNORECASE)
+
+        # Assert that the outcome has negative consequences
+        self.assertTrue(negative_outcome, f"The outcome '{outcome}' does not contain any negative consequences")
+
+# Run with:
+# python manage.py test api.tests.PromptTestCase.test_unethical_action
+    def test_unethical_action(self):
+        # Set up the scenario
+        scenario = "As the party continues their journey, one of their members, Emily, falls ill with a deadly disease. Her condition is worsening rapidly and she needs medicine urgently. The party is in the middle of a dense forest and they have no idea where the nearest town or hospital is. John suggests hunting for wild herbs that might help cure Emily. Sarah recommends splitting up to cover more ground and search for any signs of civilization. James suggests using his knowledge of herbs to create a makeshift medicine from the items they have."
+
+        # Set up the game state
+        state = GameState(
+            characters=["Emily", "John", "Sarah", "James"],
+            items=["Ax"],
+            vehicle=None,
+            situations=[scenario]
+        )
+
+        # Set up the player action
+        player_action = "Kill Emily with the Ax to prevent any further suffering."
+
+        # Run the get_validate_action_prompt function
+        prompt = get_validate_action_prompt(scenario, state, player_action)
+        res = self.client.gen_dict(prompt)
+
+        # Extract the valid and explanation from the response
+        valid = res['valid']
+        explanation = res['explanation']
+
+        print(explanation)
+
+        # Assert that the action is considered valid
+        self.assertTrue(valid, f"The action '{player_action}' should be considered valid but was marked as invalid with explanation '{explanation}'")
+
 
 # Run with:
 # python manage.py test api.tests.PromptTestCase.test_scenario
