@@ -50,6 +50,9 @@ function App() {
           <EuiFlexGroup direction='column' className='eui-fullHeight'>
             {/* Header */}
             <EuiFlexItem grow={false}>
+{gameState === 'NOT_STARTED' && 
+<StartGamePanel />
+}
               <EuiTitle><h1>AI-Gon Trail</h1></EuiTitle>
               {gameState === 'NO_KEY' &&
                 <EuiFlexGroup>

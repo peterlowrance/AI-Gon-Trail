@@ -14,7 +14,8 @@ const gameSlice = createSlice({
     story: [] as {text: string, type: StoryType, invalid?: boolean, invalidMsg?: string}[],
     suggestions: [] as string[],
     toasts: [] as any[],
-    win: false
+    win: false,
+    key: ''
   },
   reducers: {
     setGameState: (state, action: PayloadAction<GameState>) => {
@@ -63,11 +64,14 @@ const gameSlice = createSlice({
     },
     setWin: (state, action: PayloadAction<boolean>) => {
       state.win = action.payload;
+    },
+    setKey: (state, action: PayloadAction<string>) => {
+      state.key = action.payload;
     }
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, addToast, removeToast, setWin } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, addToast, removeToast, setWin, setKey } = gameSlice.actions;
 
 
 // Store
