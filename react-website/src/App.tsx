@@ -16,12 +16,13 @@ function App() {
   const gameState = useSelector((state: RootState) => state.game.gameState);
   const toasts = useSelector((state: RootState) => state.game.toasts);
   const win = useSelector((state: RootState) => state.game.win);
+  const key = useSelector((state: RootState) => state.game.key);
   const [desc, setDesc] = useState('');
 
   const [getGameStart, gameStartRes] = useLazyGetGameStartQuery();
 
   const handleStart = () => {
-    getGameStart('Oregon Trail').unwrap().then(res => {
+    getGameStart({theme: 'Oregon Trail', key: key}).unwrap().then(res => {
       dispatch(setSession(res.session));
       dispatch(setItemsToBuy(res.items));
       dispatch(setGameState('CHOOSING_ITEMS'));

@@ -9,6 +9,7 @@ type GameStatus = {
 
 const baseQuery = fetchBaseQuery({
     baseUrl: window.location.origin + '/api/',
+    credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
         // Get the authentication key from the store state
         const openaiKey = getState().game.key;
@@ -25,12 +26,13 @@ export const gameApi = createApi({
     baseQuery: baseQuery,
     tagTypes: ['GAME'],
     endpoints: (builder) => ({
-        getGameStart: builder.query<{session: string, items: {[item: string]: number}, description: string}, string>({
-            query: (theme) => ({
+        getGameStart: builder.query<{session: string, items: {[item: string]: number}, description: string}, {theme: string, key: string}>({
+            query: ({theme, key}) => ({
                 url: 'game-start-items',
                 method: 'POST',
                 params: {
-                    theme: theme
+                    theme: theme,
+                    key: key
                 }
             })
         }),
@@ -55,18 +57,20 @@ export const gameApi = createApi({
             }),
             providesTags: ['GAME']
         }),
-        getScenario: builder.query<{scenario: string, suggestions: string[]}, string>({
-            query: (session) => ({
+        getScenario: builder.query<{scenario: string, suggestions: string[]}, {session: string, key: string}>({
+            query: ({session, key}) => ({
                 url: 'game-scenario',
                 params: {
-                    session: session
+                    session: session,
+                    key: key
                 }
             })
         }),
-        takeAction: builder.mutation<{valid: boolean, text: string, win: boolean}, {session: string, scenario: string, action: string}>({
-            query: ({ session, scenario, action }) => ({
+        takeAction: builder.mutation<{valid: boolean, text: string, win: boolean}, {session: string, scenario: string, action: string, key: string}>({
+            query: ({ session, scenario, action, key }) => ({
                 url: 'take-action',
                 method: 'POST',
+                params: {key: key},
                 body: {
                     session: session,
                     scenario: scenario,

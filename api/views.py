@@ -17,6 +17,8 @@ def game_start_items(request):
     session = uuid4().hex
     theme = request.GET.get('theme', 'Oregon Trail')
     key = request.headers.get('openai_key')
+    if not key:
+        key = request.GET.get('key')
     client = AiClient(key)
     prompt = get_start_prompt(theme)
     res = client.gen_dict(prompt)
@@ -66,6 +68,8 @@ def take_action(request):
     scenario = request.data['scenario']
     action = request.data['action']
     key = request.headers.get('openai_key')
+    if not key:
+        key = request.GET.get('key')
     client = AiClient(key)
 
     prompt = get_validate_action_prompt(scenario, state, action)
@@ -93,6 +97,8 @@ def get_scenario(request):
     """
     session = request.GET['session']
     key = request.headers.get('openai_key')
+    if not key:
+        key = request.GET.get('key')
     state = database[session]
     prompt = get_scenario_prompt(state)
     client = AiClient(key)

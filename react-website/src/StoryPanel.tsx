@@ -9,13 +9,14 @@ export default function StoryPanel(props) {
     const dispatch = useDispatch();
     const session = useSelector((state: RootState) => state.game.session);
     const story = useSelector((state: RootState) => state.game.story);
+    const key = useSelector((state: RootState) => state.game.key);
 
     const [getScenario, getScenarioRes] = useLazyGetScenarioQuery();
 
     const handleGetScenario = () => {
         if (session && (story.length === 0 || story[story.length - 1].type === 'OUTCOME')) {
             console.log('Fetching scenario')
-            getScenario(session).unwrap().then(res => {
+            getScenario({session: session, key: key}).unwrap().then(res => {
                 dispatch(setSuggestions(res.suggestions));
                 dispatch(addStory({ text: res.scenario, type: 'SCENARIO' }));
             }).catch(res => {

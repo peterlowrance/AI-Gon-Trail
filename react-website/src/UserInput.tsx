@@ -11,6 +11,7 @@ export default function UserInput(props: { disabled: boolean }) {
     const session = useSelector((state: RootState) => state.game.session);
     const suggestions = useSelector((state: RootState) => state.game.suggestions);
     const story = useSelector((state: RootState) => state.game.story);
+    const key = useSelector((state: RootState) => state.game.key);
 
     let scenario = undefined as undefined | string;
     if (story.length > 0) {
@@ -22,7 +23,7 @@ export default function UserInput(props: { disabled: boolean }) {
     const handleTakeAction = () => {
         if (session && scenario) {
             dispatch(addStory({ text: value, type: 'ACTION' }));
-            takeAction({ action: value, scenario: scenario, session: session }).unwrap()
+            takeAction({ action: value, scenario: scenario, session: session, key: key }).unwrap()
                 .then((res) => {
                     if (res.valid) {
                         dispatch(addStory({ text: res.text, type: 'OUTCOME' }));
