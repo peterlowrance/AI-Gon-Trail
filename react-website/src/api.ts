@@ -7,9 +7,22 @@ type GameStatus = {
     //current_step/total_steps ?
 }
 
+const baseQuery = fetchBaseQuery({
+    baseUrl: window.location.origin + '/api/',
+    prepareHeaders: (headers, { getState }) => {
+        // Get the authentication key from the store state
+        const openaiKey = getState().game.key;
+        // If we have a key, add it to the headers
+        if (openaiKey) {
+          headers.set('openai_key', openaiKey);
+        }
+        return headers;
+      }
+})
+
 export const gameApi = createApi({
     reducerPath: 'gameApi',
-    baseQuery: fetchBaseQuery({ baseUrl: window.location.origin + '/api/' }),
+    baseQuery: baseQuery,
     tagTypes: ['GAME'],
     endpoints: (builder) => ({
         getGameStart: builder.query<{session: string, items: {[item: string]: number}, description: string}, string>({
@@ -17,8 +30,7 @@ export const gameApi = createApi({
                 url: 'game-start-items',
                 method: 'POST',
                 params: {
-                    theme: theme,
-                    key: window.key
+                    theme: theme
                 }
             })
         }),
@@ -28,8 +40,7 @@ export const gameApi = createApi({
                 method: 'POST',
                 body: {
                     session: session,
-                    items: items,
-                    key: window.key
+                    items: items
                 }
             }),
             invalidatesTags: ['GAME']
@@ -39,8 +50,7 @@ export const gameApi = createApi({
             query: (session) => ({
                 url: 'game-status',
                 params: {
-                    session: session,
-                    key: window.key
+                    session: session
                 }
             }),
             providesTags: ['GAME']
@@ -49,8 +59,7 @@ export const gameApi = createApi({
             query: (session) => ({
                 url: 'game-scenario',
                 params: {
-                    session: session,
-                    key: window.key
+                    session: session
                 }
             })
         }),
@@ -61,8 +70,7 @@ export const gameApi = createApi({
                 body: {
                     session: session,
                     scenario: scenario,
-                    action: action,
-                    key: window.key
+                    action: action
                 }
             }),
             invalidatesTags: ['GAME']

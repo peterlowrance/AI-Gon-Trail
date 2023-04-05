@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { addStory, RootState, setSuggestions } from "./store";
 import { useLazyGetScenarioQuery } from "./api";
-import { EuiButton, EuiLoadingSpinner, EuiSkeletonText, EuiText } from "@elastic/eui";
+import { EuiButton, EuiPanel, EuiSkeletonRectangle, EuiText } from "@elastic/eui";
 import { useEffect } from 'react';
 
 
@@ -32,21 +32,27 @@ export default function StoryPanel(props) {
     return <div>
         {getScenarioRes.isError && <EuiButton onClick={handleGetScenario} color='danger' >Failed to get scenario, try again</EuiButton>}
         {story.map((s, i) =>
-            <EuiText color={s.invalid ? 'danger' : undefined} key={i}>
-                <p>
-                    {s.type === 'ACTION' ? <em>{s.text}</em> : s.text}
-                </p>
-                {s.type === 'OUTCOME' && <br />}
-                {s.invalidMsg &&
+            <EuiPanel hasBorder style={{marginBottom: 16}}>
+                <EuiText color={s.invalid ? 'danger' : undefined} key={i}>
                     <p>
-                        {s.invalidMsg}
+                        {s.type === 'ACTION' ? <em>{s.text}</em> : s.text}
                     </p>
-                }
-            </EuiText>
+                    {s.type === 'OUTCOME' && <br />}
+                    {s.invalidMsg &&
+                        <p>
+                            {s.invalidMsg}
+                        </p>
+                    }
+                </EuiText>
+            </EuiPanel>
         )}
         {getScenarioRes.isFetching &&
-            <EuiSkeletonText lines={3} size="m" isLoading={getScenarioRes.isFetching}>
-            </EuiSkeletonText>
+            <EuiSkeletonRectangle
+            width="100%"
+            height={100}
+            borderRadius="m"
+            isLoading={getScenarioRes.isFetching}
+          />
         }
     </div>
 }

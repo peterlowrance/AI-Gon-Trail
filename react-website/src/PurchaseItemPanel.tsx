@@ -40,8 +40,8 @@ export default function PurchaseItemPanel() {
                 });
     }
 
-    return <EuiPanel hasBorder grow={false}>
-        <EuiFlexGroup direction='column'>
+    return <EuiPanel hasBorder grow>
+        <EuiFlexGroup direction='column' style={{height: '100%'}}>
             <EuiFlexItem grow={false}>
                 <EuiTitle size='s'>
                     <h2>

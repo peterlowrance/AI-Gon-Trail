@@ -1,14 +1,14 @@
 import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit'
 import { gameApi } from './api';
 
-export type GameState = 'NO_KEY' | 'NOT_STARTED' | 'CHOOSING_ITEMS' | 'FACING_SCENARIOS';
+export type GameState = 'NOT_STARTED' | 'CHOOSING_ITEMS' | 'FACING_SCENARIOS';
 export type StoryType = 'SCENARIO' | 'ACTION' | 'OUTCOME';
 
 // Slice
 const gameSlice = createSlice({
   name: 'game',
   initialState: {
-    gameState: 'NO_KEY' as GameState,
+    gameState: 'NOT_STARTED' as GameState,
     itemsToBuy: {} as {[item: string]: number},
     session: null as null | string,
     story: [] as {text: string, type: StoryType, invalid?: boolean, invalidMsg?: string}[],
@@ -38,8 +38,9 @@ const gameSlice = createSlice({
       // Scroll to bottom
       setTimeout(() => {
         const el = document.getElementById('scrolling-div');
-        if (el)
-            el.scrollTop = el.scrollHeight;
+        if (el) {
+          el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+        }
       }, 50);
     },
     invalidateStoryAction: (state, action: PayloadAction<string>) => {
@@ -50,7 +51,7 @@ const gameSlice = createSlice({
        setTimeout(() => {
         const el = document.getElementById('scrolling-div');
         if (el)
-            el.scrollTop = el.scrollHeight;
+          el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
       }, 50);
     },
     setSuggestions: (state, action: PayloadAction<string[]>) => {

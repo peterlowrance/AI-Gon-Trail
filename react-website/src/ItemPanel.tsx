@@ -1,4 +1,4 @@
-import { EuiBadge, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
 import { Fragment, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
 import Item from "./Item";
@@ -83,11 +83,9 @@ function ItemPanel(props: { items: string[], title: string }) {
                 const content = <>
                     {Object.entries(changedAttrItems).map(([key, obj]) =>
                         <p>
-                            <Item value={key} />
-                            changed
-                            {obj.prevAttr.map(a => <EuiBadge color='success'>{a}</EuiBadge>)}
-                            to
-                            {obj.newAttr.map(a => <EuiBadge color='success'>{a}</EuiBadge>)}
+                            <Item value={`(${obj.prevAttr.join(',')}) ${key}`} />
+                            &rarr;
+                            <Item value={`(${obj.newAttr.join(',')}) ${key}`} />
                         </p>
                     )}
                 </>;
@@ -97,16 +95,17 @@ function ItemPanel(props: { items: string[], title: string }) {
         prevItems.current = props.items;
     }, [props.items]);
 
-    return <EuiPanel paddingSize={mobile ? 's' : 'm'} hasShadow={false} hasBorder style={{overflowY: 'scroll'}}>
+    return <EuiPanel paddingSize={mobile ? 's' : 'm'} hasShadow={false} hasBorder>
         <EuiTitle size='xs'>
             <h3>{props.title}:</h3>
         </EuiTitle>
-        {props.items.map(item =>
-            <Fragment key={parseKey(item)}>
-                <EuiSpacer size='xs' />
-                <Item value={item} />
-            </Fragment>
-        )}
+        <EuiFlexGroup gutterSize='xs' responsive={false} wrap={mobile} direction={mobile ? 'row' : 'column'} style={{overflowY: 'scroll'}}>
+            {props.items.map(item =>
+                <EuiFlexItem grow={false}>
+                    <Item value={item} />
+                </EuiFlexItem>
+            )}
+        </EuiFlexGroup>
     </EuiPanel>;
 }
 

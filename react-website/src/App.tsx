@@ -1,12 +1,15 @@
-import { EuiAccordion, EuiButton, EuiFlexGroup, EuiFlexItem, EuiGlobalToastList, EuiHeader, EuiHideFor, EuiPageTemplate, EuiPanel, EuiShowFor, EuiSpacer, EuiText, EuiTitle } from "@elastic/eui";
+import { EuiAccordion, EuiFlexGroup, EuiFlexItem, EuiGlobalToastList, EuiHideFor, EuiPanel, EuiShowFor, EuiSpacer, EuiText } from "@elastic/eui";
 import UserInput from "./UserInput";
 import PurchaseItemPanel from "./PurchaseItemPanel";
-import { addStory, removeToast, RootState, setGameState, setItemsToBuy, setSession } from "./store";
+import { removeToast, RootState, setGameState, setItemsToBuy, setSession } from "./store";
 import { useLazyGetGameStartQuery } from "./api";
 import { useDispatch, useSelector } from 'react-redux';
 import StatusSidebar from "./StatusSidebar";
 import StoryPanel from "./StoryPanel";
 import { useState } from "react";
+import background from '../images/00014-2437541345.png';
+import GameStartPanel from "./GameStartPanel";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -26,14 +29,6 @@ function App() {
     });
   }
 
-  const handleAddKey = () => {
-    const key = prompt('Enter your key', window.key);
-    if (key) {
-      window.key = key;
-    }
-    dispatch(setGameState('NOT_STARTED'));
-  }
-
   return <>
     <EuiFlexGroup direction='row' gutterSize='none' style={{ height: '100vh', overflow: 'hidden' }}>
       {/* Sidebar */}
@@ -45,28 +40,15 @@ function App() {
         </EuiFlexItem>
       </EuiHideFor>
       {/* Main page */}
-      <EuiFlexItem className='eui-fullHeight'>
-        <EuiPanel hasBorder={false} borderRadius='none' color='plain' className='eui-fullHeight'>
-          <EuiFlexGroup direction='column' className='eui-fullHeight'>
+      <EuiFlexItem className='eui-fullHeight' style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center center' }}>
+        <EuiPanel hasBorder={false} borderRadius='none' color='transparent' className='eui-fullHeight'>
+          <EuiFlexGroup gutterSize='m' direction='column' className='eui-fullHeight'>
             {/* Header */}
-            <EuiFlexItem grow={false}>
-{gameState === 'NOT_STARTED' && 
-<StartGamePanel />
-}
-              <EuiTitle><h1>AI-Gon Trail</h1></EuiTitle>
-              {gameState === 'NO_KEY' &&
-                <EuiFlexGroup>
-                  <EuiFlexItem grow={false}>
-                    <EuiText>Add a key to begin</EuiText>
-                  </EuiFlexItem>
-                  <EuiFlexItem grow={false}>
-                    <EuiButton size='s' onClick={handleAddKey}>{gameState === 'NO_KEY' ? 'Add key' : 'Change key'}</EuiButton>
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-              }
-              {gameState === 'NOT_STARTED' && <EuiButton isLoading={gameStartRes.isFetching} disabled={gameStartRes.isFetching} onClick={handleStart}>Start</EuiButton>}
-              {gameStartRes.isError && <EuiText color='danger'>Failed to start the game, try again</EuiText>}
-            </EuiFlexItem>
+            {gameState === 'NOT_STARTED' &&
+              <EuiFlexItem grow={false}>
+                <GameStartPanel handleStart={handleStart} loading={gameStartRes.isLoading} error={gameStartRes.isError} />
+              </EuiFlexItem>
+            }
             {/* On mobile view, status goes here */}
             <EuiShowFor sizes={['xs', 's']}>
               {gameState === 'CHOOSING_ITEMS' || gameState === 'FACING_SCENARIOS' &&
@@ -85,7 +67,9 @@ function App() {
             <EuiFlexItem id='scrolling-div' style={{ overflowY: 'scroll' }} grow>
               {gameState === 'CHOOSING_ITEMS' &&
                 <>
-                  <EuiText>{desc}</EuiText>
+                  <EuiPanel hasBorder grow={false}>
+                    <EuiText>{desc}</EuiText>
+                  </EuiPanel>
                   <EuiSpacer />
                   <PurchaseItemPanel />
                 </>

@@ -1,22 +1,31 @@
+import { EuiButton, EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiFormRow, EuiPanel, EuiText, EuiTitle } from "@elastic/eui";
+import { RootState, setKey } from "./store";
+import { useSelector, useDispatch } from 'react-redux';
 
-function GameStartPanel() {
-    const key = useSelector((state: RootState) => state.game.key);  
-    const handleStart = () => {
-    console.log();
-}
-    return <EuiPanel hasBorder >
-<EuiFlexGroup direction='column'>
+function GameStartPanel(props: { handleStart: Function, loading: boolean, error: boolean }) {
+    const dispatch = useDispatch();
+    const key = useSelector((state: RootState) => state.game.key);
 
-<EuiFlexItem><EuiTitle><h1>Welcome to AI-Gon Trail</h1></EuiTitle></EuiFlexItem>
-<EuiFlexItem>
-<EuiFormRow label='Enter your OpenAI key'>
-<EuiInput value={key} onChange={e => dispatch(setKey(e.target.value))} />
-</EuiFormRow>
-</EuiFlexItem>
-<EuiFlexItem><EuiButton disabled={!key} onClick={handleStart} >Start Game</EuiButton></EuiFlexItem>
-
-</EuiFlexGroup>
-</EuiPanel>
+    return <EuiPanel hasBorder>
+        <EuiFlexGroup direction='column'>
+            <EuiFlexItem><EuiTitle><h1>Welcome to AI-Gon Trail</h1></EuiTitle></EuiFlexItem>
+            <EuiFlexItem>
+                <EuiFormRow label='Enter your OpenAI key' helpText='Go to openai.com to get an api key'>
+                    <EuiFieldText value={key} onChange={e => dispatch(setKey(e.target.value))} />
+                </EuiFormRow>
+            </EuiFlexItem>
+            <EuiFlexItem>
+                <div>
+                    <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => props.handleStart()}>Start Game</EuiButton>
+                </div>
+            </EuiFlexItem>
+            {props.error &&
+                <EuiFlexItem>
+                    <EuiText color='danger'>Failed to start the game, try again</EuiText>
+                </EuiFlexItem>
+            }
+        </EuiFlexGroup>
+    </EuiPanel>
 }
 
 export default GameStartPanel;

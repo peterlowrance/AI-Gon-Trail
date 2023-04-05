@@ -2,9 +2,7 @@ import { skipToken } from "@reduxjs/toolkit/dist/query";
 import { useGetStatusQuery } from "./api";
 import { RootState } from "./store";
 import { useSelector } from 'react-redux';
-import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
-import Item from "./Item";
-import { Fragment, useState } from "react";
+import { EuiFlexGroup, EuiFlexItem, EuiTitle } from "@elastic/eui";
 import ItemPanel from "./ItemPanel";
 
 export default function StatusSidebar(props) {

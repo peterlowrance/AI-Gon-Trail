@@ -49,12 +49,7 @@ export default function UserInput(props: { disabled: boolean }) {
     return <EuiFlexGroup direction='column' gutterSize='s'>
         {!props.disabled && suggestions.length > 0 &&
             <EuiFlexItem>
-                <EuiFlexGroup gutterSize='s' alignItems='baseline' wrap>
-                    <EuiFlexItem grow={false}>
-                        <EuiText>
-                            Suggestions:
-                        </EuiText>
-                    </EuiFlexItem>
+                <EuiFlexGroup gutterSize='s' alignItems='baseline' wrap responsive={false}>
                     {suggestions.map(sug => value !== sug &&
                         <EuiFlexItem key={sug} grow={false}>
                             <EuiBadge color='default' onClick={() => setValue(sug)} isDisabled={props.disabled || takeActionRes.isLoading}>
@@ -78,7 +73,7 @@ export default function UserInput(props: { disabled: boolean }) {
                     />
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
-                    <EuiButton isLoading={takeActionRes.isLoading} isDisabled={!value || props.disabled} onClick={handleTakeAction}>Take Action</EuiButton>
+                    <EuiButton color='primary' isLoading={takeActionRes.isLoading} isDisabled={!value || props.disabled} onClick={handleTakeAction}>Take Action</EuiButton>
                 </EuiFlexItem>
             </EuiFlexGroup>
         </EuiFlexItem>

@@ -46,12 +46,8 @@ Is this player action valid? Respond in the format {{"valid": true or false, "ex
 def get_scenario_prompt(state: GameState) -> Prompt: 
     return {
         "prompt": f"""This is a game similar to Oregon Trail.
-The current status of the game is:
-Vehicle: {state.vehicle}
-Characters: {', '.join(state.characters)}
-Items: {', '.join(state.items)}
-
-The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress. Based on the available items ({', '.join(state.items)}) and characters ({', '.join(state.characters)}), generate a json object with fields "scenario", and "suggestions". "scenario" is 75 words of description, "suggestions" is an array of 3 brief actions the player could possibly take to attempt to overcome the scenario. Make the scenario include specific details about the situation and/or the characters. Do not have any vague descriptions.""",
+The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress.
+Based on the available items ({', '.join(state.items)}), characters ({', '.join(state.characters)}), and vehicle: {state.vehicle}, generate a json object with fields "scenario", and "suggestions". "scenario" is 75 words of description, "suggestions" is an array of 3 brief actions the player could possibly take to attempt to overcome the scenario. Make the scenario include specific details about the situation and/or the characters. Do not have any vague descriptions.""",
         "temperature": .5,
         "response_type": "json",
         "validation_schema": {"scenario": str, "suggestions": [str]}
