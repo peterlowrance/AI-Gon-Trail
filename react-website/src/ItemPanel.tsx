@@ -101,7 +101,7 @@ function ItemPanel(props: { items: string[], title: string }) {
         </EuiTitle>
         <EuiFlexGroup gutterSize='xs' responsive={false} wrap={mobile} direction={mobile ? 'row' : 'column'} style={{overflowY: 'scroll'}}>
             {props.items.map(item =>
-                <EuiFlexItem grow={false}>
+                <EuiFlexItem grow={false} key={item}>
                     <Item value={item} />
                 </EuiFlexItem>
             )}

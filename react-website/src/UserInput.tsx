@@ -53,7 +53,7 @@ export default function UserInput(props: { disabled: boolean }) {
                 <EuiFlexGroup gutterSize='s' alignItems='baseline' wrap responsive={false}>
                     {suggestions.map(sug => value !== sug &&
                         <EuiFlexItem key={sug} grow={false}>
-                            <EuiBadge color='default' onClick={() => setValue(sug)} isDisabled={props.disabled || takeActionRes.isLoading}>
+                            <EuiBadge color='default' onClick={() => setValue(sug)} onClickAriaLabel='select suggestion' isDisabled={props.disabled || takeActionRes.isLoading}>
                                 {sug}
                             </EuiBadge>
                         </EuiFlexItem>
