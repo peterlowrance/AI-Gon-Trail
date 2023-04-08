@@ -48,3 +48,8 @@ p {
     height: 120px;
   }
 }
+
+
+.suggestion-badge .euiBadge__text {
+  white-space: break-spaces !important;
+}

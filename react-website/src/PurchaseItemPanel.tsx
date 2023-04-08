@@ -12,7 +12,7 @@ export default function PurchaseItemPanel() {
     const itemsToBuy = useSelector((state: RootState) => state.game.itemsToBuy);
     const session = useSelector((state: RootState) => state.game.session);
 
-    const [chooseItems] = useChooseItemsMutation();
+    const [chooseItems, chooseItemsRes] = useChooseItemsMutation();
 
     let moneyLeft = 100;
     selectedItems.forEach(item => {
@@ -37,6 +37,10 @@ export default function PurchaseItemPanel() {
             chooseItems({ session: session, items: selectedItems }).unwrap()
                 .then(() => {
                     dispatch(setGameState('FACING_SCENARIOS'));
+                })
+                .catch((e) => {
+                    alert('Failed to start the game, try again later.');
+                    window.location.reload();
                 });
     }
 
@@ -53,7 +57,7 @@ export default function PurchaseItemPanel() {
                 <EuiFlexGroup gutterSize='xs' wrap responsive={false}>
                     {itemsToBuy && Object.entries(itemsToBuy).map(([item, cost]) =>
                         <EuiFlexItem grow={false} key={item}>
-                            <Item value={item} cost={cost} selected={selectedItems.includes(item)} onClick={() => toggleItem(item)} />
+                            <Item value={item} cost={cost} selected={selectedItems.includes(item)} onClick={chooseItemsRes.isLoading ? undefined : () => toggleItem(item)} />
                         </EuiFlexItem>
                     )}
                 </EuiFlexGroup>
@@ -62,7 +66,7 @@ export default function PurchaseItemPanel() {
                 <EuiFlexItem grow={false}>
                     <EuiFlexGroup justifyContent='spaceBetween' alignItems='baseline' responsive={false}>
                         <EuiFlexItem grow={false}>
-                            <EuiButton onClick={handlePurchaseItems}>Purchase Items</EuiButton>
+                            <EuiButton isLoading={chooseItemsRes.isLoading} onClick={handlePurchaseItems}>Purchase Items</EuiButton>
                         </EuiFlexItem>
                         <EuiFlexItem grow={false}>
                             <EuiText>

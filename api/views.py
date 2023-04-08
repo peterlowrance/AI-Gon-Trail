@@ -4,6 +4,7 @@ from api.prompts import *
 from api.ai_client import AiClient
 from uuid import uuid4
 from threading import Thread
+import time
 
 # Use local variable for database for now
 database: dict[str, GameState] = {}
@@ -61,6 +62,13 @@ def choose_items(request):
 
     state = database[session]
     state.items = items
+    # If the situations haven't been created by the thread yet, wait
+    count = 0
+    while len(state.situations) == 0:
+        time.sleep(1)
+        count += 1
+        if count > 15:
+            raise Exception("Failed to start the game, situations weren't generated")
     return Response()
 
 
