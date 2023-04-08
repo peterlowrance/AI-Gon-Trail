@@ -8,13 +8,18 @@ import re
 class AiClient:
 
 	def __init__(self, key: str | None):
+		self.model = 'gpt-3.5-turbo'
 		if key == os.getenv("OVERRIDE_KEY"):
 			openai.api_key = os.getenv("OPENAI_API_KEY")
+		# Super key to use gpt 4
+		elif key == os.getenv("SUPER_OVERRIDE_KEY"):
+			openai.api_key = os.getenv("OPENAI_API_KEY")
+			self.model = 'gpt-4'
 		else:
 			openai.api_key = key
 		if not openai.api_key:
 			raise Exception('No key provided')
-		self.model = 'gpt-3.5-turbo'
+		
 
 	def __call__(self):
 		return self

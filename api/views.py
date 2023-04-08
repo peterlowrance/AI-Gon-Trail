@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from api.prompts import *
 from api.ai_client import AiClient
 from uuid import uuid4
+from threading import Thread
 
 # Use local variable for database for now
 database: dict[str, GameState] = {}
@@ -24,12 +25,17 @@ def game_start_items(request):
     res = client.gen_dict(prompt)
     destination = res['destination'].lower()
 
-    scenario_prompt = get_scenario_list_prompt(theme, destination)
-    scenario_res = client.gen_dict(scenario_prompt)
-
     # Save initial data to state
-    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=scenario_res['situations'], theme=theme, destination=destination)
+    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
     print('Destination:', destination)
+
+    # Get the scenario list in another thread so we can start the game quicker
+    def initialize_scenario_list():
+        scenario_prompt = get_scenario_list_prompt(theme, destination)
+        scenario_res = client.gen_dict(scenario_prompt)
+        database[session].situations = scenario_res['situations']
+    Thread(target=initialize_scenario_list).start()
+
     return Response({'items': res['items'], 'session': session, 'description': res['description']})
 
 
