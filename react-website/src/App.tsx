@@ -24,8 +24,8 @@ function App() {
 
   const [getGameStart, gameStartRes] = useLazyGetGameStartQuery();
 
-  const handleStart = () => {
-    getGameStart({ theme: 'Oregon Trail', key: key }).unwrap().then(res => {
+  const handleStart = (theme) => {
+    getGameStart({ theme: theme, key: key }).unwrap().then(res => {
       dispatch(setSession(res.session));
       dispatch(setItemsToBuy(res.items));
       dispatch(setGameState('CHOOSING_ITEMS'));

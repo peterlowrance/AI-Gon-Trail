@@ -1,10 +1,11 @@
 import { EuiButton, EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiFormRow, EuiPanel, EuiText, EuiTitle } from "@elastic/eui";
-import { RootState, setKey } from "./store";
+import { RootState, setKey, setTheme } from "./store";
 import { useSelector, useDispatch } from 'react-redux';
 
 function GameStartPanel(props: { handleStart: Function, loading: boolean, error: boolean }) {
     const dispatch = useDispatch();
     const key = useSelector((state: RootState) => state.game.key);
+    const theme = useSelector((state: RootState) => state.game.theme);
 
     return <EuiPanel hasBorder>
         <EuiFlexGroup direction='column'>
@@ -15,8 +16,13 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
                 </EuiFormRow>
             </EuiFlexItem>
             <EuiFlexItem>
+                <EuiFormRow label='Choose a theme'>
+                    <EuiFieldText value={theme} onChange={e => dispatch(setTheme(e.target.value))} />
+                </EuiFormRow>
+            </EuiFlexItem>
+            <EuiFlexItem>
                 <div>
-                    <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => props.handleStart()}>Start Game</EuiButton>
+                    <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => props.handleStart(theme)}>Start Game</EuiButton>
                 </div>
             </EuiFlexItem>
             {props.error &&

@@ -22,12 +22,14 @@ def game_start_items(request):
     client = AiClient(key)
     prompt = get_start_prompt(theme)
     res = client.gen_dict(prompt)
+    destination = res['destination'].lower()
 
-    scenario_prompt = get_scenario_list_prompt(theme)
+    scenario_prompt = get_scenario_list_prompt(theme, destination)
     scenario_res = client.gen_dict(scenario_prompt)
 
     # Save initial data to state
-    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=scenario_res['situations'])
+    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=scenario_res['situations'], theme=theme, destination=destination)
+    print('Destination:', destination)
     return Response({'items': res['items'], 'session': session, 'description': res['description']})
 
 

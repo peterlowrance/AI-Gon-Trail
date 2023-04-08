@@ -31,6 +31,7 @@ class AiClient:
 			# max_tokens=255,
 			presence_penalty=params.get('presence_penalty', 0),
 			frequency_penalty=params.get('frequency_penalty', 0),
+			# logit_bias={'19411': 10},
 			messages=messages
 		)
 		# print(completion)

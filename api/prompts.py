@@ -10,7 +10,7 @@ class Prompt(TypedDict):
 
 def get_start_prompt(theme: str) -> Prompt:
     return {
-        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme. The custom theme is "{theme}". Respond with a yaml object that shows the available items to purchase at the start of the game. The yaml should have a field 'items' which is a mapping with keys of the item and value of the cost. There should be 20 items. The items should be things that the group can use to overcome challenges. Their cost should be 1 to 20 for each item. The user will have a total of 100 to spend on them. Also generate a sequence of 5 characters that are in the crew. A field vehicle which is a string. A field description which explains how the crew starts out on their journey based on the theme. Each item, character, and the vehicle can have optional modifiers for extraneous features, shown in parentheses with the item name, for example "(broken) gun", " or "(strong, steel) shovel". Make these fields match the custom theme. Add modifiers to only some of the items.
+        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme. The custom theme is "{theme}". Respond with a yaml object that shows the available items to purchase at the start of the game. The yaml should have a field 'items' which is a mapping with keys of the item and value of the cost. There should be 20 items. The items should be things that the group can use to overcome challenges. Their cost should be 1 to 20 for each item. The user will have a total of 100 to spend on them. Also generate a sequence of 5 characters that are in the crew. A field vehicle which is a string. A field destination which is the characters destination. A field description which explains how the crew starts out on their journey based on the theme. Each item, character, and the vehicle can have optional modifiers for extraneous features, shown in parentheses with the item name, for example "(broken) gun", " or "(strong, steel) shovel". Make these fields match the custom theme. Add modifiers to only some of the items.
 Example:
 
 items:
@@ -19,13 +19,14 @@ items:
 crew:
  - (healthy, cartographer) Bob
 vehicle: Wooden Wagon (Health 10/10)
+destination: The west
 description: The group sets out...
 
 
 Respond with only this yaml object""",
         "temperature": 0.7,
         "response_type": "yaml",
-        "validation_schema": {"items": {"*": int}, "crew": [str], "vehicle": str, "description": str}
+        "validation_schema": {"items": {"*": int}, "crew": [str], "vehicle": str, "destination": str, "description": str}
     }
 
 def get_validate_action_prompt(scenario: str, state: GameState, action: str) -> Prompt:
@@ -45,18 +46,18 @@ Is this player action valid? Respond in the format {{"valid": true or false, "ex
 
 def get_scenario_prompt(state: GameState) -> Prompt: 
     return {
-        "prompt": f"""This is a game similar to Oregon Trail.
-The party is trying to reach the west and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress.
-Based on the available items ({', '.join(state.items)}), characters ({', '.join(state.characters)}), and vehicle: {state.vehicle}, generate a json object with fields "scenario", and "suggestions". "scenario" is 75 words of description, "suggestions" is an array of 3 brief actions the player could possibly take to attempt to overcome the scenario. Make the scenario include specific details about the situation and/or the characters. Do not have any vague descriptions.""",
+        "prompt": f"""This is a game similar to Oregon Trail with a theme {state.theme}.
+The party is trying to reach {state.destination} and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress.
+Based on the available items ({', '.join(state.items)}), characters ({', '.join(state.characters)}), and vehicle: {state.vehicle}, generate a json object with fields "scenario", and "suggestions". "scenario" is 75 words of description of the situation, "suggestions" is an array of 3 brief actions the player could possibly take to attempt to overcome the scenario. Make the scenario include specific details about the situation and/or the characters. Do not have any vague descriptions.""",
         "temperature": .5,
         "response_type": "json",
         "validation_schema": {"scenario": str, "suggestions": [str]}
     }
 
 
-def get_scenario_list_prompt(theme: str) -> Prompt:
+def get_scenario_list_prompt(theme: str, destination: str) -> Prompt:
     return {
-        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme. The custom theme is "{theme}". Your job is to generate 10 short situations of high difficulty for the player to try to overcome.
+        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme. The custom theme is "{theme}" and the players goal is to reach {destination}. Your job is to generate 10 short situations of high difficulty for the player to try to overcome.
 The situations should be related to the theme.
 The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, and conflicts. None of the situations should mention the players supplies as those are handled elsewhere. 
 
@@ -69,10 +70,10 @@ Reply in json in this format {{"situations":["Cross a river...", ...]}}. Try to 
 def get_scenario_outcome_prompt(scenario: str, player_action: str, state: GameState) -> Prompt:
     final_scenario_str = ''
     if state.current_step == state.total_steps:
-        final_scenario_str = '\nSince this is the final scenario, if the player was able to successfully overcome it with at least one character alive, include a description of reaching their destination in the outcome'
+        final_scenario_str = f'\nSince this is the final scenario, if the player was able to successfully overcome it with at least one character alive, include a description of reaching the destination {state.destination} in the outcome'
     example_item = state.items[0] if len(state.items) > 0 else 'shovel'
     return {
-        "prompt": f"""This is a game similar to Oregon Trail. You control the world in an attempt to make the game engaging and realistic.
+        "prompt": f"""This is a game similar to Oregon Trail with a theme of {state.theme}. You control the world in an attempt to make the game engaging and realistic.
 {{
     "items": {json.dumps(state.items)},
     "characters": {json.dumps(state.characters)},

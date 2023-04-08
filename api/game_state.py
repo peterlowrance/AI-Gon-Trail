@@ -7,15 +7,18 @@ class GameState:
     total_steps: int
     current_step: int
     situations: list[str]
-    def __init__(self, characters: list[str], items: list[str], vehicle: str, situations: list[str]):
+    theme: str
+    destination: str
 
-
+    def __init__(self, characters: list[str], items: list[str], vehicle: str, situations: list[str], theme: str, destination: str):
         self.total_steps = 10
         self.current_step = 1
         self.characters = characters
         self.items = items
         self.situations = situations
         self.vehicle = vehicle
+        self.theme = theme
+        self.destination = destination
 
     def progress(self, characters: list[str], items: list[str], vehicle: str):
         self.characters = characters
