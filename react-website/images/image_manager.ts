@@ -1,14 +1,17 @@
-import { wordsToImage, wordCounts, maxWordCount } from './image_imports';
+import { wordsToImage, wordCounts, maxWordCount, startingImages } from './image_imports';
 
 function getWordWeight(word) {
-   return (1 + maxWordCount - wordCounts[word])/maxWordCount;
+   return (3 + maxWordCount - wordCounts[word])/maxWordCount;
 }
 
 export function getBackgroundImage(paragraph: string) {
+    // If no paragraph, return a starting image
+    if (!paragraph) {
+        return startingImages[Math.floor(Math.random() * startingImages.length)];
+    }
     const words = new Set(paragraph.toLowerCase().replace(/[^a-zA-Z']/g, " ").split(" "));
     const weightsAndImages: [number, any][] = [];
     let maxWeight = 0;
-    // TODO: make the weight of each image word dilluted by how many words there are
     wordsToImage.forEach(([imageWords, backgroundImage]) => {
         const overlappingWordsWeightsSum = imageWords.reduce((sum, curWord) => words.has(curWord) ? sum + getWordWeight(curWord): sum, 0);
         if (overlappingWordsWeightsSum > 0) {

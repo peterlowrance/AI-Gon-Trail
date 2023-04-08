@@ -2,24 +2,28 @@ import { skipToken } from "@reduxjs/toolkit/dist/query";
 import { useGetStatusQuery } from "./api";
 import { RootState } from "./store";
 import { useSelector } from 'react-redux';
-import { EuiFlexGroup, EuiFlexItem, EuiTitle } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiTitle } from "@elastic/eui";
 import ItemPanel from "./ItemPanel";
 
-export default function StatusSidebar(props) {
+export default function StatusSidebar(props: { hideVehicle?: boolean }) {
     const session = useSelector((state: RootState) => state.game.session);
     const { data: gameStatus, isLoading } = useGetStatusQuery(session ?? skipToken);
 
     const mobile = window.innerWidth <= 800;
 
     return gameStatus ?
-        <EuiFlexGroup direction='column' gutterSize={mobile ? 's' : 'l'} style={{overflowY: 'scroll', maxHeight: '100vh'}}>
-            <EuiFlexItem grow={false}>
-                <EuiTitle size='s'>
-                    <h3 style={{ paddingLeft: 16 }}>
-                        {gameStatus.vehicle}
-                    </h3>
-                </EuiTitle>
-            </EuiFlexItem>
+        <EuiFlexGroup direction='column' gutterSize={mobile ? 's' : 'l'} style={{ overflowY: 'scroll', maxHeight: '100vh' }}>
+            {!props.hideVehicle &&
+                <EuiFlexItem grow={false}>
+                    <EuiPanel paddingSize={mobile ? 'xs' : 's'} hasShadow={false} hasBorder>
+                        <EuiTitle size='s'>
+                            <h3>
+                                {gameStatus.vehicle}
+                            </h3>
+                        </EuiTitle>
+                    </EuiPanel>
+                </EuiFlexItem>
+            }
             <EuiFlexItem>
                 <ItemPanel items={gameStatus.characters} title='Characters' />
             </EuiFlexItem>

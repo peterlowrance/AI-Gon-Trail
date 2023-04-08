@@ -60,7 +60,7 @@ export default function PurchaseItemPanel() {
             </EuiFlexItem>
             {session &&
                 <EuiFlexItem grow={false}>
-                    <EuiFlexGroup justifyContent='spaceBetween' alignItems='baseline'>
+                    <EuiFlexGroup justifyContent='spaceBetween' alignItems='baseline' responsive={false}>
                         <EuiFlexItem grow={false}>
                             <EuiButton onClick={handlePurchaseItems}>Purchase Items</EuiButton>
                         </EuiFlexItem>

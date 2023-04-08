@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { addStory, RootState, setSuggestions } from "./store";
 import { useLazyGetScenarioQuery } from "./api";
-import { EuiButton, EuiPanel, EuiSkeletonRectangle, EuiText } from "@elastic/eui";
-import { useEffect } from 'react';
+import { EuiButton, EuiPanel, EuiSkeletonRectangle, EuiText, useResizeObserver } from "@elastic/eui";
+import { useEffect, useRef } from 'react';
 
 
 export default function StoryPanel(props) {
@@ -10,13 +10,14 @@ export default function StoryPanel(props) {
     const session = useSelector((state: RootState) => state.game.session);
     const story = useSelector((state: RootState) => state.game.story);
     const key = useSelector((state: RootState) => state.game.key);
+    const lastStoryRef = useRef<any>();
 
     const [getScenario, getScenarioRes] = useLazyGetScenarioQuery();
 
     const handleGetScenario = () => {
         if (session && (story.length === 0 || story[story.length - 1].type === 'OUTCOME')) {
             console.log('Fetching scenario')
-            getScenario({session: session, key: key}).unwrap().then(res => {
+            getScenario({ session: session, key: key }).unwrap().then(res => {
                 dispatch(setSuggestions(res.suggestions));
                 dispatch(addStory({ text: res.scenario, type: 'SCENARIO' }));
             }).catch(res => {
@@ -30,11 +31,13 @@ export default function StoryPanel(props) {
         handleGetScenario();
     }, [story])
 
-    return <div>
+    const lastStoryHeight = useResizeObserver(lastStoryRef.current).height;
+
+    return <div style={{marginBottom: '15vw'}}>
         {getScenarioRes.isError && <EuiButton onClick={handleGetScenario} color='danger' >Failed to get scenario, try again</EuiButton>}
         {story.map((s, i) =>
-            <EuiPanel hasBorder style={{marginBottom: 16}}>
-                <EuiText color={s.invalid ? 'danger' : undefined} key={i}>
+            <EuiPanel key={i} hasBorder style={{ marginBottom: 16 }}>
+                <EuiText color={s.invalid ? 'danger' : undefined}>
                     <p>
                         {s.type === 'ACTION' ? <em>{s.text}</em> : s.text}
                     </p>
@@ -49,11 +52,11 @@ export default function StoryPanel(props) {
         )}
         {getScenarioRes.isFetching &&
             <EuiSkeletonRectangle
-            width="100%"
-            height={100}
-            borderRadius="m"
-            isLoading={getScenarioRes.isFetching}
-          />
+                width="100%"
+                borderRadius="m"
+                className='delay-appear'
+                isLoading={getScenarioRes.isFetching}
+            />
         }
     </div>
 }
