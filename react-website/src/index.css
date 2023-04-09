@@ -21,7 +21,7 @@ p {
   opacity: 0;
   visibility: hidden;
   display: none;
-  animation: showDiv 5s forwards;
+  animation: showDiv 6s forwards;
   height: 0;
 }
 

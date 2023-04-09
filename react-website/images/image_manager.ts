@@ -1,7 +1,7 @@
 import { wordsToImage, wordCounts, maxWordCount, startingImages } from './image_imports';
 
 function getWordWeight(word) {
-   return (3 + maxWordCount - wordCounts[word])/maxWordCount;
+   return .5 + ((maxWordCount - wordCounts[word])/maxWordCount);
 }
 
 export function getBackgroundImage(paragraph: string) {

@@ -34,7 +34,6 @@ export default function StoryPanel(props) {
     const lastStoryHeight = useResizeObserver(lastStoryRef.current).height;
 
     return <div style={{marginBottom: '15vw'}}>
-        {getScenarioRes.isError && <EuiButton onClick={handleGetScenario} color='danger' >Failed to get scenario, try again</EuiButton>}
         {story.map((s, i) =>
             <EuiPanel key={i} hasBorder style={{ marginBottom: 16 }}>
                 <EuiText color={s.invalid ? 'danger' : undefined}>
@@ -50,6 +49,7 @@ export default function StoryPanel(props) {
                 </EuiText>
             </EuiPanel>
         )}
+        {getScenarioRes.isError && <EuiButton onClick={handleGetScenario} color='danger' >Failed to get scenario, try again</EuiButton>}
         {getScenarioRes.isFetching &&
             <EuiSkeletonRectangle
                 width="100%"
