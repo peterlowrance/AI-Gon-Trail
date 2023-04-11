@@ -1,9 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { addStory, RootState, setSuggestions } from "./store";
 import { useLazyGetScenarioQuery } from "./api";
-import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiPanel, EuiSkeletonRectangle, EuiSpacer, EuiText } from "@elastic/eui";
-import { useEffect, useRef } from 'react';
-import Item from './Item';
+import { EuiButton, EuiPanel, EuiSkeletonRectangle, EuiSpacer, EuiText } from "@elastic/eui";
+import { useEffect } from 'react';
 import StoryChanges from './StoryChanges';
 
 

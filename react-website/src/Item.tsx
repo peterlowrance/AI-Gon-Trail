@@ -1,6 +1,29 @@
 import { EuiBadge, EuiPanel } from "@elastic/eui";
 import _ from 'lodash';
-import { parseAttributes, parseKey } from "./ItemPanel";
+
+const regExp = /\(([^)]+)\)/g; // matches anything between parentheses
+
+const parseKey = (value) => {
+    const parenContents = value.match(regExp);
+    let key = value;
+    parenContents?.forEach(content => {
+        // Remove parenthetical phrase
+        key = key.replace(content, '');
+    });
+    return key.trim();
+}
+
+const parseAttributes = (value) => {
+    const attributes = [] as string[];
+    const parenContents = value.match(regExp);
+    parenContents?.forEach(content => {
+        // Remove ( and ) from attributeQ
+        const parsedContent = content.replaceAll('(', '').replaceAll(')', '');
+        // Add all comma separated attributes
+        parsedContent.split(',').forEach(val => attributes.push(val.trim()));
+    });
+    return attributes;
+}
 
 export default function Item(props: { value: string, cost?: number, selected?: boolean, onClick?: any }) {
 
