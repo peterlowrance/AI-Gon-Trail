@@ -13,10 +13,13 @@ export default function UserInput(props: { disabled: boolean }) {
     const story = useSelector((state: RootState) => state.game.story);
     const key = useSelector((state: RootState) => state.game.key);
 
+
     let scenario = undefined as undefined | string;
     if (story.length > 0) {
         scenario = _.findLast(story, s => s.type === 'SCENARIO')?.text;
     }
+
+    const lastStoryType = story.length > 0 ? story[story.length - 1].type : undefined;
 
     const [takeAction, takeActionRes] = useTakeActionMutation();
 
@@ -26,7 +29,9 @@ export default function UserInput(props: { disabled: boolean }) {
             takeAction({ action: value, scenario: scenario, session: session, key: key }).unwrap()
                 .then((res) => {
                     if (res.valid) {
-                        dispatch(addStory({ text: res.text, type: 'OUTCOME' }));
+                        let storyText = res.text;
+                        // Add item changes to the text
+                        dispatch(addStory({ itemChanges: res.item_changes, characterChanges: res.character_changes, vehicleChanges: res.vehicle_changes, text: res.text, type: 'OUTCOME' }));
                         setValue('');
                         if (res.win) {
                             dispatch(setWin(true));
@@ -48,7 +53,7 @@ export default function UserInput(props: { disabled: boolean }) {
     }
 
     return <EuiFlexGroup direction='column' gutterSize='s'>
-        {!props.disabled && suggestions.length > 0 &&
+        {!props.disabled && suggestions.length > 0 && lastStoryType !== 'OUTCOME' &&
             <EuiFlexItem>
                 <EuiFlexGroup gutterSize='s' alignItems='baseline' wrap responsive={false}>
                     {suggestions.map(sug => value !== sug &&

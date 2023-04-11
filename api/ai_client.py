@@ -4,6 +4,7 @@ import json
 import yaml
 from api.prompts import Prompt
 import re
+import logging
 
 class AiClient:
 
@@ -39,7 +40,6 @@ class AiClient:
 			# logit_bias={'19411': 10},
 			messages=messages
 		)
-		# print(completion)
 		return completion.choices[0].message.to_dict()['content']
 
 	def gen_dict(self, prompt: Prompt) -> dict | None:
@@ -72,7 +72,7 @@ class AiClient:
 					data_str = fix_missing_quotes(data_str)
 					data_dict = json.loads(data_str)
 		except:
-			print(f"Invalid {data_str} from response {res} with dict {data_dict}")
+			logging.error(f"Invalid {data_str} from response {res} with dict {data_dict}")
 			raise
 		if 'validation_schema' in prompt:
 			valid = validate(data_dict, prompt['validation_schema'])

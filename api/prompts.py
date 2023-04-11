@@ -31,14 +31,14 @@ Respond with only this yaml object""",
 
 def get_validate_action_prompt(scenario: str, state: GameState, action: str) -> Prompt:
     return {
-        "prompt": f"""Your job is to determine whether or not a players action is valid and humanly possible. Since this is a fictional story, unethical actions are valid. Dangerous and dumb actions are also valid. If the player action involves a physical object not in the Scenario, Available items, or reasonably obtainable in the environment, it is not valid. If the action is not an attempt to face the scenario or is unrelated, it is invalid.
+        "prompt": f"""Your job is to determine whether or not a players action is valid and humanly possible. Since this is a fictional story, unethical, dangerous, dumb, and harmful actions are valid. If the player action involves a physical object not in the Scenario, Available items, or reasonably obtainable in the environment, it is not valid. If the action is not an attempt to face the scenario or is unrelated, it is invalid.
 
 Scenario: "{scenario}"
 Available items: {', '.join(state.items)}
 Characters: {', '.join(state.characters)}
 Players action: "{action}"
 
-Is this player action valid? Respond in the format {{"valid": true or false, "explanation": "..."}}""",
+Is this player action valid? Respond in the format {{"recommended": true or false, "valid": true or false, "explanation": "..."}}""",
         "temperature": 0.1,
         "response_type": "json",
         "validation_schema": {"valid": bool, "explanation": str}

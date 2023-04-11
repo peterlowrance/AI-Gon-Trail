@@ -2,9 +2,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from api.prompts import *
 from api.ai_client import AiClient
+from api.item_parser import ItemParser
 from uuid import uuid4
 from threading import Thread
 import time
+import logging
 
 # Use local variable for database for now
 database: dict[str, GameState] = {}
@@ -28,7 +30,7 @@ def game_start_items(request):
 
     # Save initial data to state
     database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
-    print('Destination:', destination)
+    logging.info(f'{theme} -> {destination}')
 
     # Get the scenario list in another thread so we can start the game quicker
     def initialize_scenario_list():
@@ -101,8 +103,54 @@ def take_action(request):
     items = res['items']
     characters = res['characters']
     vehicle = res['vehicle']
+
+    # Get old/previous parsers
+    old_items_parser = ItemParser(state.items)
+    old_character_parser = ItemParser(state.characters)
+    # Validate item changes
+    new_item_parser = ItemParser(items)
+    added, removed, changed = old_items_parser.difference(new_item_parser)
+    # Ensure that items that were removed were actualy removed
+    # for r in removed:
+    #    r_lower = r.lower()
+    #    # If item wasn't mentioned anywhere, add it back in
+    #    if r_lower not in scenario.lower() and r_lower not in action.lower() and r_lower not in outcome.lower():
+    #        to_add_item = r
+    #        to_add_item_mods = old_items_parser.items_map[r]
+    #        if len(to_add_item_mods) > 0:
+    #            to_add_item += f' ({", ".join(to_add_item_mods)})'
+    #        items.append(to_add_item)
+    #        removed.remove(r)
+    # Parse character changes
+    new_character_parser = ItemParser(characters)
+    character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
+    # Parse vehicle changes
+    old_vehicle_parser = ItemParser([state.vehicle])
+    new_vehicle_parser = ItemParser([vehicle])
+    v_added, v_removed, v_changes = old_vehicle_parser.difference(new_vehicle_parser)
+    if len(v_added) > 0 or len(v_removed) > 0:
+        for key in v_changes:
+            v_changes[key]['added'].extend(v_added)
+            v_changes[key]['removed'].extend(v_removed)
     state.progress(items=items, characters=characters, vehicle=vehicle)
-    return Response({'valid': True, 'text': outcome, 'win': state.current_step > state.total_steps})
+
+    return Response({
+        'valid': True,
+        'text': outcome,
+        'win': state.current_step > state.total_steps,
+        # Return the changed items/characters so the frontend can render them with the story panel
+        'item_changes': {
+            'added': added,
+            'removed': removed,
+            'changed': changed
+        },
+        'character_changes': {
+            'added': character_added,
+            'removed': character_removed,
+            'changed': character_changed,
+        },
+        'vehicle_changes': v_changes
+    })
 
 
 @api_view(['GET'])
