@@ -26,7 +26,9 @@ export default function UserInput(props: { disabled: boolean }) {
             takeAction({ action: value, scenario: scenario, session: session, key: key }).unwrap()
                 .then((res) => {
                     if (res.valid) {
-                        dispatch(addStory({ text: res.text, type: 'OUTCOME' }));
+                        let storyText = res.text;
+                        // Add item changes to the text
+                        dispatch(addStory({ itemChanges: res.item_changes, characterChanges: res.character_changes, text: res.text, type: 'OUTCOME' }));
                         setValue('');
                         if (res.win) {
                             dispatch(setWin(true));

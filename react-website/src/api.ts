@@ -4,7 +4,12 @@ type GameStatus = {
     vehicle: string,
     items: string[],
     characters: string[],
-    //current_step/total_steps ?
+}
+
+export type ChangesType = {
+    added: string[],
+    removed: string[],
+    changed?: {[key: string]: {added: string[], removed: string[]}}
 }
 
 const baseQuery = fetchBaseQuery({
@@ -66,7 +71,7 @@ export const gameApi = createApi({
                 }
             })
         }),
-        takeAction: builder.mutation<{valid: boolean, text: string, win: boolean}, {session: string, scenario: string, action: string, key: string}>({
+        takeAction: builder.mutation<{valid: boolean, text: string, win: boolean, item_changes?: ChangesType, character_changes?: ChangesType}, {session: string, scenario: string, action: string, key: string}>({
             query: ({ session, scenario, action, key }) => ({
                 url: 'take-action',
                 method: 'POST',

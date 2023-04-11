@@ -1,7 +1,7 @@
-import { EuiAccordion, EuiFlexGroup, EuiFlexItem, EuiGlobalToastList, EuiHideFor, EuiPanel, EuiShowFor, EuiSpacer, EuiText, EuiTitle } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiHideFor, EuiPanel, EuiShowFor, EuiSpacer, EuiText } from "@elastic/eui";
 import UserInput from "./UserInput";
 import PurchaseItemPanel from "./PurchaseItemPanel";
-import { removeToast, RootState, setGameState, setItemsToBuy, setSession } from "./store";
+import { RootState, setGameState, setItemsToBuy, setSession } from "./store";
 import { useLazyGetGameStartQuery } from "./api";
 import { useDispatch, useSelector } from 'react-redux';
 import StatusSidebar from "./StatusSidebar";
@@ -15,7 +15,6 @@ import MobileStatusAccordion from "./MobileStatusAccordion";
 function App() {
   const dispatch = useDispatch();
   const gameState = useSelector((state: RootState) => state.game.gameState);
-  const toasts = useSelector((state: RootState) => state.game.toasts);
   const win = useSelector((state: RootState) => state.game.win);
   const key = useSelector((state: RootState) => state.game.key);
   const lastStory = useSelector((state: RootState) => state.game.story[state.game.story.length - 1]);
@@ -48,7 +47,7 @@ function App() {
       {/* Sidebar */}
       <EuiHideFor sizes={['xs', 's']}>
         <EuiFlexItem grow={false} style={{ minWidth: 240 }}>
-          <EuiPanel hasBorder={false} borderRadius='none' color='subdued' style={{ backgroundImage: `url(${wood_background})`, backgroundRepeat: 'round', backgroundPosition: 'bottom center', border: '5px solid #4b3732' }}>
+          <EuiPanel hasBorder={false} borderRadius='none' color='subdued' style={{ backgroundImage: `url(${wood_background})`, backgroundRepeat: 'round', backgroundPosition: 'bottom center', border: '5px solid #4b3732', height: '100%' }}>
             <StatusSidebar />
           </EuiPanel>
         </EuiFlexItem>
@@ -92,12 +91,6 @@ function App() {
         </EuiPanel>
       </EuiFlexItem>
     </EuiFlexGroup >
-    <EuiGlobalToastList
-      toasts={toasts}
-      dismissToast={t => dispatch(removeToast(t.id))}
-      toastLifeTimeMs={5000}
-      side='left'
-    />
   </>
 }
 

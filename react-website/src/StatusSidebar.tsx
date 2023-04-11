@@ -24,10 +24,10 @@ export default function StatusSidebar(props: { hideVehicle?: boolean }) {
                     </EuiPanel>
                 </EuiFlexItem>
             }
-            <EuiFlexItem>
+            <EuiFlexItem grow={false}>
                 <ItemPanel items={gameStatus.characters} title='Characters' />
             </EuiFlexItem>
-            <EuiFlexItem>
+            <EuiFlexItem grow={false}>
                 <ItemPanel items={gameStatus.items} title='Items' />
             </EuiFlexItem>
         </EuiFlexGroup>

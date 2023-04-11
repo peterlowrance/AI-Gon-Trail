@@ -1,5 +1,5 @@
 import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit'
-import { gameApi } from './api';
+import { ChangesType, gameApi } from './api';
 
 export type GameState = 'NOT_STARTED' | 'CHOOSING_ITEMS' | 'FACING_SCENARIOS';
 export type StoryType = 'SCENARIO' | 'ACTION' | 'OUTCOME';
@@ -11,9 +11,8 @@ const gameSlice = createSlice({
     gameState: 'NOT_STARTED' as GameState,
     itemsToBuy: {} as { [item: string]: number },
     session: null as null | string,
-    story: [] as { text: string, type: StoryType, invalid?: boolean, invalidMsg?: string }[],
+    story: [] as { text: string, type: StoryType, invalid?: boolean, invalidMsg?: string, itemChanges?: ChangesType, characterChanges?: ChangesType }[],
     suggestions: [] as string[],
-    toasts: [] as any[],
     win: false,
     key: '',
     theme: 'Oregon Trail'
@@ -28,7 +27,7 @@ const gameSlice = createSlice({
     setSession: (state, action: PayloadAction<string>) => {
       state.session = action.payload;
     },
-    addStory: (state, action: PayloadAction<{ text: string, type: StoryType }>) => {
+    addStory: (state, action: PayloadAction<{ text: string, type: StoryType, itemChanges?: ChangesType, characterChanges?: ChangesType }>) => {
       // If this is an action and the last story is invalid, overwrite it
       if (action.payload.type === 'ACTION' && state.story.length > 0 && state.story[state.story.length - 1].invalid) {
         state.story[state.story.length - 1] = action.payload;
@@ -58,12 +57,6 @@ const gameSlice = createSlice({
     setSuggestions: (state, action: PayloadAction<string[]>) => {
       state.suggestions = action.payload;
     },
-    addToast: (state, action: PayloadAction<any>) => {
-      state.toasts.push({ id: Math.random().toString(), ...action.payload });
-    },
-    removeToast: (state, action: PayloadAction<string>) => {
-      state.toasts = state.toasts.filter(t => t.id !== action.payload);
-    },
     setWin: (state, action: PayloadAction<boolean>) => {
       state.win = action.payload;
     },
@@ -76,7 +69,7 @@ const gameSlice = createSlice({
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, addToast, removeToast, setWin, setKey, setTheme } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, setWin, setKey, setTheme } = gameSlice.actions;
 
 
 // Store

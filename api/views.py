@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from api.prompts import *
 from api.ai_client import AiClient
+from api.item_parser import ItemParser
 from uuid import uuid4
 from threading import Thread
 import time
@@ -27,7 +28,8 @@ def game_start_items(request):
     destination = res['destination'].lower()
 
     # Save initial data to state
-    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
+    database[session] = GameState(characters=res['crew'], items=[
+    ], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
     print('Destination:', destination)
 
     # Get the scenario list in another thread so we can start the game quicker
@@ -68,7 +70,8 @@ def choose_items(request):
         time.sleep(1)
         count += 1
         if count > 15:
-            raise Exception("Failed to start the game, situations weren't generated")
+            raise Exception(
+                "Failed to start the game, situations weren't generated")
     return Response()
 
 
@@ -81,6 +84,8 @@ def take_action(request):
     """
     session = request.data['session']
     state = database[session]
+    old_items_parser = ItemParser(state.items)
+    old_character_parser = ItemParser(state.characters)
     scenario = request.data['scenario']
     action = request.data['action']
     key = request.headers.get('openai_key')
@@ -101,8 +106,43 @@ def take_action(request):
     items = res['items']
     characters = res['characters']
     vehicle = res['vehicle']
+
+    # Validate item changes
+    new_item_parser = ItemParser(items)
+    added, removed, changed = old_items_parser.difference(new_item_parser)
+    # Ensure that items that were removed were actualy removed
+    for r in removed:
+        r_lower = r.lower()
+        # If item wasn't mentioned anywhere, add it back in
+        if r_lower not in scenario.lower() and r_lower not in action.lower() and r_lower not in outcome.lower():
+            to_add_item = r
+            to_add_item_mods = old_items_parser.items_map[r]
+            if len(to_add_item_mods) > 0:
+                to_add_item += f' ({", ".join(to_add_item_mods)})'
+            items.append(to_add_item)
+            removed.remove(r)
+    # Parse character changes
+    new_character_parser = ItemParser(characters)
+    character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
+    # TODO: parse vehicle changes
     state.progress(items=items, characters=characters, vehicle=vehicle)
-    return Response({'valid': True, 'text': outcome, 'win': state.current_step > state.total_steps})
+
+    return Response({
+        'valid': True,
+        'text': outcome,
+        'win': state.current_step > state.total_steps,
+        # Return the changed items/characters so the frontend can render them with the story panel
+        'item_changes': {
+            'added': added,
+            'removed': removed,
+            'changed': changed
+        },
+        'character_changes': {
+            'added': character_added,
+            'removed': character_removed,
+            'changed': character_changed,
+        }
+    })
 
 
 @api_view(['GET'])
