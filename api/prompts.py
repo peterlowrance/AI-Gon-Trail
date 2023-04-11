@@ -41,7 +41,7 @@ Players action: "{action}"
 Is this player action valid? Respond in the format {{"recommended": true or false, "valid": true or false, "explanation": "..."}}""",
         "temperature": 0.1,
         "response_type": "json",
-        "validation_schema": {"valid": bool, "explanation": str}
+        "validation_schema": {"recommended": bool, "valid": bool, "explanation": str}
     }
 
 def get_scenario_prompt(state: GameState) -> Prompt: 
