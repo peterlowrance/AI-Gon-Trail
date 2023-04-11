@@ -2,7 +2,7 @@ import { EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import { ChangesType } from "./api";
 import Item from "./Item";
 
-function StoryChanges(props: { type: 'Character' | 'Item', changes: ChangesType }) {
+function StoryChanges(props: { type: 'Character' | 'Item' | 'Vehicle', changes: ChangesType }) {
 
     const getPluralS = (list: string[]) => list.length > 1 ? 's' : '';
 
@@ -12,8 +12,8 @@ function StoryChanges(props: { type: 'Character' | 'Item', changes: ChangesType 
                 <p><b>New {props.type}{getPluralS(props.changes.added)}:</b></p>
                 <EuiFlexGroup responsive={false} gutterSize='s' wrap>
                     {props.changes.added.map(char =>
-                        <EuiFlexItem grow={false}>
-                            <Item value={char} key={char} />
+                        <EuiFlexItem grow={false} key={char}>
+                            <Item value={char} />
                         </EuiFlexItem>
                     )}
                 </EuiFlexGroup>
@@ -24,8 +24,8 @@ function StoryChanges(props: { type: 'Character' | 'Item', changes: ChangesType 
                 <p><b>{props.type === 'Character' ? 'Deceased' : 'Lost'} {props.type}{getPluralS(props.changes.removed)}:</b></p>
                 <EuiFlexGroup responsive={false} gutterSize='s' wrap>
                     {props.changes.removed.map(char =>
-                        <EuiFlexItem grow={false}>
-                            <Item value={char} key={char} />
+                        <EuiFlexItem grow={false} key={char}>
+                            <Item value={char} />
                         </EuiFlexItem>
                     )}
                 </EuiFlexGroup>

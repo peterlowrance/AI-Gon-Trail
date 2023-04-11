@@ -45,7 +45,8 @@ export default function StoryPanel(props) {
                     </p>
                     {/* If there are any changes, add spacing */}
                     {(s.characterChanges?.added?.length || s.characterChanges?.removed?.length || s.characterChanges?.changed ||
-                        s.itemChanges?.added?.length || s.itemChanges?.removed?.length || s.itemChanges?.changed) &&
+                        s.itemChanges?.added?.length || s.itemChanges?.removed?.length || s.itemChanges?.changed ||
+                        s.vehicleChanges) &&
                         <EuiSpacer size='m' />
                     }
                     {s.characterChanges &&
@@ -53,6 +54,9 @@ export default function StoryPanel(props) {
                     }
                     {s.itemChanges &&
                         <StoryChanges type='Item' changes={s.itemChanges} />
+                    }
+                    {s.vehicleChanges &&
+                        <StoryChanges type='Vehicle' changes={{added: [], removed: [], changed: s.vehicleChanges}} />
                     }
                     {s.invalidMsg &&
                         <p>

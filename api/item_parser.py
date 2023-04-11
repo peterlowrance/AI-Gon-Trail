@@ -21,7 +21,6 @@ class ItemParser():
         for item in items:
             key, mods = ItemParser.parse_item(item)
             self.items_map[key] = mods
-        print(self.items_map)
 
     def difference(self, new: 'ItemParser'):
         added: list[str] = []

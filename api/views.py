@@ -31,7 +31,7 @@ def game_start_items(request):
     # Save initial data to state
     database[session] = GameState(characters=res['crew'], items=[
     ], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
-    logging.info(f'Destination: {destination}')
+    logging.info(f'{theme} -> {destination}')
 
     # Get the scenario list in another thread so we can start the game quicker
     def initialize_scenario_list():
@@ -85,8 +85,6 @@ def take_action(request):
     """
     session = request.data['session']
     state = database[session]
-    old_items_parser = ItemParser(state.items)
-    old_character_parser = ItemParser(state.characters)
     scenario = request.data['scenario']
     action = request.data['action']
     key = request.headers.get('openai_key')
@@ -108,6 +106,9 @@ def take_action(request):
     characters = res['characters']
     vehicle = res['vehicle']
 
+    # Get old/previous parsers
+    old_items_parser = ItemParser(state.items)
+    old_character_parser = ItemParser(state.characters)
     # Validate item changes
     new_item_parser = ItemParser(items)
     added, removed, changed = old_items_parser.difference(new_item_parser)
@@ -125,7 +126,14 @@ def take_action(request):
     # Parse character changes
     new_character_parser = ItemParser(characters)
     character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
-    # TODO: parse vehicle changes
+    # Parse vehicle changes
+    old_vehicle_parser = ItemParser([state.vehicle])
+    new_vehicle_parser = ItemParser([vehicle])
+    v_added, v_removed, v_changes = old_vehicle_parser.difference(new_vehicle_parser)
+    if len(v_added) > 0 or len(v_removed) > 0:
+        for key in v_changes:
+            v_changes[key]['added'].extend(v_added)
+            v_changes[key]['removed'].extend(v_removed)
     state.progress(items=items, characters=characters, vehicle=vehicle)
 
     return Response({
@@ -142,7 +150,8 @@ def take_action(request):
             'added': character_added,
             'removed': character_removed,
             'changed': character_changed,
-        }
+        },
+        'vehicle_changes': v_changes
     })
 
 

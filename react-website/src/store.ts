@@ -11,7 +11,7 @@ const gameSlice = createSlice({
     gameState: 'NOT_STARTED' as GameState,
     itemsToBuy: {} as { [item: string]: number },
     session: null as null | string,
-    story: [] as { text: string, type: StoryType, invalid?: boolean, invalidMsg?: string, itemChanges?: ChangesType, characterChanges?: ChangesType }[],
+    story: [] as { text: string, type: StoryType, invalid?: boolean, invalidMsg?: string, itemChanges?: ChangesType, characterChanges?: ChangesType, vehicleChanges?: ChangesType['changed'] }[],
     suggestions: [] as string[],
     win: false,
     key: '',
@@ -27,7 +27,7 @@ const gameSlice = createSlice({
     setSession: (state, action: PayloadAction<string>) => {
       state.session = action.payload;
     },
-    addStory: (state, action: PayloadAction<{ text: string, type: StoryType, itemChanges?: ChangesType, characterChanges?: ChangesType }>) => {
+    addStory: (state, action: PayloadAction<{ text: string, type: StoryType, itemChanges?: ChangesType, characterChanges?: ChangesType, vehicleChanges?: ChangesType['changed'] }>) => {
       // If this is an action and the last story is invalid, overwrite it
       if (action.payload.type === 'ACTION' && state.story.length > 0 && state.story[state.story.length - 1].invalid) {
         state.story[state.story.length - 1] = action.payload;
