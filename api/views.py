@@ -6,6 +6,7 @@ from api.item_parser import ItemParser
 from uuid import uuid4
 from threading import Thread
 import time
+import logging
 
 # Use local variable for database for now
 database: dict[str, GameState] = {}
@@ -30,7 +31,7 @@ def game_start_items(request):
     # Save initial data to state
     database[session] = GameState(characters=res['crew'], items=[
     ], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
-    print('Destination:', destination)
+    logging.info(f'Destination: {destination}')
 
     # Get the scenario list in another thread so we can start the game quicker
     def initialize_scenario_list():
