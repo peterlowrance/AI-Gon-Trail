@@ -29,8 +29,7 @@ def game_start_items(request):
     destination = res['destination'].lower()
 
     # Save initial data to state
-    database[session] = GameState(characters=res['crew'], items=[
-    ], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
+    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
     logging.info(f'{theme} -> {destination}')
 
     # Get the scenario list in another thread so we can start the game quicker
@@ -71,8 +70,7 @@ def choose_items(request):
         time.sleep(1)
         count += 1
         if count > 15:
-            raise Exception(
-                "Failed to start the game, situations weren't generated")
+            raise Exception("Failed to start the game, situations weren't generated")
     return Response()
 
 
