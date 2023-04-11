@@ -111,16 +111,16 @@ def take_action(request):
     new_item_parser = ItemParser(items)
     added, removed, changed = old_items_parser.difference(new_item_parser)
     # Ensure that items that were removed were actualy removed
-    for r in removed:
-        r_lower = r.lower()
-        # If item wasn't mentioned anywhere, add it back in
-        if r_lower not in scenario.lower() and r_lower not in action.lower() and r_lower not in outcome.lower():
-            to_add_item = r
-            to_add_item_mods = old_items_parser.items_map[r]
-            if len(to_add_item_mods) > 0:
-                to_add_item += f' ({", ".join(to_add_item_mods)})'
-            items.append(to_add_item)
-            removed.remove(r)
+    # for r in removed:
+    #    r_lower = r.lower()
+    #    # If item wasn't mentioned anywhere, add it back in
+    #    if r_lower not in scenario.lower() and r_lower not in action.lower() and r_lower not in outcome.lower():
+    #        to_add_item = r
+    #        to_add_item_mods = old_items_parser.items_map[r]
+    #        if len(to_add_item_mods) > 0:
+    #            to_add_item += f' ({", ".join(to_add_item_mods)})'
+    #        items.append(to_add_item)
+    #        removed.remove(r)
     # Parse character changes
     new_character_parser = ItemParser(characters)
     character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
