@@ -4,12 +4,13 @@ type GameStatus = {
     vehicle: string,
     items: string[],
     characters: string[],
+    game_over?: 'WIN' | 'LOSE'
 }
 
 export type ChangesType = {
     added: string[],
     removed: string[],
-    changed?: {[key: string]: {added: string[], removed: string[]}}
+    changed?: { [key: string]: { added: string[], removed: string[] } }
 }
 
 const baseQuery = fetchBaseQuery({
@@ -20,10 +21,10 @@ const baseQuery = fetchBaseQuery({
         const openaiKey = getState().game.key;
         // If we have a key, add it to the headers
         if (openaiKey) {
-          headers.set('openai_key', openaiKey);
+            headers.set('openai_key', openaiKey);
         }
         return headers;
-      }
+    }
 })
 
 export const gameApi = createApi({
@@ -31,8 +32,8 @@ export const gameApi = createApi({
     baseQuery: baseQuery,
     tagTypes: ['GAME'],
     endpoints: (builder) => ({
-        getGameStart: builder.query<{session: string, items: {[item: string]: number}, description: string}, {theme: string, key: string}>({
-            query: ({theme, key}) => ({
+        getGameStart: builder.query<{ session: string, items: { [item: string]: number }, description: string }, { theme: string, key: string }>({
+            query: ({ theme, key }) => ({
                 url: 'game-start-items',
                 method: 'POST',
                 params: {
@@ -41,8 +42,8 @@ export const gameApi = createApi({
                 }
             })
         }),
-        chooseItems: builder.mutation<void, {session: string, items: string[]}>({
-            query: ({session, items}) => ({
+        chooseItems: builder.mutation<void, { session: string, items: string[] }>({
+            query: ({ session, items }) => ({
                 url: 'choose-items',
                 method: 'POST',
                 body: {
@@ -62,8 +63,8 @@ export const gameApi = createApi({
             }),
             providesTags: ['GAME']
         }),
-        getScenario: builder.query<{scenario: string, suggestions: string[]}, {session: string, key: string}>({
-            query: ({session, key}) => ({
+        getScenario: builder.query<{ scenario: string, suggestions: string[] }, { session: string, key: string }>({
+            query: ({ session, key }) => ({
                 url: 'game-scenario',
                 params: {
                     session: session,
@@ -71,11 +72,11 @@ export const gameApi = createApi({
                 }
             })
         }),
-        takeAction: builder.mutation<{valid: boolean, text: string, win: boolean, item_changes?: ChangesType, character_changes?: ChangesType, vehicle_changes?: ChangesType['changed']}, {session: string, scenario: string, action: string, key: string}>({
+        takeAction: builder.mutation<{ valid: boolean, text: string, game_over?: 'WIN' | 'LOSE', item_changes?: ChangesType, character_changes?: ChangesType, vehicle_changes?: ChangesType['changed'] }, { session: string, scenario: string, action: string, key: string }>({
             query: ({ session, scenario, action, key }) => ({
                 url: 'take-action',
                 method: 'POST',
-                params: {key: key},
+                params: { key: key },
                 body: {
                     session: session,
                     scenario: scenario,
@@ -83,8 +84,18 @@ export const gameApi = createApi({
                 }
             }),
             invalidatesTags: ['GAME']
+        }),
+        getGameEnd: builder.query<string, { session: string, prevOutcome: string, key: string }>({
+            query: ({ session, prevOutcome, key }) => ({
+                url: 'game-end',
+                params: {
+                    session: session,
+                    prev_outcome: prevOutcome,
+                    key: key
+                }
+            })
         })
     }),
 })
 
-export const { useLazyGetGameStartQuery, useLazyGetScenarioQuery, useChooseItemsMutation, useGetStatusQuery, useTakeActionMutation } = gameApi;
+export const { useLazyGetGameStartQuery, useLazyGetScenarioQuery, useChooseItemsMutation, useGetStatusQuery, useTakeActionMutation, useLazyGetGameEndQuery } = gameApi;

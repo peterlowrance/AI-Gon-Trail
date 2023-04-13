@@ -1,8 +1,8 @@
 import { EuiFlexGroup, EuiFlexItem, EuiHideFor, EuiPanel, EuiShowFor, EuiSpacer, EuiText } from "@elastic/eui";
 import UserInput from "./UserInput";
 import PurchaseItemPanel from "./PurchaseItemPanel";
-import { RootState, setGameState, setItemsToBuy, setSession } from "./store";
-import { useLazyGetGameStartQuery } from "./api";
+import { RootState, addStory, setGameState, setItemsToBuy, setSession } from "./store";
+import { useLazyGetGameEndQuery, useLazyGetGameStartQuery } from "./api";
 import { useDispatch, useSelector } from 'react-redux';
 import StatusSidebar from "./StatusSidebar";
 import StoryPanel from "./StoryPanel";
@@ -15,13 +15,15 @@ import MobileStatusAccordion from "./MobileStatusAccordion";
 function App() {
   const dispatch = useDispatch();
   const gameState = useSelector((state: RootState) => state.game.gameState);
-  const win = useSelector((state: RootState) => state.game.win);
+  const gameOver = useSelector((state: RootState) => state.game.gameOver);
   const key = useSelector((state: RootState) => state.game.key);
+  const session = useSelector((state: RootState) => state.game.session);
   const lastStory = useSelector((state: RootState) => state.game.story[state.game.story.length - 1]);
   const [background, setBackground] = useState(getBackgroundImage(''));
   const [desc, setDesc] = useState('');
 
   const [getGameStart, gameStartRes] = useLazyGetGameStartQuery();
+  const [getGameEnd, gameEndRes] = useLazyGetGameEndQuery();
 
   const handleStart = (theme) => {
     getGameStart({ theme: theme, key: key }).unwrap().then(res => {
@@ -42,6 +44,14 @@ function App() {
     }
   }, [lastStory]);
 
+  useEffect(() => {
+    if (session && gameOver && lastStory?.type === 'LAST_OUTCOME') {
+      getGameEnd({ session: session, key: key, prevOutcome: lastStory.text }).unwrap().then(res => {
+        dispatch(addStory({ text: res, type: 'GAME_END' }))
+      });
+    }
+  }, [gameOver, lastStory?.type])
+
   return <>
     <EuiFlexGroup direction='row' gutterSize='none' style={{ height: '100vh', overflow: 'hidden' }}>
       {/* Sidebar */}
@@ -59,7 +69,7 @@ function App() {
             {/* Header */}
             {gameState === 'NOT_STARTED' &&
               <EuiFlexItem grow={false} style={{ width: '100%', maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }}>
-                <GameStartPanel handleStart={handleStart} loading={gameStartRes.isLoading} error={gameStartRes.isError} />
+                <GameStartPanel handleStart={handleStart} loading={gameStartRes.isFetching} error={gameStartRes.isError} />
               </EuiFlexItem>
             }
             {/* On mobile view, status goes here */}
@@ -70,7 +80,7 @@ function App() {
                 </EuiFlexItem>
               }
             </EuiShowFor>
-            <EuiFlexItem id='scrolling-div' style={{ overflowY: 'scroll', width: '100%', maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto'}} grow>
+            <EuiFlexItem id='scrolling-div' style={{ overflowY: 'scroll', width: '100%', maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }} grow>
               {gameState === 'CHOOSING_ITEMS' &&
                 <>
                   <EuiPanel hasBorder grow={false}>
@@ -84,9 +94,11 @@ function App() {
                 <StoryPanel />
               }
             </EuiFlexItem>
-            <EuiFlexItem grow={false}>
-              <UserInput disabled={win || gameState === 'NOT_STARTED' || gameState === 'CHOOSING_ITEMS'} />
-            </EuiFlexItem>
+            {gameState === 'FACING_SCENARIOS' &&
+              <EuiFlexItem grow={false}>
+                <UserInput disabled={!!gameOver} />
+              </EuiFlexItem>
+            }
           </EuiFlexGroup>
         </EuiPanel>
       </EuiFlexItem>

@@ -44,16 +44,16 @@ export default function PurchaseItemPanel() {
                 });
     }
 
-    return <EuiPanel hasBorder grow>
-        <EuiFlexGroup direction='column' style={{height: '100%'}}>
-            <EuiFlexItem grow={false}>
+    return <EuiPanel hasBorder grow={false}>
+        <EuiFlexGroup direction='column' style={{height: '100%'}} gutterSize='none'>
+            <EuiFlexItem grow={false} style={{marginBottom: 16}}>
                 <EuiTitle size='s'>
                     <h2>
                         Select items to purchase
                     </h2>
                 </EuiTitle>
             </EuiFlexItem>
-            <EuiFlexItem>
+            <EuiFlexItem grow={false} style={{marginBottom: 16}}>
                 <EuiFlexGroup gutterSize='xs' wrap responsive={false}>
                     {itemsToBuy && Object.entries(itemsToBuy).map(([item, cost]) =>
                         <EuiFlexItem grow={false} key={item}>
@@ -62,6 +62,7 @@ export default function PurchaseItemPanel() {
                     )}
                 </EuiFlexGroup>
             </EuiFlexItem>
+            <EuiFlexItem grow />
             {session &&
                 <EuiFlexItem grow={false}>
                     <EuiFlexGroup justifyContent='spaceBetween' alignItems='baseline' responsive={false}>

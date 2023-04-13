@@ -1,7 +1,7 @@
-import { EuiBadge, EuiButton, EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiText } from "@elastic/eui";
+import { EuiBadge, EuiButton, EuiFieldText, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 import { useState } from "react";
 import { useTakeActionMutation } from "./api";
-import { addStory, invalidateStoryAction, RootState, setWin } from "./store";
+import { addStory, invalidateStoryAction, RootState, } from "./store";
 import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 
@@ -22,6 +22,7 @@ export default function UserInput(props: { disabled: boolean }) {
     const lastStoryType = story.length > 0 ? story[story.length - 1].type : undefined;
 
     const [takeAction, takeActionRes] = useTakeActionMutation();
+    
 
     const handleTakeAction = () => {
         if (session && scenario) {
@@ -29,13 +30,9 @@ export default function UserInput(props: { disabled: boolean }) {
             takeAction({ action: value, scenario: scenario, session: session, key: key }).unwrap()
                 .then((res) => {
                     if (res.valid) {
-                        let storyText = res.text;
-                        // Add item changes to the text
-                        dispatch(addStory({ itemChanges: res.item_changes, characterChanges: res.character_changes, vehicleChanges: res.vehicle_changes, text: res.text, type: 'OUTCOME' }));
+                        const type = res.game_over ? 'LAST_OUTCOME' : 'OUTCOME';
+                        dispatch(addStory({ itemChanges: res.item_changes, characterChanges: res.character_changes, vehicleChanges: res.vehicle_changes, text: res.text, type: type }));
                         setValue('');
-                        if (res.win) {
-                            dispatch(setWin(true));
-                        }
                     }
                     else {
                         dispatch(invalidateStoryAction(res.text));
@@ -52,8 +49,10 @@ export default function UserInput(props: { disabled: boolean }) {
         setValue(newValue.slice(0, 100));
     }
 
+    const suggestionsExist = !props.disabled && suggestions.length > 0 && lastStoryType !== 'OUTCOME';
+
     return <EuiFlexGroup direction='column' gutterSize='s'>
-        {!props.disabled && suggestions.length > 0 && lastStoryType !== 'OUTCOME' &&
+        {suggestionsExist &&
             <EuiFlexItem>
                 <EuiFlexGroup gutterSize='s' alignItems='baseline' wrap responsive={false}>
                     {suggestions.map(sug => value !== sug &&

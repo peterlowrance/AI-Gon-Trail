@@ -2,7 +2,7 @@ import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit'
 import { ChangesType, gameApi } from './api';
 
 export type GameState = 'NOT_STARTED' | 'CHOOSING_ITEMS' | 'FACING_SCENARIOS';
-export type StoryType = 'SCENARIO' | 'ACTION' | 'OUTCOME';
+export type StoryType = 'SCENARIO' | 'ACTION' | 'OUTCOME' | 'LAST_OUTCOME' | 'GAME_END';
 
 // Slice
 const gameSlice = createSlice({
@@ -13,7 +13,7 @@ const gameSlice = createSlice({
     session: null as null | string,
     story: [] as { text: string, type: StoryType, invalid?: boolean, invalidMsg?: string, itemChanges?: ChangesType, characterChanges?: ChangesType, vehicleChanges?: ChangesType['changed'] }[],
     suggestions: [] as string[],
-    win: false,
+    gameOver: undefined as undefined | 'WIN' | 'LOSE',
     key: '',
     theme: 'Oregon Trail'
   },
@@ -57,19 +57,26 @@ const gameSlice = createSlice({
     setSuggestions: (state, action: PayloadAction<string[]>) => {
       state.suggestions = action.payload;
     },
-    setWin: (state, action: PayloadAction<boolean>) => {
-      state.win = action.payload;
+    setGameOver: (state, action: PayloadAction<undefined | 'WIN' | 'LOSE'>) => {
+      state.gameOver = action.payload;
     },
     setKey: (state, action: PayloadAction<string>) => {
       state.key = action.payload;
     },
     setTheme: (state, action: PayloadAction<string>) => {
       state.theme = action.payload;
+    },
+    restart: (state) => {
+      state.gameOver = undefined;
+      state.gameState = 'NOT_STARTED';
+      state.itemsToBuy = {};
+      state.story = [];
+      state.session = null;
     }
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, setWin, setKey, setTheme } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, setGameOver, setKey, setTheme, restart } = gameSlice.actions;
 
 
 // Store

@@ -45,12 +45,14 @@ def game_start_items(request):
 @api_view(['GET'])
 def get_game_status(request):
     session = request.GET.get('session')
+
     state = database[session]
 
     return Response({
         'vehicle': state.vehicle,
         'items': state.items,
         'characters': state.characters,
+        'game_over': state.game_over
     })
 
 
@@ -129,15 +131,18 @@ def take_action(request):
     new_vehicle_parser = ItemParser([vehicle])
     v_added, v_removed, v_changes = old_vehicle_parser.difference(new_vehicle_parser)
     if len(v_added) > 0 or len(v_removed) > 0:
+        if not v_changes:
+            v_changes = {vehicle: {'added': [], 'removed': []}}
         for key in v_changes:
             v_changes[key]['added'].extend(v_added)
             v_changes[key]['removed'].extend(v_removed)
+
     state.progress(items=items, characters=characters, vehicle=vehicle)
 
     return Response({
         'valid': True,
         'text': outcome,
-        'win': state.current_step > state.total_steps,
+        'game_over': state.game_over,
         # Return the changed items/characters so the frontend can render them with the story panel
         'item_changes': {
             'added': added,
@@ -170,3 +175,21 @@ def get_scenario(request):
     scenario = res['scenario']
     suggestions = res['suggestions']
     return Response({'scenario': scenario, 'suggestions': suggestions})
+
+
+@api_view(['GET'])
+def get_game_end(request):
+    """
+    Get a descripiton of the game ending
+    """
+    session = request.GET['session']
+    key = request.headers.get('openai_key')
+    if not key:
+        key = request.GET.get('key')
+    prev_outcome = request.GET['prev_outcome']
+    state = database[session]
+    prompt = get_game_end_prompt(prev_outcome, state)
+    client = AiClient(key)
+    res = client.gen_dict(prompt)
+    description = res['description']
+    return Response(description)

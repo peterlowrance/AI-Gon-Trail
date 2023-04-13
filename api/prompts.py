@@ -1,6 +1,7 @@
 from typing import Literal, TypedDict
 from api.game_state import GameState
 import json
+from api.item_parser import ItemParser
 
 class Prompt(TypedDict):
     prompt: str
@@ -89,4 +90,32 @@ Respond with only the json object""",
         "temperature": .8,
         "response_type": "json",
         "validation_schema": {"outcome": str, "items": [str], "characters": [str], "vehicle": str}
+    }
+
+
+def get_game_end_prompt(prev_outcome: str, state: GameState) -> Prompt:
+    word = 'successfully' if state.game_over == 'WIN' else 'unsuccessfully'
+    if state.game_over == 'WIN':
+        end_reason = f'reaching their destination {state.destination}'
+    else:
+        end_reason = 'losing because all the characters died' if len(state.characters) == 0 else "losing because the vehicle didn't survive"
+
+    old_character_parser = ItemParser(state.original_characters)
+    new_character_parser = ItemParser(state.characters)
+    added, removed, changed = old_character_parser.difference(new_character_parser)
+    end_characters = ''
+    if len(removed) > 0:
+        end_characters = f' and {", ".join(removed)} didn\'t make it'
+
+    return {
+        "prompt": f"""The theme is {state.theme}. The characters have {word} reached their destination {state.destination} after facing several challenges. Here is a description of their last challenge: "{prev_outcome}".
+The journey began with characters "{', '.join(state.original_characters)}"{end_characters}.
+At the start the vehicle was {state.original_vehicle} and at the end it is {state.vehicle}.
+
+Respond with a 60 word story description of the remaining characters {end_reason}.
+Example format: {{"description":"..."}}
+Respond with only the json object""",
+        "temperature": .7,
+        "response_type": "json",
+        "validation_schema": {"description": str}
     }
