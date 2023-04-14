@@ -94,7 +94,7 @@ Respond with only the json object""",
 
 
 def get_game_end_prompt(prev_outcome: str, state: GameState) -> Prompt:
-    word = 'successfully' if state.game_over == 'WIN' else 'unsuccessfully'
+    dest = 'successfully reached their destination' if state.game_over == 'WIN' else 'failed trying to reach their destination'
     if state.game_over == 'WIN':
         end_reason = f'reaching their destination {state.destination}'
     else:
@@ -108,13 +108,10 @@ def get_game_end_prompt(prev_outcome: str, state: GameState) -> Prompt:
         end_characters = f' and {", ".join(removed)} didn\'t make it'
 
     return {
-        "prompt": f"""The theme is {state.theme}. The characters have {word} reached their destination {state.destination} after facing several challenges. Here is a description of their last challenge: "{prev_outcome}".
+        "prompt": f"""The theme is {state.theme}. The characters have {dest} {state.destination} after facing several challenges. Here is a description of their last challenge: "{prev_outcome}".
 The journey began with characters "{', '.join(state.original_characters)}"{end_characters}.
-At the start the vehicle was {state.original_vehicle} and at the end it is {state.vehicle}.
-
-Respond with a 60 word story description of the remaining characters {end_reason}.
-Example format: {{"description":"..."}}
-Respond with only the json object""",
+Their vehicle ended up as {state.vehicle}.
+Provide a 60 word story description of the remaining characters {end_reason}. Respond with only a json object in the format {{"description":"..."}}""",
         "temperature": .7,
         "response_type": "json",
         "validation_schema": {"description": str}

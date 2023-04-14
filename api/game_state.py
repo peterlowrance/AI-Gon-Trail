@@ -5,7 +5,6 @@ class GameState:
     original_characters: list[str]
     items: list[str]
     vehicle: str
-    original_vehicle: str
 
     total_steps: int
     current_step: int
@@ -22,7 +21,6 @@ class GameState:
         self.items = items
         self.situations = situations
         self.vehicle = vehicle
-        self.original_vehicle = vehicle
         self.theme = theme
         self.destination = destination
         self.game_over = None
