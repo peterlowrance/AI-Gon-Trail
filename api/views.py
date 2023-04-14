@@ -172,7 +172,7 @@ def get_scenario(request):
     prompt = get_scenario_prompt(state)
     client = AiClient(key)
     res = client.gen_dict(prompt)
-    scenario = res['scenario']
+    scenario = res['situation']
     suggestions = res['suggestions']
     return Response({'scenario': scenario, 'suggestions': suggestions})
 

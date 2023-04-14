@@ -34,11 +34,7 @@ class GameState:
         self.current_step += 1
         if len(characters) == 0:
             self.game_over = 'LOSE'
-        elif 'health' in vehicle and ' 0/' in vehicle:
-            self.game_over = 'LOSE'
-        elif 'destroyed' in vehicle.lower():
-            self.game_over = 'LOSE'
-        elif 'abandoned' in vehicle.lower():
+        elif '0/' in vehicle or 'destroyed' in vehicle.lower() or 'abandoned' in vehicle.lower():
             self.game_over = 'LOSE'
         elif self.current_step > self.total_steps:
             self.game_over = 'WIN'
