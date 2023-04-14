@@ -52,7 +52,6 @@ def get_game_status(request):
         'vehicle': state.vehicle,
         'items': state.items,
         'characters': state.characters,
-        'game_over': state.game_over
     })
 
 

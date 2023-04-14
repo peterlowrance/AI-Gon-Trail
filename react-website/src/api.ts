@@ -4,7 +4,6 @@ type GameStatus = {
     vehicle: string,
     items: string[],
     characters: string[],
-    game_over?: 'WIN' | 'LOSE'
 }
 
 export type ChangesType = {

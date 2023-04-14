@@ -27,7 +27,7 @@ const gameSlice = createSlice({
     setSession: (state, action: PayloadAction<string>) => {
       state.session = action.payload;
     },
-    addStory: (state, action: PayloadAction<{ text: string, type: StoryType, itemChanges?: ChangesType, characterChanges?: ChangesType, vehicleChanges?: ChangesType['changed'] }>) => {
+    addStory: (state, action: PayloadAction<{ text: string, type: StoryType, itemChanges?: ChangesType, characterChanges?: ChangesType, vehicleChanges?: ChangesType['changed'], gameOver?: 'WIN' | 'LOSE' }>) => {
       // If this is an action and the last story is invalid, overwrite it
       if (action.payload.type === 'ACTION' && state.story.length > 0 && state.story[state.story.length - 1].invalid) {
         state.story[state.story.length - 1] = action.payload;
@@ -35,6 +35,7 @@ const gameSlice = createSlice({
       else {
         state.story.push(action.payload);
       }
+      state.gameOver = action.payload.gameOver;
       // Scroll to bottom
       setTimeout(() => {
         const el = document.getElementById('scrolling-div');
@@ -57,9 +58,6 @@ const gameSlice = createSlice({
     setSuggestions: (state, action: PayloadAction<string[]>) => {
       state.suggestions = action.payload;
     },
-    setGameOver: (state, action: PayloadAction<undefined | 'WIN' | 'LOSE'>) => {
-      state.gameOver = action.payload;
-    },
     setKey: (state, action: PayloadAction<string>) => {
       state.key = action.payload;
     },
@@ -76,7 +74,7 @@ const gameSlice = createSlice({
   }
 })
 
-export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, setGameOver, setKey, setTheme, restart } = gameSlice.actions;
+export const { setGameState, setItemsToBuy, setSession, addStory, setSuggestions, invalidateStoryAction, setKey, setTheme, restart } = gameSlice.actions;
 
 
 // Store

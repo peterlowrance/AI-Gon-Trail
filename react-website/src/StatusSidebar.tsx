@@ -1,21 +1,14 @@
 import { skipToken } from "@reduxjs/toolkit/dist/query";
 import { useGetStatusQuery } from "./api";
-import { RootState, setGameOver } from "./store";
+import { RootState } from "./store";
 import { useSelector , useDispatch} from 'react-redux';
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiTitle } from "@elastic/eui";
 import ItemPanel from "./ItemPanel";
-import { useEffect } from "react";
 
 export default function StatusSidebar(props: { hideVehicle?: boolean }) {
     const dispatch = useDispatch();
     const session = useSelector((state: RootState) => state.game.session);
     const { data: gameStatus, isLoading } = useGetStatusQuery(session ?? skipToken);
-
-    useEffect(() => {
-        if (gameStatus?.game_over) {
-            dispatch(setGameOver(gameStatus.game_over));
-        }
-    }, [gameStatus?.game_over])
 
     const mobile = window.innerWidth <= 800;
 
