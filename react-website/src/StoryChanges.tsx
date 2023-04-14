@@ -34,8 +34,8 @@ function StoryChanges(props: { type: 'Character' | 'Item' | 'Vehicle', changes: 
         {props.changes.changed && Object.keys(props.changes.changed).length > 0 &&
             <>
                 <p><b>Changed {props.type}{getPluralS(props.changes.removed)}:</b></p>
-                {Object.entries(props.changes.changed).map(([char, obj]) =>
-                    <p>{char}
+                {Object.entries(props.changes.changed).map(([char, obj], i) =>
+                    <p key={i}>{char}
                         {obj.removed.length > 0 && ` is no longer ${obj.removed.join(', ')}`}
                         {obj.removed.length > 0 && obj.added.length > 0 && ' and'}
                         {obj.added.length > 0 && ` is now ${obj.added.join(', ')}`}

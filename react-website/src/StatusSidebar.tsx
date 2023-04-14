@@ -1,17 +1,18 @@
 import { skipToken } from "@reduxjs/toolkit/dist/query";
 import { useGetStatusQuery } from "./api";
 import { RootState } from "./store";
-import { useSelector } from 'react-redux';
+import { useSelector , useDispatch} from 'react-redux';
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiTitle } from "@elastic/eui";
 import ItemPanel from "./ItemPanel";
 
 export default function StatusSidebar(props: { hideVehicle?: boolean }) {
+    const dispatch = useDispatch();
     const session = useSelector((state: RootState) => state.game.session);
     const { data: gameStatus, isLoading } = useGetStatusQuery(session ?? skipToken);
 
     const mobile = window.innerWidth <= 800;
 
-    return gameStatus ?
+    return gameStatus && session ?
         <EuiFlexGroup direction='column' gutterSize={mobile ? 's' : 'l'} style={{ overflowY: 'scroll', maxHeight: '100vh' }}>
             {!props.hideVehicle &&
                 <EuiFlexItem grow={false}>

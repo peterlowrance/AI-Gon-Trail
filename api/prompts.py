@@ -1,6 +1,7 @@
 from typing import Literal, TypedDict
 from api.game_state import GameState
 import json
+from api.item_parser import ItemParser
 
 class Prompt(TypedDict):
     prompt: str
@@ -47,11 +48,11 @@ Is this player action valid? Respond in the format {{"recommended": true or fals
 def get_scenario_prompt(state: GameState) -> Prompt: 
     return {
         "prompt": f"""This is a game similar to Oregon Trail with a theme {state.theme}.
-The party is trying to reach {state.destination} and they are {state.current_step}/{state.total_steps} of the way there. The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress.
-Based on the available items ({', '.join(state.items)}), characters ({', '.join(state.characters)}), and vehicle: {state.vehicle}, generate a json object with fields "scenario", and "suggestions". "scenario" is 75 words of description of the situation, "suggestions" is an array of 3 brief actions the player could possibly take to attempt to overcome the scenario. Make the scenario include specific details about the situation and/or the characters. Do not have any vague descriptions.""",
+The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress.
+Based on the available items "{', '.join(state.items)}", characters "{', '.join(state.characters)}", and vehicle: {state.vehicle}, generate a json object with fields "situation", and "suggestions". "situation" is 75 words story description of the situation the characters are facing, "suggestions" is an array of 3 brief actions that could possibly be taken to attempt to overcome the scenario. Make the "situation" include specific details (if characters are involved in the situation, mention their names). Do not have any vague descriptions. Do not mention the suggestions in the situation.""",
         "temperature": .5,
         "response_type": "json",
-        "validation_schema": {"scenario": str, "suggestions": [str]}
+        "validation_schema": {"situation": str, "suggestions": [str]}
     }
 
 
@@ -89,4 +90,29 @@ Respond with only the json object""",
         "temperature": .8,
         "response_type": "json",
         "validation_schema": {"outcome": str, "items": [str], "characters": [str], "vehicle": str}
+    }
+
+
+def get_game_end_prompt(prev_outcome: str, state: GameState) -> Prompt:
+    dest = 'successfully reached their destination' if state.game_over == 'WIN' else 'failed trying to reach their destination'
+    if state.game_over == 'WIN':
+        end_reason = f'reaching their destination {state.destination}'
+    else:
+        end_reason = 'losing because all the characters died' if len(state.characters) == 0 else "losing because the vehicle didn't survive"
+
+    old_character_parser = ItemParser(state.original_characters)
+    new_character_parser = ItemParser(state.characters)
+    added, removed, changed = old_character_parser.difference(new_character_parser)
+    end_characters = ''
+    if len(removed) > 0:
+        end_characters = f' and {", ".join(removed)} didn\'t make it'
+
+    return {
+        "prompt": f"""The theme is {state.theme}. The characters have {dest} {state.destination} after facing several challenges. Here is a description of their last challenge: "{prev_outcome}".
+The journey began with characters "{', '.join(state.original_characters)}"{end_characters}.
+Their vehicle ended up as {state.vehicle}.
+Provide a 60 word story description of the remaining characters {end_reason}. Respond with only a json object in the format {{"description":"..."}}""",
+        "temperature": .7,
+        "response_type": "json",
+        "validation_schema": {"description": str}
     }

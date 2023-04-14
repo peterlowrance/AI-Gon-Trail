@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addStory, RootState, setSuggestions } from "./store";
+import { addStory, restart, RootState, setSuggestions, StoryType } from "./store";
 import { useLazyGetScenarioQuery } from "./api";
 import { EuiButton, EuiPanel, EuiSkeletonRectangle, EuiSpacer, EuiText } from "@elastic/eui";
 import { useEffect } from 'react';
@@ -11,10 +11,12 @@ export default function StoryPanel(props) {
     const session = useSelector((state: RootState) => state.game.session);
     const story = useSelector((state: RootState) => state.game.story);
     const key = useSelector((state: RootState) => state.game.key);
+    const gameOver = useSelector((state: RootState) => state.game.gameOver);
 
     const [getScenario, getScenarioRes] = useLazyGetScenarioQuery();
 
     const handleGetScenario = () => {
+        // Fetch a new scenario if the last scenario is an outcome or if there are no scenarios
         if (session && (story.length === 0 || story[story.length - 1].type === 'OUTCOME')) {
             console.log('Fetching scenario')
             getScenario({ session: session, key: key }).unwrap().then(res => {
@@ -31,10 +33,15 @@ export default function StoryPanel(props) {
         handleGetScenario();
     }, [story])
 
+    const getPanelColor = (type: StoryType) => {
+        if (type === 'GAME_END') {
+            return gameOver === 'WIN' ? 'success' : 'danger';
+        }
+    }
 
     return <div style={{ marginBottom: '15vw' }}>
         {story.map((s, i) =>
-            <EuiPanel key={i} hasBorder style={{ marginBottom: 16 }}>
+            <EuiPanel key={i} color={getPanelColor(s.type)} hasBorder style={{ marginBottom: 16 }}>
                 <EuiText color={s.invalid ? 'danger' : undefined}>
                     <p>
                         {s.type === 'ACTION' ?
@@ -56,12 +63,15 @@ export default function StoryPanel(props) {
                         <StoryChanges type='Item' changes={s.itemChanges} />
                     }
                     {s.vehicleChanges &&
-                        <StoryChanges type='Vehicle' changes={{added: [], removed: [], changed: s.vehicleChanges}} />
+                        <StoryChanges type='Vehicle' changes={{ added: [], removed: [], changed: s.vehicleChanges }} />
                     }
                     {s.invalidMsg &&
                         <p>
                             {s.invalidMsg}
                         </p>
+                    }
+                    {s.type === 'GAME_END' &&
+                        <EuiButton style={{marginTop: 8}} color='primary' onClick={() => dispatch(restart())}>Restart Game</EuiButton>
                     }
                 </EuiText>
             </EuiPanel>
