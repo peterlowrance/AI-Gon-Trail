@@ -1,5 +1,6 @@
 from typing import Literal
 import logging
+import random
 
 class GameState:
     characters: list[str]
@@ -42,9 +43,7 @@ class GameState:
 
     def get_difficulty(self) -> str:
         difficulties = ['easy', 'medium', 'hard', 'extremely hard']
-        percent = self.current_step / self.total_steps
-        diff_index = round(percent * (len(difficulties) - 1))
-        return difficulties[diff_index]
+        return random.choice(difficulties)
 
     def __str__(self):
         return f"Characters: {', '.join(self.characters)}\nItems: {', '.join(self.items)}\n{self.vehicle}\nOn step {self.current_step}/{self.total_steps}"
