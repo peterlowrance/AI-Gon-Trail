@@ -1,4 +1,5 @@
 from typing import Literal
+import logging
 
 class GameState:
     characters: list[str]
@@ -36,7 +37,8 @@ class GameState:
             self.game_over = 'LOSE'
         elif self.current_step > self.total_steps:
             self.game_over = 'WIN'
-        print(self.game_over, self.characters, self.vehicle)
+        if self.game_over:
+            logging.info(self.game_over, self.characters, self.vehicle, self.theme, self.destination)
 
     def get_difficulty(self) -> str:
         difficulties = ['easy', 'medium', 'hard', 'extremely hard']

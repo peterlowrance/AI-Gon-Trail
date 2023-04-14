@@ -35,7 +35,8 @@ const gameSlice = createSlice({
       else {
         state.story.push(action.payload);
       }
-      state.gameOver = action.payload.gameOver;
+      if (state.gameOver)
+        state.gameOver = action.payload.gameOver;
       // Scroll to bottom
       setTimeout(() => {
         const el = document.getElementById('scrolling-div');

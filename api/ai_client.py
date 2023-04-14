@@ -58,7 +58,12 @@ class AiClient:
 		data_dict = {}
 		try:
 			if prompt['response_type'] == 'yaml':
-				data_dict = yaml.safe_load(res)
+				try:
+					data_dict = yaml.safe_load(res)
+				except:
+					# If unable to parse, try to fix the ':'
+					res = fix_yaml(res)
+					data_dict = yaml.safe_load(res)
 			elif prompt['response_type'] == 'json':
 				# Find the start and end index of the json object
 				start = res.find("{")
@@ -86,6 +91,9 @@ def fix_missing_quotes(json_string):
     fixed_json = re.sub(r'([{,])(\s*)([A-Za-z0-9_]+)(\s*):', r'\1"\3":', json_string)
     return fixed_json
 
+# Thanks gpt4 for this code, makes values after ':' surrounded in quotes for proper parsing
+def fix_yaml(yaml_str):
+    return re.sub(r': (\w[^:\n]*: [^:\n]*)', r': "\1"', yaml_str)
 	
 # Bing generated validation function
 def validate(obj, schema) -> bool:

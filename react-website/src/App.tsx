@@ -56,7 +56,7 @@ function App() {
     <EuiFlexGroup direction='row' gutterSize='none' style={{ height: '100vh', overflow: 'hidden' }}>
       {/* Sidebar */}
       <EuiHideFor sizes={['xs', 's']}>
-        <EuiFlexItem grow={false} style={{ minWidth: 240 }}>
+        <EuiFlexItem grow={false} style={{ minWidth: 240, maxWidth: 500 }}>
           <EuiPanel hasBorder={false} borderRadius='none' color='subdued' style={{ backgroundImage: `url(${wood_background})`, backgroundRepeat: 'round', backgroundPosition: 'bottom center', border: '5px solid #4b3732', height: '100%' }}>
             <StatusSidebar />
           </EuiPanel>
