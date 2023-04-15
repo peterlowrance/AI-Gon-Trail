@@ -8,7 +8,7 @@ import StatusSidebar from "./StatusSidebar";
 import StoryPanel from "./StoryPanel";
 import { useEffect, useState } from "react";
 import GameStartPanel from "./GameStartPanel";
-import { getBackgroundImage } from "../images/image_manager";
+import { getBackgroundImage } from "../image_manager/image_manager";
 import wood_background from '../wood_background.jpg';
 import MobileStatusAccordion from "./MobileStatusAccordion";
 
