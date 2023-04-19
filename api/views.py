@@ -99,8 +99,8 @@ def take_action(request):
         return Response({'valid': False, 'text': valid_explanation})
     prompt = get_scenario_outcome_prompt(scenario, action, state)
     res = client.gen_dict(prompt)
+    
     outcome = res['outcome']
-
     items = res['items']
     characters = res['characters']
     vehicle = res['vehicle']
@@ -111,17 +111,6 @@ def take_action(request):
     # Validate item changes
     new_item_parser = ItemParser(items)
     added, removed, changed = old_items_parser.difference(new_item_parser)
-    # Ensure that items that were removed were actualy removed
-    # for r in removed:
-    #    r_lower = r.lower()
-    #    # If item wasn't mentioned anywhere, add it back in
-    #    if r_lower not in scenario.lower() and r_lower not in action.lower() and r_lower not in outcome.lower():
-    #        to_add_item = r
-    #        to_add_item_mods = old_items_parser.items_map[r]
-    #        if len(to_add_item_mods) > 0:
-    #            to_add_item += f' ({", ".join(to_add_item_mods)})'
-    #        items.append(to_add_item)
-    #        removed.remove(r)
     # Parse character changes
     new_character_parser = ItemParser(characters)
     character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
@@ -156,6 +145,110 @@ def take_action(request):
         'vehicle_changes': v_changes
     })
 
+
+@api_view(['POST'])
+def take_action_v2(request):
+    """
+    Take an action based on a scenario
+    Modifies the items, characters, and vehicle of the state
+    Returns the text of the outcome of this action
+    """
+    session = request.data['session']
+    state = database[session]
+    scenario = request.data['scenario']
+    action = request.data['action']
+    key = request.headers.get('openai_key')
+    if not key:
+        key = request.GET.get('key')
+    client = AiClient(key)
+
+    # Do validation in background for performance
+    def validate_thread(scenario, state, action):
+        prompt = get_validate_action_prompt(scenario, state, action)
+        res = client.gen_dict(prompt)
+        global valid
+        global valid_explanation
+        valid = res['valid']
+        valid_explanation = res['explanation']
+
+    thread = Thread(target=validate_thread, args=(scenario, state, action), daemon=True)
+    thread.start()
+    
+    
+    prompt = get_scenario_outcome_prompt_v2(scenario, action, state)
+    res = client.gen_dict(prompt)
+
+    # Join validate thread and use it's result
+    thread.join()
+    if not valid:
+        return Response({'valid': False, 'text': valid_explanation})
+
+    # V2
+    items = [i for i in state.items if i not in res['items_lost']]
+    for i in res['items_changed']:
+        changed_key = ItemParser.parse_item(i)[0]
+        for index, other_item in enumerate(items):
+            other_key = ItemParser.parse_item(other_item)[0]
+            if changed_key == other_key:
+                items[index] = changed_key
+                break
+    for i in res['items_gained']:
+        items.append(i)
+
+    characters = [c for c in state.characters if c not in res['characters_lost']]
+    for c in res['characters_changed']:
+        changed_key = ItemParser.parse_item(c)[0]
+        for index, other_character in enumerate(characters):
+            other_key = ItemParser.parse_item(other_character)[0]
+            if changed_key == other_key:
+                characters[index] = changed_key
+                break
+    for c in res['characters_gained']:
+        characters.append(c)
+    
+    # V2
+    outcome = res['outcome']
+    vehicle = res['vehicle']
+
+    # Get old/previous parsers
+    old_items_parser = ItemParser(state.items)
+    old_character_parser = ItemParser(state.characters)
+    # Validate item changes
+    new_item_parser = ItemParser(items)
+    added, removed, changed = old_items_parser.difference(new_item_parser)
+    # Parse character changes
+    new_character_parser = ItemParser(characters)
+    character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
+    # Parse vehicle changes
+    old_vehicle_parser = ItemParser([state.vehicle])
+    new_vehicle_parser = ItemParser([vehicle])
+    v_added, v_removed, v_changes = old_vehicle_parser.difference(new_vehicle_parser)
+    if len(v_added) > 0 or len(v_removed) > 0:
+        if not v_changes:
+            v_changes = {vehicle: {'added': [], 'removed': []}}
+        for key in v_changes:
+            v_changes[key]['added'].extend(v_added)
+            v_changes[key]['removed'].extend(v_removed)
+
+    state.progress(items=items, characters=characters, vehicle=vehicle)
+
+    return Response({
+        'valid': True,
+        'text': outcome,
+        'game_over': state.game_over,
+        # Return the changed items/characters so the frontend can render them with the story panel
+        'item_changes': {
+            'added': added,
+            'removed': removed,
+            'changed': changed
+        },
+        'character_changes': {
+            'added': character_added,
+            'removed': character_removed,
+            'changed': character_changed,
+        },
+        'vehicle_changes': v_changes
+    })
 
 @api_view(['GET'])
 def get_scenario(request):

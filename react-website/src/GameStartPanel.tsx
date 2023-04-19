@@ -21,9 +21,14 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
                 </EuiFormRow>
             </EuiFlexItem>
             <EuiFlexItem>
-                <div>
-                    <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => props.handleStart(theme)}>Start Game</EuiButton>
-                </div>
+                <EuiFlexGroup responsive={false}>
+                    <EuiFlexItem grow={false}>
+                        <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => {window.v2 = false; props.handleStart(theme);}}>Start Game</EuiButton>
+                    </EuiFlexItem>
+                    <EuiFlexItem grow={false}>
+                        <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => {window.v2 = true; props.handleStart(theme);}}>Start Game (v2 action prompt)</EuiButton>
+                    </EuiFlexItem>
+                </EuiFlexGroup>
             </EuiFlexItem>
             {props.error &&
                 <EuiFlexItem>
