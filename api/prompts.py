@@ -1,7 +1,8 @@
 from typing import Literal, TypedDict
 from api.game_state import GameState
 import json
-from api.item_parser import ItemParser
+from api.item_parser import ItemParser, Item
+import random
 
 class Prompt(TypedDict):
     prompt: str
@@ -11,7 +12,7 @@ class Prompt(TypedDict):
 
 def get_start_prompt(theme: str) -> Prompt:
     return {
-        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme of "{theme}". Respond with a json object that shows the available items to purchase at the start of the game. Include a field "items" which is a map with keys of the item and value of the cost in the local currency. The crew will start with 100. There should be 20 items. The items should be things that can be stored in the wagon and that the group can use to overcome various challenges. Include an array of 5 characters that are in the crew. Include a field vehicle which is a string and has (Health: 10/10). Include a field destination which is the characters destination. Include a field description which describes the group preparing to start out on their journey based on the theme. Each item, character, and the vehicle can have modifiers for extraneous features, shown in parentheses with the item name, for example "gun (broken)", " or "shovel (strong, steel)". Only half of the items have modifiers. All the fields should match the theme.
+        "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme of "{theme}". Respond with a json object that shows the available items to purchase at the start of the game. Include a field "items" which is a map with keys of the item and value of the cost in the local currency. The crew will start with 100. There should be 20 items. The items should be things that can be stored in the wagon and that the group can use to overcome various challenges. Include an array of 5 characters that are in the crew. Include a field vehicle which is a string and has (Health: 10/10). Include a field destination which is the characters destination. Include a field description which describes the group preparing to start out on their journey based on the theme. Each item, character, and the vehicle can have modifiers for extraneous features, shown in parentheses with the item name, for example "gun (broken)", " or "shovel (strong, steel)". Half of the items have modifiers. All the fields should match the theme.
 Example:
 {{
 	"items": {{"shovel (steel)": 12, "hunting knife": 15, "rations (stale)": 3}},
@@ -88,7 +89,21 @@ Respond with only the json object""",
     }
 
 def get_scenario_outcome_prompt_v2(scenario: str, player_action: str, state: GameState) -> Prompt:
-    example_item = state.items[0] if len(state.items) > 0 else 'shovel'
+    example_item = Item(random.choice(state.items) if len(state.items) > 0 else 'shovel')
+    example_item_changed = example_item.clone()
+    # Either add or removed the 'damaged' modifier as an example
+    if 'damaged' not in example_item_changed.modifiers:
+        example_item_changed.modifiers.append('damaged')
+    else:
+        example_item_changed.modifiers = [m for m in example_item_changed.modifiers if m != 'damaged']
+
+    example_character = Item(random.choice(state.characters))
+    example_character_changed = example_character.clone()
+    # Either add or removed the 'injured' modifier as an example
+    if 'injured' not in example_character_changed.modifiers:
+        example_character_changed.modifiers.append('injured')
+    else:
+        example_character_changed.modifiers = [m for m in example_character_changed.modifiers if m != 'injured']
     return {
         "prompt": f"""This is a game similar to Oregon Trail with a theme of {state.theme}. You control the world in an attempt to make the game engaging and realistic.
 {{
@@ -99,9 +114,10 @@ def get_scenario_outcome_prompt_v2(scenario: str, player_action: str, state: Gam
 Scenario: "{scenario}"
 The player action is "{player_action}"
 Consider the risk factor and effectiveness of the player's action when generating the outcome. If the action seems insufficient or unlikely to prevent damage, introduce negative consequences that logically stem from the player's choice. Make the outcome more realistic by considering the actual effectiveness of the chosen action in addressing the core challenges of the scenario, and include any negative consequences that may arise due to the chosen action. Negative consequences can remove items, kill characters, lower vehicle health, or add negative modifiers to items or characters. The concept of time passing isn't important in this game.
-For example, if the player chooses to cook a meal to pass through a treacherous mountain pass, the outcome should include both the positive effects of the meal (increased energy and morale) and the negative consequences of not directly addressing the challenges of the mountain pass (possible injuries, vehicle damage, or lost items).
-Respond with a json object with the following fields to describe the status after the outcome is completed: "outcome" is a brief description of the outcome, "items_lost" is the list of items that were lost, "items_gained" is the list of items gained, "items_changed" is a map of items to the item with changed modifiers in parenthesis, "characters_lost" is the characters that have died or were lost, "characters_gained" are any new characters, "characters_changed" is a map of character to the character with changed modifiers in parenthesis, and "vehicle" is the vehicle with updated health. Fill these out based on the action and the outcome. The outcome should conclude the scenario so the next scenario can be faced. If a change happened to an item or character you must include them in "items_changed" or "characters_changed" with a full list of their modifiers in parenthesis, including their original modifiers; example "characters_changed": {{"John (hunter)": "John (sick, hunter)"}}. Example: "items_changed": {{"blanket": "blanket (wet)"}}. Only include things in "items_changed" or "characters_changed" when the modifiers change. The scenario is {state.get_difficulty()}, but extremely negative outcomes should be rare. Example format:
-{{"outcome": "description", "items_lost": ["{example_item}"], "items_gained": [], "items_changed": {{"{example_item}": "{example_item} (damaged)"}}, "characters_lost": ["{state.characters[0]}"], "characters_gained": [], "characters_changed": {{"{state.characters[-1]}": "{state.characters[-1]} (injured)"}}, "vehicle": "{state.vehicle}"}}
+For example, if the player chooses to cook a meal to pass through a treacherous mountain pass, the outcome should include both the positive effects of the meal (increased energy and morale) and the negative consequences of not directly addressing the challenges of the mountain pass (possible injuries, vehicle damage, or lost items). If the vehicle is unusable after the outcome, set its health to 0.
+Respond with a json object with the following fields to describe the status after the outcome is completed: "outcome" is a brief description of the outcome, "items_lost" is the list of items that were lost, "items_gained" is the list of items gained, "items_changed" is a map of items to the item with changed modifiers in parenthesis, "characters_lost" is the characters that have died or were lost, "characters_gained" are any new characters, "characters_changed" is a map of character to the character with changed modifiers in parenthesis, and "vehicle" is the vehicle with updated health. Fill these out based on the action and the outcome. The outcome should conclude the scenario so the next scenario can be faced. If a change happened to an item or character you must include them in "items_changed" or "characters_changed" with a full list of their modifiers in parenthesis, including their original modifiers; example "characters_changed": {{"John (hunter)": "John (sick, hunter)"}}. Example: "items_changed": {{"blanket": "blanket (wet)"}}. Only include things in "items_changed" or "characters_changed" when the modifiers change. The scenario is {state.get_difficulty()}, but extremely negative outcomes should be rare.
+Example format:
+{{"outcome": "description", "items_lost": ["{example_item}"], "items_gained": [], "items_changed": {{"{example_item}": "{example_item_changed}"}}, "characters_lost": ["{state.characters[0]}"], "characters_gained": [], "characters_changed": {{"{example_character}": "{example_character_changed}"}}, "vehicle": "{state.vehicle}"}}
 Respond with only the json object""",
         "temperature": .8,
         "response_type": "json",

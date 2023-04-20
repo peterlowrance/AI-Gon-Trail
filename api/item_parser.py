@@ -1,5 +1,28 @@
 import re
 
+class Item():
+    key: str
+    modifiers: list[str]
+
+    def __init__(self, item: str):
+        self.key = re.sub(r'\([^)]*\)', '', item).strip()
+        mods = re.findall(r'\(([^)]+)\)', item)
+        mods = [v.strip() for v in mods]
+        self.modifiers = []
+        for value in mods:
+            self.modifiers.extend(value.split(','))
+        self.modifiers = [v.strip() for v in self.modifiers]
+
+    def __str__(self):
+        res = self.key
+        if len(self.modifiers) > 0:
+            res += f' ({", ".join(self.modifiers)})'
+        return res
+
+    def clone(self):
+        return Item(str(self))
+
+# TODO: clean up ItemParser and make it use Items
 class ItemParser():
     # mapping from item key to item modifiers
     items_map: dict[str, list[str]]
