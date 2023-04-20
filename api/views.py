@@ -185,24 +185,22 @@ def take_action_v2(request):
 
     # V2
     items = [i for i in state.items if i not in res['items_lost']]
-    for i in res['items_changed']:
-        changed_key = ItemParser.parse_item(i)[0]
-        for index, other_item in enumerate(items):
-            other_key = ItemParser.parse_item(other_item)[0]
-            if changed_key == other_key:
-                items[index] = changed_key
-                break
+    for old, new in res['items_changed'].items():
+        try:
+            i = items.index(old)
+            items[i] = new
+        except:
+            pass
     for i in res['items_gained']:
         items.append(i)
 
     characters = [c for c in state.characters if c not in res['characters_lost']]
-    for c in res['characters_changed']:
-        changed_key = ItemParser.parse_item(c)[0]
-        for index, other_character in enumerate(characters):
-            other_key = ItemParser.parse_item(other_character)[0]
-            if changed_key == other_key:
-                characters[index] = changed_key
-                break
+    for old, new in res['characters_changed'].items():
+        try:
+            i = characters.index(old)
+            characters[i] = new
+        except:
+            pass
     for c in res['characters_gained']:
         characters.append(c)
     
@@ -238,13 +236,13 @@ def take_action_v2(request):
         'game_over': state.game_over,
         # Return the changed items/characters so the frontend can render them with the story panel
         'item_changes': {
-            'added': added,
-            'removed': removed,
+            'added': res['items_gained'],
+            'removed': res['items_lost'],
             'changed': changed
         },
         'character_changes': {
-            'added': character_added,
-            'removed': character_removed,
+            'added': res['characters_gained'],
+            'removed': res['characters_lost'],
             'changed': character_changed,
         },
         'vehicle_changes': v_changes
