@@ -39,7 +39,7 @@ export default function UserInput(props: { disabled: boolean }) {
                     }
                 }).catch(res => {
                     console.error(res);
-                    alert('Failed to take action');
+                    dispatch(invalidateStoryAction('Failed to take action. Try again.'));
                 });
         }
     }

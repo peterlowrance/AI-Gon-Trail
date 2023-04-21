@@ -29,7 +29,7 @@ def game_start_items(request):
     destination = res['destination'].lower()
 
     # Save initial data to state
-    database[session] = GameState(characters=res['crew'], items=[], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
+    database[session] = GameState(characters=res['characters'], items=[], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
     logging.info(f'{theme} -> {destination}')
 
     # Get the scenario list in another thread so we can start the game quicker
@@ -192,7 +192,8 @@ def take_action_v2(request):
         except:
             pass
     for i in res['items_gained']:
-        items.append(i)
+        if i.lower() != 'none':
+            items.append(i)
 
     characters = [c for c in state.characters if c not in res['characters_lost']]
     for old, new in res['characters_changed'].items():
@@ -202,7 +203,8 @@ def take_action_v2(request):
         except:
             pass
     for c in res['characters_gained']:
-        characters.append(c)
+        if c.lower() != 'none':
+            characters.append(c)
     
     # V2
     outcome = res['outcome']

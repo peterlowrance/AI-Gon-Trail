@@ -74,6 +74,7 @@ class AiClient:
 					data_dict = json.loads(data_str)
 				except:
 					# If unable to parse, try to fix quotes
+					data_str = data_str.replace('{"none"}', '{}')
 					data_str = fix_missing_quotes(data_str)
 					data_dict = json.loads(data_str)
 		except:

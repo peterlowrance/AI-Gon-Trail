@@ -22,28 +22,16 @@ class Item():
     def clone(self):
         return Item(str(self))
 
-# TODO: clean up ItemParser and make it use Items
+
 class ItemParser():
     # mapping from item key to item modifiers
     items_map: dict[str, list[str]]
 
-    @staticmethod
-    def parse_item(item: str):
-        """Written by gpt4"""
-        key = re.sub(r'\([^)]*\)', '', item).strip()
-        mods = re.findall(r'\(([^)]+)\)', item)
-        mods = [v.strip() for v in mods]
-        final_mods = []
-        for value in mods:
-            final_mods.extend(value.split(','))
-        final_mods = [v.strip() for v in final_mods]
-        return (key, final_mods)
-
     def __init__(self, items: list[str]):
         self.items_map = {}
         for item in items:
-            key, mods = ItemParser.parse_item(item)
-            self.items_map[key] = mods
+            parsed_item = Item(item)
+            self.items_map[parsed_item.key] = parsed_item.modifiers
 
     def difference(self, new: 'ItemParser'):
         added: list[str] = []
