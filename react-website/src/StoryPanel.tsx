@@ -50,6 +50,9 @@ export default function StoryPanel(props) {
                             s.text
                         }
                     </p>
+                    {s.quote &&
+                        <p style={{marginTop: 16}}>{s.quote.split(':')[0]}: <em>"{s.quote.split(/:(.+)/)[1].trim()}"</em></p>
+                    }
                     {/* If there are any changes, add spacing */}
                     {(s.characterChanges?.added?.length || s.characterChanges?.removed?.length || s.characterChanges?.changed ||
                         s.itemChanges?.added?.length || s.itemChanges?.removed?.length || s.itemChanges?.changed ||
@@ -71,7 +74,7 @@ export default function StoryPanel(props) {
                         </p>
                     }
                     {s.type === 'GAME_END' &&
-                        <EuiButton style={{marginTop: 8}} color='primary' onClick={() => dispatch(restart())}>Restart Game</EuiButton>
+                        <EuiButton style={{ marginTop: 8 }} color='primary' onClick={() => dispatch(restart())}>Restart Game</EuiButton>
                     }
                 </EuiText>
             </EuiPanel>

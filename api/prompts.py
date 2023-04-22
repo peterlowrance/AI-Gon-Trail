@@ -47,7 +47,7 @@ def get_scenario_prompt(state: GameState) -> Prompt:
 The state of the game before encountering the situation is items: "{', '.join(state.items)}"; characters: "{', '.join(state.characters)}"; and vehicle: {state.vehicle}.
 
 The situation they are about to face is {state.situations[state.current_step - 1]}. It will be a {state.get_difficulty()} challenge that they will have to overcome in order to progress.
-Respond with a json object with fields "situation", and "suggestions". "situation" is 75 words third person present tense story description of the situation, it is a part of the existing larger story of the game. "suggestions" is an array of 3 brief actions that could possibly be taken to attempt to overcome the scenario. Make the "situation" not include vague descriptions like "a party member falls ill" but instead specific details such as the character's name and specific name of the illness. "situation" only describes the challenging situation, not the possible solutions or suggested actions.""",
+Respond with a json object with fields "situation" and "suggestions". "situation" is 75 words third person present tense story description of the situation, it is a part of the existing larger story of the game. "suggestions" is an array of 3 brief actions that could possibly be taken to attempt to overcome the scenario. Make the "situation" not include vague descriptions like "a party member falls ill" but instead specific details such as the character's name and name of the illness. "situation" only describes the challenging situation, not the possible solutions, suggested actions, or character dialog.""",
         "temperature": .5,
         "response_type": "json",
         "validation_schema": {"situation": str, "suggestions": [str]}
@@ -57,7 +57,7 @@ Respond with a json object with fields "situation", and "suggestions". "situatio
 def get_scenario_list_prompt(theme: str, destination: str) -> Prompt:
     return {
         "prompt": f"""This is a game that is similar to "The Oregon Trail" but with a custom theme of "{theme}" with the goal of reaching "{destination}". Your job is to generate 10 short situations of high difficulty for the player to encounter on their journey to {destination} that they will try to overcome.
-The situations should be related to the theme. The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, and conflicts. None of the situations should mention the players supplies as those are handled elsewhere. 
+The situations should be related to the theme. The situations should involve challenges that need to be overcome such as weather, terrain, wildlife, health, conflicts, or other types that match the theme. None of the situations should mention the players supplies as those are handled elsewhere. 
 Reply in json in this format {{"situations":["Cross a river...", ...]}}. Try to make them unique and interesting.""",
         "temperature": .8,
         "response_type": "json",
@@ -89,6 +89,7 @@ Respond with only the json object""",
     }
 
 def get_scenario_outcome_prompt_v2(scenario: str, player_action: str, state: GameState) -> Prompt:
+    quote_type = random.choice(['funny', 'humerous', 'sarcastic', 'ironic', 'deadpan', 'joking', 'iconic'])
     example_item = Item(random.choice(state.items) if len(state.items) > 0 else 'shovel')
     another_example_item = Item(random.choice(state.items) if len(state.items) > 0 else 'lumber')
     example_item_changed = example_item.clone()
@@ -116,13 +117,13 @@ Previous game state:
 Scenario: "{scenario}"
 The player action is "{player_action}"
 Consider the risk factor and effectiveness of the player's action when generating the outcome. If the action seems insufficient or unlikely to prevent damage, introduce negative consequences that logically stem from the player's choice. Make the outcome more realistic by considering the actual effectiveness of the chosen action in addressing the core challenges of the scenario, and include any negative consequences that may arise due to the chosen action. Negative consequences can lose items, kill characters, lower vehicle health, and change items or characters to add negative modifiers. For example, if the player chooses to cook a meal to pass through a treacherous mountain pass, the outcome should include both the positive effects of the meal (increased energy and morale) and the negative consequences of not directly addressing the challenges of the mountain pass (injuries, vehicle damage, and lost items). If the vehicle is unusable after the outcome, set its health to 0.
-Respond with a json object with the following fields to describe the status after the outcome is completed: "outcome" is a story-like description of the outcome, "items_lost" is the list of items that were lost, "items_gained" is the list of items gained, "items_changed" is a map of items to the item with changed modifiers in parenthesis, "characters_lost" is the characters that have died or were lost, "characters_gained" are any new characters, "characters_changed" is a map of character to the character with changed modifiers in parenthesis, and "vehicle" is the vehicle with updated health. Fill these out based on the action and the outcome. The outcome should conclude the scenario so the next scenario can be faced. If a change happened to an item or character you must include them in "items_changed" or "characters_changed" with a full list of their modifiers in parenthesis, including their original modifiers; example "characters_changed": {{"John (hunter)": "John (sick, hunter)"}}. Example: "items_changed": {{"blanket": "blanket (wet)"}}. Only include things in "items_changed" or "characters_changed" when the modifiers change. The scenario is {state.get_difficulty()} difficulty.
+Respond with a json object with the following fields to describe the status after the outcome is completed: "outcome" is a story-like description of the outcome, "items_lost" is the list of items that were lost, "items_gained" is the list of items gained, "items_changed" is a map of items to the item with changed modifiers in parenthesis, "characters_lost" is the characters that have died or were lost, "characters_gained" are any new characters, "characters_changed" is a map of character to the character with changed modifiers in parenthesis, and "vehicle" is the vehicle with updated health. Fill these out based on the action and the outcome. The outcome should conclude the scenario so the next scenario can be faced. If a change happened to an item or character you must include them in "items_changed" or "characters_changed" with a full list of their modifiers in parenthesis, including their original modifiers; example "characters_changed": {{"John (hunter)": "John (sick, hunter)"}}. Example: "items_changed": {{"blanket": "blanket (wet)"}}. Only include things in "items_changed" or "characters_changed" when the modifiers change. "quote" is a {quote_type} thing that a character said about the outcome. The scenario is {state.get_difficulty()} difficulty.
 Example format:
-{{"outcome": "description", "items_lost": ["{another_example_item}"], "items_gained": [], "items_changed": {{"{example_item}": "{example_item_changed}", ...}}, "characters_lost": ["{state.characters[0]}"], "characters_gained": [], "characters_changed": {{"{example_character}": "{example_character_changed}", ...}}, "vehicle": "{state.vehicle}"}}
+{{"outcome": "description", "items_lost": ["{another_example_item}"], "items_gained": [], "items_changed": {{"{example_item}": "{example_item_changed}", ...}}, "characters_lost": ["{state.characters[0]}"], "characters_gained": [], "characters_changed": {{"{example_character}": "{example_character_changed}", ...}}, "vehicle": "{state.vehicle}", "quote": "{Item(random.choice(state.characters)).key}: In hindsight..."}}
 Respond with only the json object""",
         "temperature": .8,
         "response_type": "json",
-        "validation_schema": {"outcome": str, "items_lost": [str], "items_gained": [str], "items_changed": {'*': str}, "characters_lost": [str], "characters_gained": [str], "characters_changed": {'*': str}, "vehicle": str}
+        "validation_schema": {"outcome": str, "items_lost": [str], "items_gained": [str], "items_changed": {'*': str}, "characters_lost": [str], "characters_gained": [str], "characters_changed": {'*': str}, "vehicle": str, "quote": str}
     }
 
 def get_game_end_prompt(prev_outcome: str, state: GameState) -> Prompt:

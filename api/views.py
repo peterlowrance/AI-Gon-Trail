@@ -239,15 +239,16 @@ def take_action_v2(request):
         # Return the changed items/characters so the frontend can render them with the story panel
         'item_changes': {
             'added': res['items_gained'],
-            'removed': res['items_lost'],
+            'removed': removed,
             'changed': changed
         },
         'character_changes': {
             'added': res['characters_gained'],
-            'removed': res['characters_lost'],
+            'removed': character_removed,
             'changed': character_changed,
         },
-        'vehicle_changes': v_changes
+        'vehicle_changes': v_changes,
+        'quote': res['quote']
     })
 
 @api_view(['GET'])

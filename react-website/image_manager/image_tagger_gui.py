@@ -99,7 +99,6 @@ class ImageManager:
         self.show_image()
 
     def next_image(self, event=None):
-        self.test_paragraph_match("The space station was fully functional")
         self.current_image = (self.current_image + 1) % len(self.image_files)
         self.show_image()
 
@@ -154,7 +153,6 @@ class ImageManager:
     def save_images(self):
         all_file_obj = {}
         starting_images = []
-        word_counts = defaultdict(lambda: 0)
         for i, img in enumerate(self.image_files):
             new_words = self.words[i]
             new_filename = "_".join(new_words) + f".{i}.jpg"
@@ -164,8 +162,6 @@ class ImageManager:
                 os.rename(img, new_path)
                 self.image_files[i] = new_path
                 self.words[i] = new_words
-            for w in new_words:
-                word_counts[w] += 1
             if new_filename.startswith('town'):
                 starting_images.append(new_filename)
             else:
@@ -187,8 +183,6 @@ class ImageManager:
             for i, words in enumerate(all_file_obj.values()):
                 f.write(f'    [{words}, background{i}],\n')
             f.write('];\n\n')
-            f.write(f'export const wordCounts = {json.dumps(word_counts)};\n')
-            f.write(f'export const maxWordCount = {max(c for c in word_counts.values())};\n')
             
 
 

@@ -31,7 +31,7 @@ export default function UserInput(props: { disabled: boolean }) {
                 .then((res) => {
                     if (res.valid) {
                         const type = res.game_over ? 'LAST_OUTCOME' : 'OUTCOME';
-                        dispatch(addStory({ itemChanges: res.item_changes, characterChanges: res.character_changes, vehicleChanges: res.vehicle_changes, text: res.text, type: type, gameOver: res.game_over }));
+                        dispatch(addStory({ itemChanges: res.item_changes, characterChanges: res.character_changes, vehicleChanges: res.vehicle_changes, text: res.text, type: type, gameOver: res.game_over, quote: res.quote }));
                         setValue('');
                     }
                     else {
