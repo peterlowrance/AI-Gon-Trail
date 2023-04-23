@@ -44,7 +44,7 @@ export default function PurchaseItemPanel() {
                 });
     }
 
-    return <EuiPanel hasBorder grow={false}>
+    return <EuiPanel hasBorder grow={false} className='info-panel-apper'>
         <EuiFlexGroup direction='column' style={{height: '100%'}} gutterSize='none'>
             <EuiFlexItem grow={false} style={{marginBottom: 16}}>
                 <EuiTitle size='s'>

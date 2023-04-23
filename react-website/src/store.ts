@@ -71,6 +71,7 @@ const gameSlice = createSlice({
       state.itemsToBuy = {};
       state.story = [];
       state.session = null;
+      state.suggestions = [];
     }
   }
 })

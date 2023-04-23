@@ -15,7 +15,7 @@ export default function StatusSidebar(props: { hideVehicle?: boolean }) {
         <EuiFlexGroup direction='column' gutterSize={mobile ? 's' : 'l'} style={{ overflowY: 'scroll', maxHeight: '100%' }}>
             {!props.hideVehicle &&
                 <EuiFlexItem grow={false}>
-                    <EuiPanel paddingSize={mobile ? 'xs' : 's'} hasShadow={false} hasBorder>
+                    <EuiPanel paddingSize={mobile ? 'xs' : 's'} hasShadow={false} hasBorder className='info-panel-apper'>
                         <EuiTitle size='s'>
                             <h3>
                                 {gameStatus.vehicle}

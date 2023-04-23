@@ -41,7 +41,7 @@ export default function StoryPanel(props) {
 
     return <div style={{ marginBottom: '15vw' }}>
         {story.map((s, i) =>
-            <EuiPanel key={i} color={getPanelColor(s.type)} hasBorder style={{ marginBottom: 16 }}>
+            <EuiPanel className={i === story.length - 1 ? 'story-appear' : undefined} key={i} color={getPanelColor(s.type)} hasBorder style={{ marginBottom: 16 }}>
                 <EuiText color={s.invalid ? 'danger' : undefined}>
                     <p>
                         {s.type === 'ACTION' ?
@@ -84,7 +84,7 @@ export default function StoryPanel(props) {
             <EuiSkeletonRectangle
                 width="100%"
                 borderRadius="m"
-                className='delay-appear'
+                className={story.length === 0 ? 'delay-appear-quick' : 'delay-appear'}
                 isLoading={getScenarioRes.isFetching}
             />
         }

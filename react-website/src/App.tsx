@@ -57,7 +57,7 @@ function App() {
       {/* Sidebar */}
       <EuiHideFor sizes={['xs', 's']}>
         <EuiFlexItem grow={false} style={{ minWidth: 240, maxWidth: 500 }}>
-          <EuiPanel hasBorder={false} borderRadius='none' color='subdued' style={{ backgroundImage: `url(${wood_background})`, backgroundRepeat: 'round', backgroundPosition: 'bottom center', border: '5px solid #4b3732', height: '100%' }}>
+          <EuiPanel hasBorder={false} borderRadius='none' color='subdued' style={{ backgroundImage: `url(${wood_background})`, transition: 'background-image 0.5s ease-in-out', backgroundRepeat: 'round', backgroundPosition: 'bottom center', border: '5px solid #4b3732', height: '100%' }}>
             <StatusSidebar />
           </EuiPanel>
         </EuiFlexItem>
@@ -83,7 +83,7 @@ function App() {
             <EuiFlexItem id='scrolling-div' style={{ overflowY: 'scroll', width: '100%', maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }} grow>
               {gameState === 'CHOOSING_ITEMS' &&
                 <>
-                  <EuiPanel hasBorder grow={false}>
+                  <EuiPanel hasBorder grow={false} className='info-panel-apper'>
                     <EuiText>{desc}</EuiText>
                   </EuiPanel>
                   <EuiSpacer />

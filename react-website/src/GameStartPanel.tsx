@@ -7,7 +7,7 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
     const key = useSelector((state: RootState) => state.game.key);
     const theme = useSelector((state: RootState) => state.game.theme);
 
-    return <EuiPanel hasBorder>
+    return <EuiPanel hasBorder className='info-panel-apper'>
         <EuiFlexGroup direction='column'>
             <EuiFlexItem><EuiTitle><h1>Welcome to AI-Gon Trail</h1></EuiTitle></EuiFlexItem>
             <EuiFlexItem>
@@ -23,10 +23,7 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
             <EuiFlexItem>
                 <EuiFlexGroup responsive={false}>
                     <EuiFlexItem grow={false}>
-                        <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => {window.v2 = false; props.handleStart(theme);}}>Start Game</EuiButton>
-                    </EuiFlexItem>
-                    <EuiFlexItem grow={false}>
-                        <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => {window.v2 = true; props.handleStart(theme);}}>Start Game (v2 action prompt)</EuiButton>
+                        <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => props.handleStart(theme)}>Start Game</EuiButton>
                     </EuiFlexItem>
                 </EuiFlexGroup>
             </EuiFlexItem>

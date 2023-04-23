@@ -11,7 +11,7 @@ const wordWeights = {
     "planet": 1,
     "barren": 1,
     "cavern": 1,
-    "grass": 1,
+    "grass": .8,
     "hostileplanet": 3,
     "lake": 1,
     "mountains": 1,
@@ -45,7 +45,7 @@ const wordWeights = {
     "blackhole": 3,
     "ionstorm": 3,
     "supernova": 3,
-    "bridge": 1,
+    "bridge": 2,
     "river": 1,
     "cabin": 1.5,
     "trees": 1,
@@ -86,7 +86,7 @@ const wordWeights = {
     "woodfort": 2,
     "cloudy": 1,
     "plains": 1,
-    "pine": 1,
+    "pine": .8,
     "valley": 1,
     "marsh": 1,
     "house": 1,
@@ -141,7 +141,8 @@ const wordWeights = {
     "swamp": 1.5,
     "bog": 1.5,
     "jungle": 1.5,
-    "town": 1
+    "town": 1,
+    "city": 1.5,
 };
 
 function getWordWeight(word) {

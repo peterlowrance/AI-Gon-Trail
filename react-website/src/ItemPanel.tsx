@@ -5,7 +5,7 @@ import _ from 'lodash';
 function ItemPanel(props: { items: string[], title: string }) {
     const mobile = window.innerWidth <= 800;
 
-    return <EuiPanel paddingSize={mobile ? 's' : 'm'} hasShadow={false} hasBorder>
+    return <EuiPanel paddingSize={mobile ? 's' : 'm'} hasShadow={false} hasBorder className='info-panel-apper'>
         <EuiTitle size='xs'>
             <h3>{props.title}:</h3>
         </EuiTitle>

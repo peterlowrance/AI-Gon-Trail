@@ -21,7 +21,16 @@ p {
   opacity: 0;
   visibility: hidden;
   display: none;
-  animation: showDiv 6s forwards;
+  animation: showDiv 6.5s forwards;
+  height: 0;
+}
+
+.delay-appear-quick {
+  /* Set the initial state of the div */
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  animation: showDiv 2.5s forwards;
   height: 0;
 }
 
@@ -41,15 +50,52 @@ p {
     height: 0;
   }
   /* At 100%, fully show the div */
+  96% {
+    height: 128px;
+  }
   100% {
-    opacity: 1;
+    opacity: .5;
     visibility: visible;
     display: unset;
     height: 120px;
   }
 }
 
+.story-appear {
+  animation: showStoryPanel .8s forwards;
+  overflow: hidden;
+}
+
+@keyframes showStoryPanel {
+  0% {
+    opacity: .5;
+    max-height: 120px;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    max-height: 800px;
+  }
+}
 
 .suggestion-badge .euiBadge__text {
   white-space: break-spaces !important;
+}
+
+.info-panel-apper {
+  animation: showInfoPanel .5s forwards ease-out;
+}
+
+@keyframes showInfoPanel {
+  0% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(5%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

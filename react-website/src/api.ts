@@ -73,7 +73,7 @@ export const gameApi = createApi({
         }),
         takeAction: builder.mutation<{ valid: boolean, text: string, game_over?: 'WIN' | 'LOSE', item_changes?: ChangesType, character_changes?: ChangesType, vehicle_changes?: ChangesType['changed'], quote?: string }, { session: string, scenario: string, action: string, key: string }>({
             query: ({ session, scenario, action, key }) => ({
-                url: window.v2 ? 'take-action-v2' : 'take-action',
+                url: 'take-action',
                 method: 'POST',
                 params: { key: key },
                 body: {
