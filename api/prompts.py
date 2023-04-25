@@ -149,3 +149,37 @@ Provide a 60 word story description of the remaining characters {end_reason}. Re
         "response_type": "json",
         "validation_schema": {"description": str}
     }
+
+
+###Experimental new shop code
+
+def get_custom_shops_prompt(theme: str) -> Prompt:
+    return {
+        "prompt": f"""This is a game with a custom theme of "{theme}". Your job is to generate 4 custom shops related to the theme that players can visit during their journey. The shops should offer unique and interesting services or items that interact with the game components: vehicle health, characters' traits and occupations, and items with tags. They should not involve any conflict. Keep the descriptions relatively short.
+Reply in json in this format {{"shops":["Shop 1: ...", "Shop 2: ...", "Shop 3: ...", "Shop 4: ..."]}}. Be creative and make them engaging for the players.""",
+        "temperature": .8,
+        "response_type": "json",
+        "validation_schema": {"shops": [str]}
+    }
+
+def get_custom_shop_scenario_prompt(theme: str, shop_situation: str, state: GameState) -> Prompt:
+    return {
+        "prompt": f"""This is a game with a custom theme of "{theme}". The players have encountered a shop with the following situation: "{shop_situation}". The state of the game before encountering the shop is items: "{', '.join(state.items)}"; characters: "{', '.join(state.characters)}"; and vehicle: {state.vehicle}. The players have 100 money to spend. Create a JSON object that includes the available items or services the shop offers, which may also involve adding or removing tags from characters and items, based on the services provided at the shop, the current game state, and the affordability of the services considering the theme. Additionally, provide a short situation description for the encounter.
+
+The JSON object should have the following fields:
+- "items": a map with keys for the item name, and values for the cost in the local currency (optional).
+- "GainTag": a map with keys for the character or item names, and nested maps with keys for the tags to be added and values for the cost.
+- "RemoveTag": a map with keys for the character or item names, and nested maps with keys for the tags to be removed and values for the cost.
+- "situation_description": a 75-word third person present tense story description of the shop encounter.
+
+Example (for a hot springs shop):
+{{
+    "items": {{}},
+    "GainTag": {{"John": {{"Relaxed": 10}}, "Sarah": {{"Relaxed": 10}}}},
+    "RemoveTag": {{"Jake": {{"Tired": 5}}}},
+    "situation_description": "The group stumbles upon a natural hot springs nestled in the valley. The warm, soothing waters are a welcome respite after days of travel. The caretaker of the hot springs offers various services that might help the weary travelers. Intrigued, John, Sarah, and Jake decide to explore what the hot springs have to offer."
+}}""",
+        "temperature": 0.7,
+        "response_type": "json",
+        "validation_schema": {"items": {"*": int}, "GainTag": {"*": {"*": int}}, "RemoveTag": {"*": {"*": int}}, "situation_description": str}
+    }
