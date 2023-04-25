@@ -46,7 +46,7 @@ export default function UserInput(props: { disabled: boolean }) {
 
     const handleChangeValue = (e) => {
         const newValue: string = e.target.value;
-        setValue(newValue.slice(0, 100));
+        setValue(newValue.slice(0, 200));
     }
 
     const suggestionsExist = !props.disabled && suggestions.length > 0 && lastStoryType !== 'OUTCOME';

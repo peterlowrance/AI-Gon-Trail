@@ -183,25 +183,48 @@ def take_action_v2(request):
     if not valid:
         return Response({'valid': False, 'text': valid_explanation})
 
-    # V2
-    items = [i for i in state.items if i not in res['items_lost']]
+    items = []
+    # Set items to all items in state.items that aren't in items_lost
+    for i in state.items:
+        # If item is being removed, make sure it doesn't get removed again
+        if i in res['items_lost']:
+            res['items_lost'].remove(i)
+        # Handle case where removed item is like 'shovel' instead of 'shovel (damaged)'
+        elif Item(i).key in res['items_lost']:
+            res['items_lost'].remove(Item(i).key)
+        else:
+            items.append(i)
+    # Change any items in items_changed
     for old, new in res['items_changed'].items():
         try:
             i = items.index(old)
             items[i] = new
         except:
             pass
+    # Add any items gained
     for i in res['items_gained']:
         if i.lower() != 'none':
             items.append(i)
 
-    characters = [c for c in state.characters if c not in res['characters_lost']]
+    characters = []
+    # Set characters to be all characters from state.characters that aren't removed
+    for c in state.characters:
+        # If character is being removed, make sure it doesn't get removed again
+        if c in res['characters_lost']:
+            res['characters_lost'].remove(c)
+        # Handle case where removed item is like 'shovel' instead of 'shovel (damaged)'
+        elif Item(c).key in res['characters_lost']:
+            res['characters_lost'].remove(Item(c).key)
+        else:
+            characters.append(c)
+    # Change any characters in characters_changed
     for old, new in res['characters_changed'].items():
         try:
             i = characters.index(old)
             characters[i] = new
         except:
             pass
+    # Add gained characters
     for c in res['characters_gained']:
         if c.lower() != 'none':
             characters.append(c)
