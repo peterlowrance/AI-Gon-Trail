@@ -26,10 +26,15 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
                 </EuiFormRow>
             </EuiFlexItem>
             <EuiFlexItem>
-                <EuiFlexGroup responsive={false}>
+                <EuiFlexGroup responsive={false} alignItems='center'>
                     <EuiFlexItem grow={false}>
                         <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => props.handleStart(theme)}>Start Game</EuiButton>
                     </EuiFlexItem>
+                    {props.loading &&
+                        <EuiFlexItem grow={false}>
+                            <EuiText color='subdued'><em>Please wait while the game initializes...</em></EuiText>
+                        </EuiFlexItem>
+                    }
                 </EuiFlexGroup>
             </EuiFlexItem>
             {props.error &&
