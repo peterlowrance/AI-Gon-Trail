@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { addStory, restart, RootState, setSuggestions, StoryType } from "./store";
 import { useLazyGetScenarioQuery } from "./api";
-import { EuiButton, EuiPanel, EuiSkeletonRectangle, EuiSpacer, EuiText } from "@elastic/eui";
+import { EuiButton, EuiFlexItem, EuiPanel, EuiSkeletonRectangle, EuiSpacer, EuiText } from "@elastic/eui";
 import { useEffect } from 'react';
 import StoryChanges from './StoryChanges';
+import AdPanel from './AdPanel';
 
 
 export default function StoryPanel(props) {
@@ -87,6 +88,9 @@ export default function StoryPanel(props) {
                 className={story.length === 0 ? 'delay-appear-quick' : 'delay-appear'}
                 isLoading={getScenarioRes.isFetching}
             />
+        }
+        {gameOver &&
+            <AdPanel />
         }
     </div>
 }
