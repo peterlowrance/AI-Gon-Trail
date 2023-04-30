@@ -20,6 +20,7 @@ def game_start_items(request):
     """
     session = uuid4().hex
     theme = request.GET.get('theme', 'Oregon Trail')
+    theme = theme[:50]
     key = request.headers.get('openai_key')
     if not key:
         key = request.GET.get('key')
@@ -157,6 +158,7 @@ def take_action_v2(request):
     state = database[session]
     scenario = request.data['scenario']
     action = request.data['action']
+    action = action[:200]
     key = request.headers.get('openai_key')
     if not key:
         key = request.GET.get('key')

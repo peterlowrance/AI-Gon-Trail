@@ -22,7 +22,7 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
             </EuiFlexItem> */}
             <EuiFlexItem>
                 <EuiFormRow label='Choose a theme'>
-                    <EuiFieldText value={theme} onChange={e => dispatch(setTheme(e.target.value))} />
+                    <EuiFieldText maxLength={50} value={theme} onChange={e => dispatch(setTheme(e.target.value))} />
                 </EuiFormRow>
             </EuiFlexItem>
             <EuiFlexItem>
