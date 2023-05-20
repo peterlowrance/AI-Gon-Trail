@@ -73,11 +73,11 @@ function App() {
                 <GameStartPanel handleStart={handleStart} loading={gameStartRes.isFetching} error={gameStartRes.isError} />
               </EuiFlexItem>
             }
-            {gameState === 'NOT_STARTED' &&// gameStartRes.isFetching &&
+            {/* {gameState === 'NOT_STARTED' && gameStartRes.isFetching &&
               <EuiFlexItem grow={false} style={{ width: '100%', maxWidth: 1000, marginLeft: 'auto', marginRight: 'auto' }}>
                 <AdPanel />
               </EuiFlexItem>
-            }
+            } */}
             {/* On mobile view, status goes here */}
             <EuiShowFor sizes={['xs', 's']}>
               {gameState === 'CHOOSING_ITEMS' || gameState === 'FACING_SCENARIOS' &&
