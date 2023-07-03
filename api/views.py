@@ -27,15 +27,15 @@ def game_start_items(request):
     client = AiClient(key)
     prompt = get_start_prompt(theme)
     res = client.gen_dict(prompt)
-    destination = res['destination'].lower()
+    goal = res['goal'].lower()
 
     # Save initial data to state
-    database[session] = GameState(characters=res['characters'], items=[], vehicle=res['vehicle'], situations=[], theme=theme, destination=destination)
-    logging.info(f'{theme} -> {destination}')
+    database[session] = GameState(characters=res['characters'], items=[], group_base=res['group_base'], situations=[], theme=theme, goal=goal)
+    logging.info(f'{theme} -> {goal}')
 
     # Get the scenario list in another thread so we can start the game quicker
     def initialize_scenario_list():
-        scenario_prompt = get_scenario_list_prompt(theme, destination)
+        scenario_prompt = get_scenario_list_prompt(theme, goal)
         scenario_res = client.gen_dict(scenario_prompt)
         database[session].situations = scenario_res['situations']
     Thread(target=initialize_scenario_list).start()
@@ -50,7 +50,7 @@ def get_game_status(request):
     state = database[session]
 
     return Response({
-        'vehicle': state.vehicle,
+        'vehicle': state.group_base,
         'items': state.items,
         'characters': state.characters,
     })
@@ -104,7 +104,7 @@ def take_action(request):
     outcome = res['outcome']
     items = res['items']
     characters = res['characters']
-    vehicle = res['vehicle']
+    group_base = res['group_base']
 
     # Get old/previous parsers
     old_items_parser = ItemParser(state.items)
@@ -116,17 +116,17 @@ def take_action(request):
     new_character_parser = ItemParser(characters)
     character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
     # Parse vehicle changes
-    old_vehicle_parser = ItemParser([state.vehicle])
-    new_vehicle_parser = ItemParser([vehicle])
+    old_vehicle_parser = ItemParser([state.group_base])
+    new_vehicle_parser = ItemParser([group_base])
     v_added, v_removed, v_changes = old_vehicle_parser.difference(new_vehicle_parser)
     if len(v_added) > 0 or len(v_removed) > 0:
         if not v_changes:
-            v_changes = {vehicle: {'added': [], 'removed': []}}
+            v_changes = {group_base: {'added': [], 'removed': []}}
         for key in v_changes:
             v_changes[key]['added'].extend(v_added)
             v_changes[key]['removed'].extend(v_removed)
 
-    state.progress(items=items, characters=characters, vehicle=vehicle)
+    state.progress(items=items, characters=characters, group_base=group_base)
 
     return Response({
         'valid': True,
@@ -233,7 +233,7 @@ def take_action_v2(request):
     
     # V2
     outcome = res['outcome']
-    vehicle = res['vehicle']
+    group_base = res['group_base']
 
     # Get old/previous parsers
     old_items_parser = ItemParser(state.items)
@@ -245,17 +245,17 @@ def take_action_v2(request):
     new_character_parser = ItemParser(characters)
     character_added, character_removed, character_changed = old_character_parser.difference(new_character_parser)
     # Parse vehicle changes
-    old_vehicle_parser = ItemParser([state.vehicle])
-    new_vehicle_parser = ItemParser([vehicle])
+    old_vehicle_parser = ItemParser([state.group_base])
+    new_vehicle_parser = ItemParser([group_base])
     v_added, v_removed, v_changes = old_vehicle_parser.difference(new_vehicle_parser)
     if len(v_added) > 0 or len(v_removed) > 0:
         if not v_changes:
-            v_changes = {vehicle: {'added': [], 'removed': []}}
+            v_changes = {group_base: {'added': [], 'removed': []}}
         for key in v_changes:
             v_changes[key]['added'].extend(v_added)
             v_changes[key]['removed'].extend(v_removed)
 
-    state.progress(items=items, characters=characters, vehicle=vehicle)
+    state.progress(items=items, characters=characters, group_base=group_base)
 
     return Response({
         'valid': True,

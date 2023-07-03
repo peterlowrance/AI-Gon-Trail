@@ -54,7 +54,7 @@ class PromptTestCase(TestCase):
         state = GameState(
             characters=["(experienced) Sarah", "(observant) Alex", "(tough) John", "(cook) Maria", "(mechanic) James"],
             items=["Warm Blanket", "Hiking Boots", "Wagon"],
-            vehicle="Wagon: health is 100 out of 100",
+            group_base="Wagon: health is 100 out of 100",
             situations=[scenario]
         )
 
@@ -89,7 +89,7 @@ class PromptTestCase(TestCase):
         state = GameState(
             characters=["Emily", "John", "Sarah", "James"],
             items=["Ax"],
-            vehicle=None,
+            group_base=None,
             situations=[scenario]
         )
 
@@ -127,7 +127,7 @@ class PromptTestCase(TestCase):
         for i in range(1):
             with open("trial/"+str(i), mode="w+") as f:
                 try:
-                    state = GameState(characters=random.choice(charactersSets), items=random.choice(itemSets), vehicle=random.choice(vehicleOptions), situations=scenario_list)
+                    state = GameState(characters=random.choice(charactersSets), items=random.choice(itemSets), group_base=random.choice(vehicleOptions), situations=scenario_list)
                     print(f"Running with {state}", file=f)
                     while state.current_step <= state.total_steps and len(state.characters) > 0:
                         print(f'\nScenario {state.current_step}', file=f)
