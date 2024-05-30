@@ -37,6 +37,7 @@ def game_start_items(request):
     def initialize_scenario_list():
         scenario_prompt = get_scenario_list_prompt(theme, destination)
         scenario_res = client.gen_dict(scenario_prompt)
+        print(scenario_res)
         database[session].situations = scenario_res['situations']
     Thread(target=initialize_scenario_list).start()
 
@@ -171,7 +172,7 @@ def take_action_v2(request):
         global valid
         global valid_explanation
         valid = res['valid']
-        valid_explanation = res['explanation']
+        valid_explanation = res.get('explanation')
 
     thread = Thread(target=validate_thread, args=(scenario, state, action), daemon=True)
     thread.start()

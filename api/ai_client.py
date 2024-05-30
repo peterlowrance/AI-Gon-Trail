@@ -1,7 +1,6 @@
 import os
-import openai
+from openai import OpenAI
 import json
-import yaml
 from api.prompts import Prompt
 import re
 import logging
@@ -10,15 +9,17 @@ class AiClient:
 
 	def __init__(self, key: str | None):
 		self.model = 'gpt-3.5-turbo'
+		self.model = 'gpt-4o'
+		self.client = OpenAI()
 		if key == os.getenv("OVERRIDE_KEY"):
-			openai.api_key = os.getenv("OPENAI_API_KEY")
+			self.api_key = os.getenv("OPENAI_API_KEY")
 		# Super key to use gpt 4
 		elif key == os.getenv("OVERRIDE_KEY_GPT4"):
-			openai.api_key = os.getenv("OPENAI_API_KEY")
-			self.model = 'gpt-4'
+			self.api_key = os.getenv("OPENAI_API_KEY")
+			self.model = 'gpt-4-turbo'
 		else:
-			openai.api_key = key
-		if not openai.api_key:
+			self.api_key = key
+		if not self.api_key:
 			raise Exception('No key provided')
 		
 
@@ -30,53 +31,42 @@ class AiClient:
 		if system_msg:
 			messages.append({'role': 'system', 'content': system_msg})
 		messages.append({'role': 'user', 'content': msg})
-		completion = openai.ChatCompletion.create(
+		res = self.client.chat.completions.create(
 			model=self.model,
 			temperature=params.get('temperature', 0.7),
 			top_p=params.get('top_p', 1),
 			# max_tokens=255,
 			presence_penalty=params.get('presence_penalty', 0),
 			frequency_penalty=params.get('frequency_penalty', 0),
-			# logit_bias={'19411': 10},
+			response_format={ "type": "json_object" },
 			messages=messages
 		)
-		return completion.choices[0].message.to_dict()['content']
+		return res.choices[0].message.content
 
 	def gen_dict(self, prompt: Prompt) -> dict | None:
 		"""
 		Generate an AI response to the prompt
-		based on the prompt, either json or yaml will be parsed
 		"""
-		system_msg = None
-		if prompt['response_type'] == 'yaml':
-			system_msg = 'Respond only in yaml format'
-		if prompt['response_type'] == 'json':
-			system_msg = 'Respond only in json format'
+		system_msg = 'Respond only in json format'
 		res = self.gen(prompt['prompt'], params={'temperature': prompt['temperature']}, system_msg=system_msg)
 		# Parse it into a Python dictionary
 		data_str = ''
 		data_dict = {}
 		try:
-			if prompt['response_type'] == 'yaml':
-				try:
-					data_dict = yaml.safe_load(res)
-				except:
-					# If unable to parse, try to fix the ':'
-					res = fix_yaml(res)
-					data_dict = yaml.safe_load(res)
-			elif prompt['response_type'] == 'json':
-				# Find the start and end index of the json object
-				start = res.find("{")
-				end = res.rfind("}") + 1
-				# Extract the json substring
-				data_str = res[start:end]
-				try:
-					data_dict = json.loads(data_str)
-				except:
-					# If unable to parse, try to fix quotes
-					data_str = data_str.replace('{"none"}', '{}')
-					data_str = fix_missing_quotes(data_str)
-					data_dict = json.loads(data_str)
+			# Find the start and end index of the json object
+			start = res.find("{")
+			end = res.rfind("}") + 1
+			# Extract the json substring
+			data_str = res[start:end]
+			try:
+				data_dict = json.loads(data_str)
+			except:
+				# If unable to parse, try to fix quotes
+				data_str = data_str.replace('{"none"}', '{}')
+				if not data_str.endswith('}'):
+					data_str += '}'
+				data_str = fix_missing_quotes(data_str)
+				data_dict = json.loads(data_str)
 		except:
 			logging.error(f"Invalid {data_str} from response {res} with dict {data_dict}")
 			raise
@@ -92,10 +82,6 @@ def fix_missing_quotes(json_string):
     fixed_json = re.sub(r'([{,])(\s*)([A-Za-z0-9_]+)(\s*):', r'\1"\3":', json_string)
     return fixed_json
 
-# Thanks gpt4 for this code, makes values after ':' surrounded in quotes for proper parsing
-def fix_yaml(yaml_str):
-    return re.sub(r': (\w[^:\n]*: [^:\n]*)', r': "\1"', yaml_str)
-	
 # Bing generated validation function
 def validate(obj, schema) -> bool:
 	# base case: if schema is a type, check if obj is of that type

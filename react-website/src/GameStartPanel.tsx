@@ -23,7 +23,7 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
             <EuiFlexItem>
                 <EuiText>
                     <p>
-                        AI-Gon Trail is a game that lets you create your own adventure in any historical or fictional setting you can imagine. Whether you want to explore the Oregon Trail, the ancient Egyptian pyramids, or even the far reaches of space, this game is fully powered by AI to make it possible. You will interact with realistic characters, face dynamic events, and make decisions that affect your survival and success. AI-Gon Trail is not just a game, it’s a journey that adapts to your choices and actions.
+                        AI-Gon Trail is a game that transports you into any world you can imagine, from the Oregon Trail to the Egyptian pyramids or even outer space. Powered by AI, this game features dynamic characters, unpredictable events, and decision-driven outcomes that shape your unique adventure. AI-Gon Trail is not just a game—it's an adaptive journey tailored by your choices.
                     </p>
                 </EuiText>
             </EuiFlexItem>
@@ -35,7 +35,7 @@ function GameStartPanel(props: { handleStart: Function, loading: boolean, error:
             <EuiFlexItem>
                 <EuiFlexGroup responsive={false} alignItems='center'>
                     <EuiFlexItem grow={false}>
-                        <EuiButton isLoading={props.loading} disabled={!key || props.loading} onClick={() => props.handleStart(theme)}>Start Game</EuiButton>
+                        <EuiButton isLoading={props.loading} disabled={!key || props.loading || !theme} onClick={() => props.handleStart(theme)}>Start Game</EuiButton>
                     </EuiFlexItem>
                     {props.loading &&
                         <EuiFlexItem grow={false}>

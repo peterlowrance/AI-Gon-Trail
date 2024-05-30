@@ -2,9 +2,9 @@ import { EuiAccordion, EuiPanel, EuiSpacer, EuiTitle } from "@elastic/eui";
 import StatusSidebar from "./StatusSidebar";
 import wood_background from '../wood_background.jpg';
 import { useGetStatusQuery } from "./api";
-import { skipToken } from "@reduxjs/toolkit/dist/query";
 import { useSelector } from 'react-redux';
 import { RootState } from "./store";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 function MobileStatusAccordion(props) {
     const session = useSelector((state: RootState) => state.game.session);
